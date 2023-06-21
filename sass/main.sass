@@ -1,10 +1,15 @@
 @use "./assets/_resets"
 @use "./assets/_variables"
 
-@use "./components/calculator"
+@use "./components/_calculator"
 
 body
   font-family: variables.$font
+
+header
+  .nav
+    padding: 1rem
+    background-color: variables.$color-0
 
 .container
   padding: 1rem
@@ -12,5 +17,29 @@ body
 .form
   margin: .5rem 0
   
-.main
-  
+.box
+  background-color: variables.$color-9
+  padding: .5rem
+  border-radius: .5rem
+  &__body
+    display: flex
+    align-items: start
+
+  &__results
+    tr
+      display: flex
+.date
+  &__select
+    input
+      width: 100%
+.event__form
+  display: flex
+  flex-direction: column
+  gap: .25rem
+
+h1
+  color: variables.$color-5
+h2
+  color: variables.$color-1
+h3
+  color: variables.$color-7

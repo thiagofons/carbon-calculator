@@ -39,8 +39,13 @@ p, h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 1fr;
   align-content: center;
 }
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 600px) {
   .calculator {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
+}
+.calculator .consumption button {
+  border: none;
+  background-color: #0170B9;
 }/*# sourceMappingURL=calculator.css.map */

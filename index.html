@@ -20,7 +20,7 @@
     
     <section class="user__info">
       <h2>Informações</h2>
-      <form class="box form event__form" action="">
+      <form class="form event__form  box" action="">
         <label for="">Categoria de consumo</label>
         <select name="" id="">
           <option value="domestic">Inventário domiciliar</option>
@@ -33,14 +33,14 @@
     <section class="main">
       <header class="calculator__header">
         <h2>Calculadora</h2>
-        <form action="" id="date" class="form box">
-          <div>
+        <form action="" id="date" class="form box date">
+          <div class="month date__select">
             <label for="">Mês</label>
             <select name="" id="">
               <option value="">jan</option>
             </select>
           </div>
-          <div>
+          <div class="year date__select">
             <label for="">Ano</label>
             <select name="" id="">
               <option value="">2023</option>
@@ -188,49 +188,54 @@
           </div>
         </form>
   
-        <form class="form" action="" id="event">
-          <h3>Adição de evento</h3>
-          <!-- ver quais são os tipos de eventos -->
-          <div>
-            <label for="">Tipo do evento</label>
-            <select name="" id="">
-              <option value=""></option>
-              <option value="">resíduos</option>
-              <option value="">combustível</option>
-            </select>
-          </div>
-  
-          <div>
-            <label for="">Consumo</label>
-            <input type="text" placeholder="">
-            <button>Adicionar ao cálculo</button>
-          </div>
-          
-        </form>
-  
+        
       </main>
       
     </section>
 
+    <section class="event">
+      <form class="form box" action="" id="event">
+        <h3>Adição de evento</h3>
+        <!-- ver quais são os tipos de eventos -->
+        <div>
+          <label for="">Tipo do evento</label>
+          <select name="" id="">
+            <option value=""></option>
+            <option value="">resíduos</option>
+            <option value="">combustível</option>
+          </select>
+        </div>
 
+        <div>
+          <label for="">Consumo</label>
+          <input type="text" placeholder="">
+          <button>Adicionar ao cálculo</button>
+        </div>
+        
+      </form>
+
+    </section>
 
     <section class="results">
       <h2>Resultados</h2>
-      <div class="co2__total">
-        <h3>Consumo total de CO&#8322;</h3>
+      <div class="results__data box">
+        <section class="result co2__total">
+          <h3>Consumo total de CO&#8322;</h3>
+        </section>
+        <section class="result tree__total">
+          <h3>Árvores a serem plantadas</h3>
+        </section>
+        <section class="result reduce__total">
+          <h3>Total a ser reduzido</h3>
+        </section>
+        <section class="result compensate">
+          <h3>Como você pode compensar seu consumo de CO&#8322;</h3>
+        </section>
+        <section class="result invite">
+          <h3>Venha para um plantio comunitário!</h3>
+        </section>
       </div>
-      <div class="tree__total">
-        <h3>Árvores a serem plantadas</h3>
-      </div>
-      <div class="reduce__total">
-        <h3>Total a ser reduzido</h3>
-      </div>
-      <div class="compensate">
-        <h3>Como você pode compensar seu consumo de CO&#8322;</h3>
-      </div>
-      <div class="invite">
-        <h3>Venha para um plantio comunitário!</h3>
-      </div>
+      
     </section>
   </main>
 
