@@ -1,0 +1,10 @@
+@mixin flex($direction, $gap)
+  display: flex
+  flex-direction: $direction
+  gap: $gap
+
+@mixin grid($rows: 1, $columns: 1, $gap)
+  display: grid
+  grid-template-rows: repeat($rows, 1fr)
+  grid-template-columns: repeat($columns, 1fr)
+  gap: $gap

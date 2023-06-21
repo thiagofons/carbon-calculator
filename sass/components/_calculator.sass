@@ -1,35 +1,24 @@
 @use "../assets/_resets"
 @use "../assets/_variables"
-
+@use "../assets/_mixins"
 
 .calculator
-  display: grid
-  grid-template-columns: 1fr
+  @include mixins.grid($rows: 1, $columns: 1, $gap: 1rem)
   
   align-content: center
   
-
+  
   @media screen and ( min-width: 600px ) 
     grid-template-columns: repeat(2, 1fr)
-    gap: 1rem
+    
   
   .consumption, .fuel, .air__travel
-    
-    grid-template-columns: 1fr
-    
-    gap: .5rem
+    @include mixins.flex(column, .5rem)
     input
       width: 100%
-    button
-      border: none
-      background-color: variables.$color-0
-      padding: .5rem
-      color: variables.$color-5
-      width: 100%
+    
   .box__body
-    display: grid
-    grid-template-columns: 1fr
-    gap: .5rem
+    @include mixins.grid($rows: 1, $columns: 1, $gap: .5rem)
 
     @media screen and ( min-width: 600px )
       grid-template-columns: repeat(2, 1fr)
