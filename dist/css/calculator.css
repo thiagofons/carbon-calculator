@@ -1,29 +1,46 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 * {
   margin: 0;
 }
+
 html, body {
   height: 100%;
 }
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
+
 input, button, textarea, select {
   font: inherit;
 }
+
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
-label {
-  display: block;
-}
+
 #root, #__next {
   isolation: isolate;
 }
+
+/* fonts */
+/* colors */  
+.calculator {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+}
+@media screen and (min-width: 425px) {
+  .calculator {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}/*# sourceMappingURL=calculator.css.map */
