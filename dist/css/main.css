@@ -1,0 +1,141 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+/* fonts */
+/* colors */  
+/* gradients */
+.calculator {
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  align-content: center;
+}
+@media screen and (min-width: 600px) {
+  .calculator {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.calculator .consumption, .calculator .fuel, .calculator .air__travel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.calculator .consumption input, .calculator .fuel input, .calculator .air__travel input {
+  width: 100%;
+}
+.calculator .box__body {
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.5rem;
+}
+@media screen and (min-width: 600px) {
+  .calculator .box__body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+header .nav {
+  padding: 1rem;
+  background-color: radial-gradient(#0081d7 50%, #0170B9 100%);
+}
+
+.container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.calculator {
+  margin: 1rem 0;
+}
+
+.box {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.25);
+}
+.box__header {
+  margin-bottom: 0.5rem;
+}
+.box__body {
+  display: flex;
+  align-items: start;
+}
+.box__results tr {
+  display: flex;
+}
+
+.date__select input {
+  width: 100%;
+}
+
+.event__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.add__button {
+  border: none;
+  border-radius: 0.5rem;
+  background: radial-gradient(#0081d7 50%, #0170B9 100%);
+  padding: 0.5rem;
+  color: #FFFFFF;
+  width: 100%;
+}
+
+.text__input {
+  border: 1px solid #424242;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+h1 {
+  color: #FFFFFF;
+}
+
+h2 {
+  color: #3a3a3a;
+}
+
+h3 {
+  color: #424242;
+}/*# sourceMappingURL=main.css.map */
