@@ -1,7 +1,14 @@
 @use "../assets/_resets"
 @use "../assets/_variables"
+@use "../assets/_mixins"
 
 .event
+  @include mixins.grid(1, 2, .5rem)
   
   .form
-      
+    @include mixins.flex(column, .25rem)
+    .event__type
+      @include mixins.flex(column, .25rem)
+
+    .event__consumption
+      @include mixins.flex(column, .25rem)
