@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Carbono</title>
     <link rel="stylesheet" href="./dist/css/main.css" />
+    <script src="./js/io.js" defer></script>
     <script src="./js/script.js" defer></script>
+    
   </head>
   <body>
     <header>
@@ -28,9 +30,9 @@
         <h2>Informações</h2>
         <form class="form event__form box" action="">
           <label for="">Categoria de consumo</label>
-          <select name="" id="consumption__category" >
-            <option value="domestic">Inventário domiciliar</option>
-            <option value="event">Evento</option>
+          <select name="" id="consumption__category" onchange="mudarCategoriaDeConsumo()">
+            <option value="inventario">Inventário domiciliar</option>
+            <option value="evento">Evento</option>
           </select>
         </form>
       </section>
@@ -54,7 +56,7 @@
           </form>
         </header>
 
-        <main class="calculator">
+        <main class="calculator" id="calculator">
           <form class="form box" action="">
             <div class="box__header">
               <h3>Emissão de CO&#8322; por consumo de energia elétrica</h3>
@@ -110,7 +112,7 @@
             </div>
           </form>
 
-          <form class="form box" action="">
+          <form class="form box " action="">
             <div class="box__header">
               <h3>Emissão de CO&#8322; por consumo de gás de cozinha</h3>
             </div>
@@ -175,7 +177,7 @@
             </div>
           </form>
 
-          <form class="form box" class="box" action="">
+          <form class="form box fossil" class="box" action="">
             <div class="box__header">
               <h3>Emissão de CO&#8322; por consumo de combustíveis fósseis</h3>
             </div>
@@ -275,12 +277,15 @@
           <section class="results__data__numbers">
             <div class="result co2__total">
               <h3>Consumo total de CO&#8322;</h3>
+              <span id="co2__total__number">0</span>
             </div>
             <div class="result tree__total">
               <h3>Árvores a serem plantadas</h3>
+              <span id="tree__number">0</span>
             </div>
             <div class="result reduce__total">
               <h3>Total a ser reduzido</h3>
+              <span id="reduce__total__number">0</span>
             </div>
           </section>
 
