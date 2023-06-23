@@ -53,7 +53,7 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 0.5rem;
 }
-.calculator .consumption input, .calculator .fuel input, .calculator .air__travel input {
+.calculator .consumption input[type=text], .calculator .fuel input[type=text], .calculator .air__travel input[type=text] {
   width: 100%;
 }
 @media screen and (min-width: 600px) {
@@ -77,7 +77,7 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 0;
 }
-.calculator .air__travel {
+.calculator .air__travel .travel__data {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -85,8 +85,12 @@ p, h1, h2, h3, h4, h5, h6 {
 .calculator .air__travel .round__trip {
   display: flex;
   flex-direction: row;
-  gap: 0;
-  justify-content: left;
+  gap: 0.5rem;
+}
+.calculator .air__travel .fly__number {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .event {
@@ -106,7 +110,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .event .form {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 .event .form .event__type {
   display: flex;
@@ -125,11 +129,18 @@ p, h1, h2, h3, h4, h5, h6 {
   gap: 3rem;
 }
 .results__data__numbers {
-  display: grid;
-  grid-template-rows: repeat(1, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .results__data__numbers {
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
 }
 .results__data__numbers .result {
   background-color: #F5F5F5;
@@ -140,6 +151,15 @@ p, h1, h2, h3, h4, h5, h6 {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+input[type=text] {
+  padding: 0.5rem;
+}
+
+select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 header .nav {

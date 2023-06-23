@@ -92,7 +92,7 @@ forms.forEach((form) => {
 /* Atualização de resultados */
 const somarConsumoTotal = (valor) => {
   resultados.consumoTotal += parseFloat(valor);
-  saidas.carbonoTotal.textContent = resultados.consumoTotal;
+  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(2);
 }
 
 /* processamento dos botoes */
