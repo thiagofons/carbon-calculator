@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Carbono</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./dist/css/main.css" />
+    <script src="./js/io.js" defer></script>
+    <script src="./js/script.js" defer></script>
   </head>
   <body>
     <header>
@@ -29,9 +29,13 @@
         <h2>Informações</h2>
         <form class="form event__form box" action="">
           <label for="">Categoria de consumo</label>
-          <select name="" id="">
-            <option value="domestic">Inventário domiciliar</option>
-            <option value="event">Evento</option>
+          <select
+            name=""
+            id="consumption__category"
+            onchange="mudarCategoriaDeConsumo()"
+          >
+            <option value="inventario">Inventário domiciliar</option>
+            <option value="evento">Evento</option>
           </select>
         </form>
       </section>
@@ -39,24 +43,20 @@
       <section class="main">
         <header class="calculator__header">
           <h2>Calculadora</h2>
-          <form action="" id="date" class="form box date">
+          <form action="" class="form box date">
             <div class="month date__select">
               <label for="">Mês</label>
-              <select name="" id="">
-                <option value="">jan</option>
-              </select>
+              <select name="" id="month"></select>
             </div>
             <div class="year date__select">
               <label for="">Ano</label>
-              <select name="" id="">
-                <option value="">2023</option>
-              </select>
+              <select name="" id="year"></select>
             </div>
           </form>
         </header>
 
-        <main class="calculator">
-          <form id="electric__energy" class="form box" action="">
+        <main class="calculator" id="calculator">
+          <form class="form box" action="">
             <div class="box__header">
               <h3>Emissão de CO&#8322; por consumo de energia elétrica</h3>
             </div>
@@ -68,10 +68,13 @@
                     type="text"
                     class="text__input co2__consumption"
                     placeholder="KWh"
+                    id="electric__energy"
                   />
                 </div>
 
-                <button class="add__button">Adicionar ao cálculo</button>
+                <button class="add__button" id="electric__energy__btn">
+                  Adicionar ao cálculo
+                </button>
               </div>
               <table class="box__results">
                 <tr>
@@ -82,7 +85,7 @@
             </div>
           </form>
 
-          <form class="form box" id="methane__effluents" class="box" action="">
+          <form class="form box" action="">
             <div class="box__header">
               <h3>Emissão de metano no tratamento de efluentes</h3>
             </div>
@@ -95,11 +98,13 @@
                     class="text__input methane__consumption"
                     placeholder="m&sup3;"
                     name=""
-                    id=""
+                    id="effluent__emission"
                   />
                 </div>
 
-                <button class="add__button">Adicionar ao cálculo</button>
+                <button class="add__button" id="methane__effluents__btn">
+                  Adicionar ao cálculo
+                </button>
               </div>
               <table class="box__results">
                 <tr>
@@ -110,7 +115,7 @@
             </div>
           </form>
 
-          <form class="form box" id="kitchen__gas" class="box" action="">
+          <form class="form box" action="">
             <div class="box__header">
               <h3>Emissão de CO&#8322; por consumo de gás de cozinha</h3>
             </div>
@@ -123,7 +128,7 @@
                     class="text__input piped__gas__consumption"
                     placeholder="m&sup3;"
                     name=""
-                    id=""
+                    id="piped__gas"
                   />
                 </div>
                 <div class="cylinder__gas">
@@ -133,10 +138,12 @@
                     class="text__input cylinder__gas__consumption"
                     placeholder="número de butijões"
                     name=""
-                    id=""
+                    id="cylinder__gas"
                   />
                 </div>
-                <button class="add__button">Adicionar ao cálculo</button>
+                <button class="add__button" id="gas__btn">
+                  Adicionar ao cálculo
+                </button>
               </div>
               <table class="box__results">
                 <tr>
@@ -147,7 +154,7 @@
             </div>
           </form>
 
-          <form class="form box" id="methane__waste" class="box" action="">
+          <form class="form box" action="">
             <div class="box__header">
               <h3>Emissão de metano por resíduos</h3>
             </div>
@@ -160,11 +167,13 @@
                     class="text__input methane__consumption"
                     placeholder="m&sup3;"
                     name=""
-                    id=""
+                    id="waste"
                   />
                 </div>
 
-                <button class="add__button">Adicionar ao cálculo</button>
+                <button class="add__button" id="methane__waste__btn">
+                  Adicionar ao cálculo
+                </button>
               </div>
               <table class="box__results">
                 <tr>
@@ -175,7 +184,7 @@
             </div>
           </form>
 
-          <form class="form box" id="fossil__comsumption" class="box" action="">
+          <form class="form box fossil" class="box" action="">
             <div class="box__header">
               <h3>Emissão de CO&#8322; por consumo de combustíveis fósseis</h3>
             </div>
@@ -183,52 +192,67 @@
               <div class="consumption">
                 <div class="fuel">
                   <h4>Combustível</h4>
-                  <div>
+                  <div class="field">
                     <label for="">Tipo de veículo</label>
-                    <select name="" id="">
+                    <select name="" id="vehicle" required>
                       <option value=""></option>
-                      <option value="">carro</option>
-                      <option value="">moto</option>
+                      <option value="carro">carro</option>
+                      <option value="moto">moto</option>
                     </select>
                   </div>
 
                   <div>
                     <label for="">Consumo</label>
-                    <input class="text__input" type="text" placeholder="km" />
+                    <input
+                      class="text__input"
+                      type="text"
+                      placeholder="km"
+                      id="vehicle__consumption"
+                    />
                   </div>
-                  <button class="add__button">Adicionar ao cálculo</button>
+                  <button class="add__button" id="fuel__btn">
+                    Adicionar ao cálculo
+                  </button>
                 </div>
 
                 <div class="air__travel">
                   <h4>Viagens aéreas</h4>
-                  <div>
-                    <div>
-                      <input
-                        class="text__input"
-                        type="text"
-                        placeholder="Origem"
-                        name=""
-                        id=""
-                      />
-                      <input
-                        class="text__input"
-                        type="text"
-                        placeholder="Destino"
-                        name=""
-                        id=""
-                      />
-                    </div>
-                    <div>
-                      <input type="checkbox" name="" id="" /><span
-                        >ida e volta</span
-                      >
-                    </div>
-                    <div>
-                      <label for="">Quantidade de vôos</label>
-                      <input type="number" name="" id="" value="0" />
-                    </div>
+
+                  <div class="travel__data">
+                    <input
+                      class="text__input"
+                      type="text"
+                      placeholder="Origem"
+                      name=""
+                      id="origin"
+                    />
+                    <input
+                      class="text__input"
+                      type="text"
+                      placeholder="Destino"
+                      name=""
+                      id="destiny"
+                    />
                   </div>
-                  <button class="add__button">Adicionar ao cálculo</button>
+                  <div class="round__trip">
+                    <input type="checkbox" name="" id="round__trip" /><span
+                      >ida e volta</span
+                    >
+                  </div>
+                  <div class="fly__number">
+                    <label for="">Quantidade de vôos</label>
+                    <input
+                      type="number"
+                      name=""
+                      id="fly__number"
+                      value="0"
+                      min="0"
+                    />
+                  </div>
+
+                  <button class="add__button" id="air__travel__btn">
+                    Adicionar ao cálculo
+                  </button>
                 </div>
               </div>
 
@@ -244,7 +268,7 @@
       </section>
 
       <section class="event">
-        <form class="form box" action="" id="event">
+        <form class="form box" action="">
           <div class="box__header">
             <h3>Adição de evento</h3>
           </div>
@@ -252,19 +276,26 @@
           <!-- ver quais são os tipos de eventos -->
           <div class="event__type">
             <label for="">Tipo do evento</label>
-            <select name="" id="">
+            <select name="" id="event__type" required>
               <option value=""></option>
-              <option value="">resíduos</option>
-              <option value="">combustível</option>
+              <option value="residuos">resíduos</option>
+              <option value="combustivel">combustível</option>
             </select>
           </div>
 
           <div class="event__consumption">
             <label for="">Consumo</label>
-            <input class="text__input" type="text" placeholder="" />
+            <input
+              class="text__input"
+              id="event__consumption"
+              type="text"
+              placeholder=""
+            />
           </div>
           <div>
-            <button class="add__button">Adicionar ao cálculo</button>
+            <button class="add__button" id="event__btn">
+              Adicionar ao cálculo
+            </button>
           </div>
         </form>
       </section>
@@ -275,12 +306,15 @@
           <section class="results__data__numbers">
             <div class="result co2__total">
               <h3>Consumo total de CO&#8322;</h3>
+              <span id="co2__total__number">0</span>
             </div>
             <div class="result tree__total">
               <h3>Árvores a serem plantadas</h3>
+              <span id="tree__number">0</span>
             </div>
             <div class="result reduce__total">
               <h3>Total a ser reduzido</h3>
+              <span id="reduce__total__number">0</span>
             </div>
           </section>
 

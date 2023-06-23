@@ -9,6 +9,18 @@
 body
   font-family: variables.$font
 
+input[type="text"]
+  padding: .5rem
+
+select
+  padding: .5rem
+  border-radius: .5rem
+  border: 1px solid variables.$color-7
+  
+
+  &:hover
+    cursor: pointer
+
 header
   .nav
     padding: 1rem
@@ -17,7 +29,9 @@ header
 .container
   padding: 1rem
   @include mixins.flex(column, 2rem)
-  
+  @media screen and ( min-width: 600px )
+    padding: 1rem 3rem
+
 .calculator
   margin: 1rem 0
 
@@ -35,24 +49,39 @@ header
     tr
       display: flex
 .date
+  
+  @include mixins.flex(row, 1rem)
+  justify-content: space-evenly
   &__select
+    @include mixins.flex(column, 0rem)
+    width: 100%
     input
       width: 100%
 .event__form
   @include mixins.flex(column, .25rem)
 
 .add__button
-  border: none
   border-radius: .5rem
   background: radial-gradient(variables.$color-10 50%, variables.$color-0 100%)
+  border: 1px solid variables.$color-0
   padding: .5rem
   color: variables.$color-5
   width: 100%
+  transition: .25s
+  &:hover
+    cursor: pointer
+    background: variables.$color-5
+    border: 1px solid variables.$color-0
+    color: variables.$color-0
+
 
 .text__input
   border: 1px solid variables.$color-7
   border-radius: .5rem
   padding: .25rem
+
+h2, h3
+  text-transform: uppercase
 
 h1
   color: variables.$color-5
@@ -61,3 +90,7 @@ h2
 h3
   color: variables.$color-7
 
+
+
+.hide
+  display: none

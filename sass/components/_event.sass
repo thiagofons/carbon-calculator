@@ -3,10 +3,12 @@
 @use "../assets/_mixins"
 
 .event
-  @include mixins.grid(1, 2, .5rem)
-  
+  @include mixins.grid(1, 1, .5rem)
+
+  @media screen and ( min-width: 600px )
+    @include mixins.grid(1, 2, .5rem)
   .form
-    @include mixins.flex(column, .25rem)
+    @include mixins.flex(column, .5rem)
     .event__type
       @include mixins.flex(column, .25rem)
 
