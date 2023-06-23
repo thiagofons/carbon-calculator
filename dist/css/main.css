@@ -56,11 +56,6 @@ p, h1, h2, h3, h4, h5, h6 {
 .calculator .consumption input[type=text], .calculator .fuel input[type=text], .calculator .air__travel input[type=text] {
   width: 100%;
 }
-@media screen and (min-width: 600px) {
-  .calculator .fossil {
-    grid-column: span 2;
-  }
-}
 .calculator .box__body {
   display: grid;
   grid-template-rows: repeat(1, 1fr);
@@ -139,14 +134,25 @@ p, h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    gap: 1rem;
   }
 }
 .results__data__numbers .result {
   background-color: #F5F5F5;
 }
+.results__data__numbers .result h3 {
+  background-color: #FFFFFF;
+}
+.results__data__numbers .result span {
+  font-weight: bold;
+  color: #4B4F58;
+  font-size: 3rem;
+}
 .results__compensate, .results__invite {
   background-color: #F5F5F5;
+}
+.results__compensate h3, .results__invite h3 {
+  background-color: #FFFFFF;
 }
 
 body {
@@ -160,6 +166,10 @@ input[type=text] {
 select {
   padding: 0.5rem;
   border-radius: 0.5rem;
+  border: 1px solid #424242;
+}
+select:hover {
+  cursor: pointer;
 }
 
 header .nav {
@@ -222,18 +232,29 @@ header .nav {
 }
 
 .add__button {
-  border: none;
   border-radius: 0.5rem;
   background: radial-gradient(#0081d7 50%, #0170B9 100%);
+  border: 1px solid #0170B9;
   padding: 0.5rem;
   color: #FFFFFF;
   width: 100%;
+  transition: 0.25s;
+}
+.add__button:hover {
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #0170B9;
+  color: #0170B9;
 }
 
 .text__input {
   border: 1px solid #424242;
   border-radius: 0.5rem;
   padding: 0.25rem;
+}
+
+h2, h3 {
+  text-transform: uppercase;
 }
 
 h1 {

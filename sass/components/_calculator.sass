@@ -13,11 +13,8 @@
   .consumption, .fuel, .air__travel
     @include mixins.flex(column, .5rem)
     input[type="text"]
-      width: 100%
-  
-  .fossil
-    @media screen and ( min-width: 600px )
-      grid-column: span 2
+      width: 100%  
+
   .box__body
     @include mixins.grid($rows: 1, $columns: 1, $gap: .5rem)
 

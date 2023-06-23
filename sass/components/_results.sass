@@ -11,10 +11,18 @@
       @include mixins.flex(column, 1rem)
 
       @media screen and ( min-width: 600px )
-        @include mixins.grid(1, 3, .5rem) 
+        @include mixins.grid(1, 3, 1rem) 
       text-align: center
       .result
         background-color: variables.$color-4
+        h3
+          background-color: variables.$color-5
+        span
+          font-weight: bold
+          color: variables.$color-3
+          font-size: 3rem
   &__compensate, &__invite
     background-color: variables.$color-4
+    h3
+      background-color: variables.$color-5
   
