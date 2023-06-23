@@ -185,12 +185,12 @@
               <div class="consumption">
                 <div class="fuel">
                   <h4>Combustível</h4>
-                  <div>
+                  <div class="field">
                     <label for="">Tipo de veículo</label>
                     <select name="" id="vehicle">
                       <option value=""></option>
-                      <option value="">carro</option>
-                      <option value="">moto</option>
+                      <option value="carro">carro</option>
+                      <option value="moto">moto</option>
                     </select>
                   </div>
 
@@ -203,7 +203,7 @@
 
                 <div class="air__travel">
                   <h4>Viagens aéreas</h4>
-                  <div>
+  
                     <div>
                       <input
                         class="text__input"
@@ -220,7 +220,7 @@
                         id="destiny"
                       />
                     </div>
-                    <div>
+                    <div class="round__trip">
                       <input type="checkbox" name="" id="round__trip" /><span
                         >ida e volta</span
                       >
@@ -229,7 +229,7 @@
                       <label for="">Quantidade de vôos</label>
                       <input type="number" name="" id="fly__number" value="0" />
                     </div>
-                  </div>
+                  
                   <button class="add__button" id="air__travel__btn">Adicionar ao cálculo</button>
                 </div>
               </div>
@@ -254,10 +254,10 @@
           <!-- ver quais são os tipos de eventos -->
           <div class="event__type">
             <label for="">Tipo do evento</label>
-            <select name="" id="event__type">
+            <select name="" id="event__type" required>
               <option value=""></option>
-              <option value="">resíduos</option>
-              <option value="">combustível</option>
+              <option value="residuos">resíduos</option>
+              <option value="combustivel">combustível</option>
             </select>
           </div>
 

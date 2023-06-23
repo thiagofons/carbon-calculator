@@ -14,7 +14,8 @@
     @include mixins.flex(column, .5rem)
     input
       width: 100%
-
+  .air__travel
+    
   .fossil
     @media screen and ( min-width: 600px )
       grid-column: span 2
@@ -23,3 +24,7 @@
 
     @media screen and ( min-width: 600px )
       grid-template-columns: repeat(2, 1fr)
+  .field
+    @include mixins.flex(column, 0)
+  .air__travel
+    @include mixins.flex(column, .5rem)
