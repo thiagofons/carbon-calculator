@@ -17,7 +17,8 @@ header
 .container
   padding: 1rem
   @include mixins.flex(column, 2rem)
-  
+  @media screen and ( min-width: 600px )
+    padding: 1rem 3rem
 .calculator
   margin: 1rem 0
 
@@ -35,7 +36,12 @@ header
     tr
       display: flex
 .date
+  
+  @include mixins.flex(row, 1rem)
+  justify-content: space-evenly
   &__select
+    @include mixins.flex(column, 0rem)
+    width: 100%
     input
       width: 100%
 .event__form

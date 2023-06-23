@@ -174,7 +174,7 @@ botoes.evento.addEventListener("click", () => {
       default:
         break;
     }
-    console.log(total);
+
     somarConsumoTotal(total);
     entradas.evento.consumo.value = null;
   }

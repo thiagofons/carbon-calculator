@@ -82,6 +82,12 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 0.5rem;
 }
+.calculator .air__travel .round__trip {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  justify-content: left;
+}
 
 .event {
   display: grid;
@@ -147,6 +153,11 @@ header .nav {
   flex-direction: column;
   gap: 2rem;
 }
+@media screen and (min-width: 600px) {
+  .container {
+    padding: 1rem 3rem;
+  }
+}
 
 .calculator {
   margin: 1rem 0;
@@ -168,6 +179,18 @@ header .nav {
   display: flex;
 }
 
+.date {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.date__select {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  width: 100%;
+}
 .date__select input {
   width: 100%;
 }
