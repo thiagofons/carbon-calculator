@@ -1,4 +1,6 @@
 /* fatores de conversão */
+const precision = 2;
+
 const fatores = {
   carbono: {
     energiaEletrica: 0.454,
@@ -67,6 +69,26 @@ const botoes = {
 };
 
 const saidas = {
+  energiaEletrica: {
+    mes: document.querySelector("#electric__energy__month"),
+    ano: document.querySelector("#electric__energy__year")
+  },
+  gas: {
+    mes: document.querySelector("#gas__month"),
+    ano: document.querySelector("#gas__year")
+  },
+  efluentes: {
+    mes: document.querySelector("#effluent__month"),
+    ano: document.querySelector("#effluent__year")
+  },
+  residuos: {
+    mes: document.querySelector("#waste__month"),
+    ano: document.querySelector("#waste__year")
+  },
+  combustivel: {
+    mes: document.querySelector("#vehicle__month"),
+    ano: document.querySelector("#vehicle__year")
+  },
   carbonoTotal: document.querySelector("#co2__total__number"),
   arvoresPlantadas: document.querySelector("#tree__number"),
   totalASerReduzido: document.querySelector("#reduce__total__number"),
@@ -141,7 +163,7 @@ forms.forEach((form) => {
 /* atualização de resultados */
 const somarConsumoTotal = (valor) => {
   resultados.consumoTotal += parseFloat(valor);
-  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(2);
+  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(precision);
 };
 
 /* processamento dos botoes */
@@ -150,6 +172,9 @@ botoes.carbono.energiaEletrica.addEventListener("click", () => {
   const valor = consumo * fatores.carbono.energiaEletrica;
 
   somarConsumoTotal(valor);
+
+  saidas.energiaEletrica.mes.textContent = valor.toFixed(precision);
+  saidas.energiaEletrica.ano.textContent = (valor * 12).toFixed(precision);
 
   entradas.carbono.energiaEletrica.value = null;
 });

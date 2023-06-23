@@ -13,13 +13,37 @@
   .consumption, .fuel, .air__travel
     @include mixins.flex(column, .5rem)
     input[type="text"]
-      width: 100%  
+      width: 100%
 
   .box__body
     @include mixins.grid($rows: 1, $columns: 1, $gap: .5rem)
 
     @media screen and ( min-width: 600px )
       grid-template-columns: repeat(2, 1fr)
+
+  .box__results
+    min-height: 7.5rem
+    width: 100%
+    @include mixins.flex(row, 1rem)
+    justify-content: space-evenly
+
+    .month__result, .year__result
+      @include mixins.flex(column, .25rem)
+      justify-content: space-between
+      text-align: center
+      .consumption__value, .consumption__unit
+        display: block
+
+      .consumption__value
+        font-size: 2rem
+        font-weight: bold
+        color: variables.$color-1
+      .consumption__unit
+        color: variables.$color-3
+      
+      
+
+      
   .field
     @include mixins.flex(column, 0)
   .air__travel
@@ -29,6 +53,3 @@
       @include mixins.flex(row, .5rem)
     .fly__number
       @include mixins.flex(column, .25rem)
-
-      
-      
