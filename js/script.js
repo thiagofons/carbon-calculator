@@ -1,4 +1,6 @@
 /* fatores de conversão */
+const precision = 2;
+
 const fatores = {
   carbono: {
     energiaEletrica: 0.454,
@@ -67,6 +69,26 @@ const botoes = {
 };
 
 const saidas = {
+  energiaEletrica: {
+    mes: document.querySelector("#electric__energy__month"),
+    ano: document.querySelector("#electric__energy__year"),
+  },
+  gas: {
+    mes: document.querySelector("#gas__month"),
+    ano: document.querySelector("#gas__year"),
+  },
+  efluentes: {
+    mes: document.querySelector("#effluent__month"),
+    ano: document.querySelector("#effluent__year"),
+  },
+  residuos: {
+    mes: document.querySelector("#waste__month"),
+    ano: document.querySelector("#waste__year"),
+  },
+  combustivel: {
+    mes: document.querySelector("#vehicle__month"),
+    ano: document.querySelector("#vehicle__year"),
+  },
   carbonoTotal: document.querySelector("#co2__total__number"),
   arvoresPlantadas: document.querySelector("#tree__number"),
   totalASerReduzido: document.querySelector("#reduce__total__number"),
@@ -79,18 +101,18 @@ const setarMesesEAnos = () => {
   const date = new Date();
 
   const meses = [
-    "janeiro",
-    "fevereiro",
-    "março",
-    "abril",
-    "maio",
-    "junho",
-    "julho",
-    "agosto",
-    "setembro",
-    "outubro",
-    "novembro",
-    "dezembro",
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
   ];
   meses.map((mes) => {
     const option = document.createElement("option");
@@ -141,7 +163,7 @@ forms.forEach((form) => {
 /* atualização de resultados */
 const somarConsumoTotal = (valor) => {
   resultados.consumoTotal += parseFloat(valor);
-  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(2);
+  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(precision);
 };
 
 /* processamento dos botoes */
@@ -151,6 +173,9 @@ botoes.carbono.energiaEletrica.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
+  saidas.energiaEletrica.mes.textContent = valor.toFixed(precision);
+  saidas.energiaEletrica.ano.textContent = (valor * 12).toFixed(precision);
+
   entradas.carbono.energiaEletrica.value = null;
 });
 
@@ -159,6 +184,9 @@ botoes.metano.tratamentoEfluentes.addEventListener("click", () => {
   const valor = consumo * fatores.metano.tratamentoEfluentes;
 
   somarConsumoTotal(valor);
+
+  saidas.efluentes.mes.textContent = valor.toFixed(precision);
+  saidas.efluentes.ano.textContent = (valor * 12).toFixed(precision);
 
   entradas.metano.tratamentoEfluentes.value = null;
 });
@@ -175,6 +203,9 @@ botoes.carbono.gas.addEventListener("click", () => {
     consumoGasEncanado * fatores.carbono.gasEncanado +
     consumoGasCozinha * fatores.carbono.gasCozinha;
 
+  saidas.gas.mes.textContent = valor.toFixed(precision);
+  saidas.gas.ano.textContent = (valor * 12).toFixed(precision);
+
   somarConsumoTotal(valor);
 
   entradas.carbono.gasEncanado.value = null;
@@ -189,6 +220,9 @@ botoes.metano.residuos.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
+  saidas.residuos.mes.textContent = valor.toFixed(precision);
+  saidas.residuos.ano.textContent = (valor * 12).toFixed(precision);
+
   entradas.metano.residuos.value = null;
 });
 
@@ -199,6 +233,9 @@ botoes.carbono.combustivel.addEventListener("click", () => {
     const emissaoCombustivel = parseFloat(entradas.carbono.combustivel.value);
     const valor = emissaoCombustivel * fatores.veiculo[veiculo];
 
+    saidas.combustivel.mes.textContent = valor.toFixed(precision);
+    saidas.combustivel.ano.textContent = (valor * 12).toFixed(precision);
+  
     somarConsumoTotal(valor);
 
     entradas.carbono.combustivel.value = null;

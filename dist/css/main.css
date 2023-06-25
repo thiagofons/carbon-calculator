@@ -67,6 +67,32 @@ p, h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.calculator .box__results {
+  min-height: 7.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.calculator .box__results .month__result, .calculator .box__results .year__result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  justify-content: space-between;
+  text-align: center;
+}
+.calculator .box__results .month__result .consumption__value, .calculator .box__results .month__result .consumption__unit, .calculator .box__results .year__result .consumption__value, .calculator .box__results .year__result .consumption__unit {
+  display: block;
+}
+.calculator .box__results .month__result .consumption__value, .calculator .box__results .year__result .consumption__value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3a3a3a;
+}
+.calculator .box__results .month__result .consumption__unit, .calculator .box__results .year__result .consumption__unit {
+  color: #4B4F58;
+}
 .calculator .field {
   display: flex;
   flex-direction: column;
@@ -148,6 +174,9 @@ p, h1, h2, h3, h4, h5, h6 {
   color: #4B4F58;
   font-size: 3rem;
 }
+.results__data__numbers .result .consumption__unit {
+  font-size: 1rem;
+}
 .results__compensate, .results__invite {
   background-color: #F5F5F5;
 }
@@ -174,7 +203,7 @@ select:hover {
 
 header .nav {
   padding: 1rem;
-  background-color: radial-gradient(#0081d7 50%, #0170B9 100%);
+  background: radial-gradient(#0081d7 50%, #0170B9 100%);
 }
 
 .container {
@@ -204,9 +233,6 @@ header .nav {
 .box__body {
   display: flex;
   align-items: start;
-}
-.box__results tr {
-  display: flex;
 }
 
 .date {
@@ -267,6 +293,10 @@ h2 {
 
 h3 {
   color: #424242;
+}
+
+h4 {
+  color: #0170B9;
 }
 
 .hide {

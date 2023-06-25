@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0.00" />
     <title>Calculadora de Carbono</title>
     <link rel="stylesheet" href="./dist/css/main.css" />
     <script src="./js/io.js" defer></script>
@@ -57,10 +57,10 @@
 
         <main class="calculator" id="calculator">
           <form class="form box" action="">
-            <div class="box__header">
+            <header class="box__header">
               <h3>Emissão de CO&#8322; por consumo de energia elétrica</h3>
-            </div>
-            <div class="box__body">
+            </header>
+            <section class="box__body">
               <div class="consumption">
                 <div>
                   <label for="">Consumo</label>
@@ -76,20 +76,30 @@
                   Adicionar ao cálculo
                 </button>
               </div>
-              <table class="box__results">
-                <tr>
-                  <th>Mês</th>
-                  <th>Consumo (KWh)</th>
-                </tr>
-              </table>
-            </div>
+              <div class="box__results" id="electric__energy__results">
+                <div class="month__result">
+                  <h4>Mês</h4>
+                  <span id="electric__energy__month" class="consumption__value"
+                    >0.00</span
+                  >
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+                <div class="year__result">
+                  <h4>Ano</h4>
+                  <span id="electric__energy__year" class="consumption__value"
+                    >0.00</span
+                  >
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+              </div>
+            </section>
           </form>
 
           <form class="form box" action="">
-            <div class="box__header">
+            <header class="box__header">
               <h3>Emissão de metano no tratamento de efluentes</h3>
-            </div>
-            <div class="box__body">
+            </header>
+            <section class="box__body">
               <div class="consumption">
                 <div>
                   <label for="">Consumo</label>
@@ -106,20 +116,30 @@
                   Adicionar ao cálculo
                 </button>
               </div>
-              <table class="box__results">
-                <tr>
-                  <th>Mês</th>
-                  <th>Consumo (m&sup3;)</th>
-                </tr>
-              </table>
-            </div>
+              <div class="box__results" id="effluent__results">
+                <div class="month__result">
+                  <h4>Mês</h4>
+                  <span id="effluent__month" class="consumption__value"
+                    >0.00</span
+                  >
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+                <div class="year__result">
+                  <h4>Ano</h4>
+                  <span id="effluent__year" class="consumption__value"
+                    >0.00</span
+                  >
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+              </div>
+            </section>
           </form>
 
           <form class="form box" action="">
-            <div class="box__header">
+            <header class="box__header">
               <h3>Emissão de CO&#8322; por consumo de gás de cozinha</h3>
-            </div>
-            <div class="box__body">
+            </header>
+            <section class="box__body">
               <div class="consumption">
                 <div class="piped__gas">
                   <label for="">Consumo de gás encanado</label>
@@ -145,20 +165,26 @@
                   Adicionar ao cálculo
                 </button>
               </div>
-              <table class="box__results">
-                <tr>
-                  <th>Mês</th>
-                  <th>Consumo (m&sup3;)</th>
-                </tr>
-              </table>
-            </div>
+              <div class="box__results" id="gas__results">
+                <div class="month__result">
+                  <h4>Mês</h4>
+                  <span id="gas__month" class="consumption__value">0.00</span>
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+                <div class="year__result">
+                  <h4>Ano</h4>
+                  <span id="gas__year" class="consumption__value">0.00</span>
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+              </div>
+            </section>
           </form>
 
           <form class="form box" action="">
-            <div class="box__header">
+            <header class="box__header">
               <h3>Emissão de metano por resíduos</h3>
-            </div>
-            <div class="box__body">
+            </header>
+            <section class="box__body">
               <div class="consumption">
                 <div>
                   <label for="">Resíduos do Mês</label>
@@ -175,20 +201,26 @@
                   Adicionar ao cálculo
                 </button>
               </div>
-              <table class="box__results">
-                <tr>
-                  <th>Mês</th>
-                  <th>Consumo (m&sup3;)</th>
-                </tr>
-              </table>
-            </div>
+              <div class="box__results" id="waste__results">
+                <div class="month__result">
+                  <h4>Mês</h4>
+                  <span id="waste__month" class="consumption__value">0.00</span>
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+                <div class="year__result">
+                  <h4>Ano</h4>
+                  <span id="waste__year" class="consumption__value">0.00</span>
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+              </div>
+            </section>
           </form>
 
-          <form class="form box fossil" class="box" action="">
-            <div class="box__header">
+          <form class="form box fossil" action="">
+            <header class="box__header">
               <h3>Emissão de CO&#8322; por consumo de combustíveis fósseis</h3>
-            </div>
-            <div class="box__body">
+            </header>
+            <section class="box__body">
               <div class="consumption">
                 <div class="fuel">
                   <h4>Combustível</h4>
@@ -256,34 +288,42 @@
                 </div>
               </div>
 
-              <table class="box__results">
-                <tr>
-                  <th>Mês</th>
-                  <th>Consumo (m&sup3;)</th>
-                </tr>
-              </table>
-            </div>
+              <div class="box__results" id="fossil__results">
+                <div class="month__result">
+                  <h4>Mês</h4>
+                  <span id="fossil__month" class="consumption__value"
+                    >0.00</span
+                  >
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+                <div class="year__result">
+                  <h4>Ano</h4>
+                  <span id="fossil__year" class="consumption__value">0.00</span>
+                  <span class="consumption__unit">t CO&#8322;e</span>
+                </div>
+              </div>
+            </section>
           </form>
         </main>
       </section>
 
       <section class="event">
         <form class="form box" action="">
-          <div class="box__header">
+          <header class="box__header">
             <h3>Adição de evento</h3>
-          </div>
+          </header>
 
           <!-- ver quais são os tipos de eventos -->
-          <div class="event__type">
+          <section class="event__type">
             <label for="">Tipo do evento</label>
             <select name="" id="event__type" required>
               <option value=""></option>
               <option value="residuos">resíduos</option>
               <option value="combustivel">combustível</option>
             </select>
-          </div>
+          </section>
 
-          <div class="event__consumption">
+          <section class="event__consumption">
             <label for="">Consumo</label>
             <input
               class="text__input"
@@ -291,12 +331,12 @@
               type="text"
               placeholder=""
             />
-          </div>
-          <div>
+          </section>
+          <section>
             <button class="add__button" id="event__btn">
               Adicionar ao cálculo
             </button>
-          </div>
+          </section>
         </form>
       </section>
 
@@ -306,7 +346,8 @@
           <section class="results__data__numbers">
             <div class="result co2__total">
               <h3>Consumo total de CO&#8322;</h3>
-              <span id="co2__total__number">0</span>
+              <span id="co2__total__number">0.00</span>
+              <span class="consumption__unit">t CO&#8322;e</span>
             </div>
             <div class="result tree__total">
               <h3>Árvores a serem plantadas</h3>
@@ -314,7 +355,8 @@
             </div>
             <div class="result reduce__total">
               <h3>Total a ser reduzido</h3>
-              <span id="reduce__total__number">0</span>
+              <span id="reduce__total__number">0.00</span>
+              <span class="consumption__unit">t CO&#8322;e</span>
             </div>
           </section>
 
