@@ -1,3 +1,5 @@
+/* firebase config */
+
 /* fatores de conversão */
 const precision = 2;
 
@@ -86,8 +88,8 @@ const saidas = {
     ano: document.querySelector("#waste__year"),
   },
   combustivel: {
-    mes: document.querySelector("#vehicle__month"),
-    ano: document.querySelector("#vehicle__year"),
+    mes: document.querySelector("#fossil__month"),
+    ano: document.querySelector("#fossil__year"),
   },
   carbonoTotal: document.querySelector("#co2__total__number"),
   arvoresPlantadas: document.querySelector("#tree__number"),
@@ -230,12 +232,16 @@ botoes.carbono.combustivel.addEventListener("click", () => {
   const veiculo = entradas.tipoVeiculo.value;
 
   if (veiculo) {
-    const emissaoCombustivel = parseFloat(entradas.carbono.combustivel.value);
+    const emissaoCombustivel = parseFloat(
+      entradas.carbono.combustivel.value
+        ? entradas.carbono.combustivel.value
+        : 0
+    );
     const valor = emissaoCombustivel * fatores.veiculo[veiculo];
 
     saidas.combustivel.mes.textContent = valor.toFixed(precision);
     saidas.combustivel.ano.textContent = (valor * 12).toFixed(precision);
-  
+
     somarConsumoTotal(valor);
 
     entradas.carbono.combustivel.value = null;
