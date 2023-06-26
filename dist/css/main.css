@@ -133,15 +133,13 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 0.5rem;
 }
-.event .form .event__type {
+.event .form > * {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
-.event .form .event__consumption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.event .hide {
+  display: none;
 }
 
 .results__data {

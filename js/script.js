@@ -1,22 +1,23 @@
 /* firebase config */
 
 /* fatores de conversão */
-const precision = 2;
+const precisao = 2;
 
 const fatores = {
   carbono: {
     energiaEletrica: 0.454,
     gasEncanado: 1,
     gasCozinha: 1,
-    combustivel: 1,
+    combustivel: {
+      carro: 3,
+      moto: 2,
+    },
   },
   metano: {
     tratamentoEfluentes: 1,
     residuos: 2,
   },
-  veiculo: {
-    carro: 3,
-  },
+
   viagemAerea: 1,
 };
 
@@ -52,6 +53,7 @@ const entradas = {
   },
   evento: {
     tipo: document.querySelector("#event__type"),
+    tipoVeiculo: document.querySelector("#event__vehicle__type__selector"),
     consumo: document.querySelector("#event__consumption"),
   },
 };
@@ -94,6 +96,11 @@ const saidas = {
   carbonoTotal: document.querySelector("#co2__total__number"),
   arvoresPlantadas: document.querySelector("#tree__number"),
   totalASerReduzido: document.querySelector("#reduce__total__number"),
+};
+
+const interface = {
+  calculadora: document.querySelector("#calculator"),
+  tipoVeiculoEvento: document.querySelector("#event__vehicle__type"),
 };
 
 const calculadora = document.querySelector("#calculator");
@@ -151,6 +158,9 @@ const resetarValores = () => {
 window.onload = () => {
   resetarValores();
   setarMesesEAnos();
+
+  mudarCategoriaDeEvento();
+  mudarCategoriaDeConsumo();
 };
 
 /* reset de formulários */
@@ -165,7 +175,7 @@ forms.forEach((form) => {
 /* atualização de resultados */
 const somarConsumoTotal = (valor) => {
   resultados.consumoTotal += parseFloat(valor);
-  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(precision);
+  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(precisao);
 };
 
 /* processamento dos botoes */
@@ -175,8 +185,8 @@ botoes.carbono.energiaEletrica.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
-  saidas.energiaEletrica.mes.textContent = valor.toFixed(precision);
-  saidas.energiaEletrica.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.energiaEletrica.mes.textContent = valor.toFixed(precisao);
+  saidas.energiaEletrica.ano.textContent = (valor * 12).toFixed(precisao);
 
   entradas.carbono.energiaEletrica.value = null;
 });
@@ -187,8 +197,8 @@ botoes.metano.tratamentoEfluentes.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
-  saidas.efluentes.mes.textContent = valor.toFixed(precision);
-  saidas.efluentes.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.efluentes.mes.textContent = valor.toFixed(precisao);
+  saidas.efluentes.ano.textContent = (valor * 12).toFixed(precisao);
 
   entradas.metano.tratamentoEfluentes.value = null;
 });
@@ -205,8 +215,8 @@ botoes.carbono.gas.addEventListener("click", () => {
     consumoGasEncanado * fatores.carbono.gasEncanado +
     consumoGasCozinha * fatores.carbono.gasCozinha;
 
-  saidas.gas.mes.textContent = valor.toFixed(precision);
-  saidas.gas.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.gas.mes.textContent = valor.toFixed(precisao);
+  saidas.gas.ano.textContent = (valor * 12).toFixed(precisao);
 
   somarConsumoTotal(valor);
 
@@ -222,8 +232,8 @@ botoes.metano.residuos.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
-  saidas.residuos.mes.textContent = valor.toFixed(precision);
-  saidas.residuos.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.residuos.mes.textContent = valor.toFixed(precisao);
+  saidas.residuos.ano.textContent = (valor * 12).toFixed(precisao);
 
   entradas.metano.residuos.value = null;
 });
@@ -239,8 +249,8 @@ botoes.carbono.combustivel.addEventListener("click", () => {
     );
     const valor = emissaoCombustivel * fatores.veiculo[veiculo];
 
-    saidas.combustivel.mes.textContent = valor.toFixed(precision);
-    saidas.combustivel.ano.textContent = (valor * 12).toFixed(precision);
+    saidas.combustivel.mes.textContent = valor.toFixed(precisao);
+    saidas.combustivel.ano.textContent = (valor * 12).toFixed(precisao);
 
     somarConsumoTotal(valor);
 
@@ -271,7 +281,11 @@ botoes.evento.addEventListener("click", () => {
         total = consumo * fatores.metano.residuos;
         break;
       case "combustivel":
-        total = consumo * fatores.carbono.combustivel;
+        const tipoVeiculo = entradas.evento.tipoVeiculo.value;
+        if (tipoVeiculo) {
+          total = consumo * fatores.carbono.combustivel[tipoVeiculo];
+        }
+
         break;
       default:
         break;
@@ -286,9 +300,15 @@ botoes.evento.addEventListener("click", () => {
 const mudarCategoriaDeConsumo = () => {
   const categoria = entradas.categoriaDeConsumo.value;
 
-  if (categoria === "evento") {
-    calculadora.classList.add("hide");
-  } else {
-    calculadora.classList.remove("hide");
-  }
+  categoria === "evento"
+    ? interface.calculadora.classList.add("hide")
+    : interface.calculadora.classList.remove("hide");
+};
+
+const mudarCategoriaDeEvento = () => {
+  const categoria = entradas.evento.tipo.value;
+
+  categoria === "residuos"
+    ? interface.tipoVeiculoEvento.classList.add("hide")
+    : interface.tipoVeiculoEvento.classList.remove("hide");
 };

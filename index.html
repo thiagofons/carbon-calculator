@@ -8,7 +8,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="./dist/css/main.css" />
-    
+
     <!-- main js -->
     <script src="./js/script.js" defer></script>
   </head>
@@ -319,10 +319,17 @@
           <!-- ver quais são os tipos de eventos -->
           <section class="event__type">
             <label for="">Tipo do evento</label>
-            <select name="" id="event__type" required>
-              <option value=""></option>
+            <select name="" id="event__type" required onchange="mudarCategoriaDeEvento()">
               <option value="residuos">resíduos</option>
               <option value="combustivel">combustível</option>
+            </select>
+          </section>
+
+          <section class="event__vehicle__type" id="event__vehicle__type">
+            <label for="">Tipo de veículo</label>
+            <select name="" id="event__vehicle__type__selector" required>
+              <option value="carro">carro</option>
+              <option value="moto">moto</option>
             </select>
           </section>
 
@@ -335,6 +342,7 @@
               placeholder=""
             />
           </section>
+
           <section>
             <button class="add__button" id="event__btn">
               Adicionar ao cálculo
