@@ -274,6 +274,7 @@ botoes.evento.addEventListener("click", () => {
     const consumo = parseFloat(
       entradas.evento.consumo.value ? entradas.evento.consumo.value : 0
     );
+
     let total = 0;
 
     switch (tipo) {
@@ -308,7 +309,17 @@ const mudarCategoriaDeConsumo = () => {
 const mudarCategoriaDeEvento = () => {
   const categoria = entradas.evento.tipo.value;
 
-  categoria === "residuos"
-    ? interface.tipoVeiculoEvento.classList.add("hide")
-    : interface.tipoVeiculoEvento.classList.remove("hide");
+  switch (categoria) {
+    case "residuos":
+      interface.tipoVeiculoEvento.classList.add("hide");
+      entradas.evento.consumo.placeholder = `m³`;
+      break;
+
+    case "combustivel":
+      interface.tipoVeiculoEvento.classList.remove("hide");
+      entradas.evento.consumo.placeholder = "km";
+      break;
+    default:
+      break;
+  }
 };

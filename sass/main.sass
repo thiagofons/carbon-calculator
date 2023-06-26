@@ -8,6 +8,7 @@
 
 body
   font-family: variables.$font
+  background: variables.$blue-gradient
 
 input[type="text"]
   padding: .5rem
@@ -23,21 +24,30 @@ select
 header
   .nav
     padding: 1rem
-    background: radial-gradient(variables.$color-10 50%, variables.$color-0 100%)
+    background: variables.$color-5
+
 
 .container
   padding: 1rem
-  @include mixins.flex(column, 2rem)
+  @include mixins.flex(column, 0)
   @media screen and ( min-width: 600px )
     padding: 1rem 3rem
+  & > *:not(:last-child)
+    margin-bottom: 1rem
+.presentation 
+  p
+    color: variables.$color-5
+    font-size: 1.25rem
+    font-weight: bold
 
 .calculator
   margin: 1rem 0
 
 .box
-  padding: .5rem
+  padding: 1rem
   border-radius: .25rem
   box-shadow: 0 0 .3rem rgba(0, 0, 0, 25%)
+  background-color: variables.$color-5
   &__header
     margin-bottom: .5rem
   &__body
@@ -45,8 +55,12 @@ header
     align-items: start
 
 .date
-  @include mixins.flex(row, 1rem)
-  justify-content: space-evenly
+  h3
+    margin-bottom: .5rem
+    
+  &__content
+    @include mixins.flex(row, 1rem)
+    justify-content: space-between
   &__select
     @include mixins.flex(column, 0rem)
     width: 100%
@@ -57,7 +71,7 @@ header
 
 .add__button
   border-radius: .5rem
-  background: radial-gradient(variables.$color-10 50%, variables.$color-0 100%)
+  background: variables.$blue-gradient
   border: 1px solid variables.$color-0
   padding: .5rem
   color: variables.$color-5
@@ -78,13 +92,14 @@ h2, h3
   text-transform: uppercase
 
 h1
-  color: variables.$color-5
+  color: variables.$color-0
 h2
-  color: variables.$color-1
+  color: variables.$color-5
 h3
   color: variables.$color-7
 h4
   color: variables.$color-0
+
 
 .hide
   display: none

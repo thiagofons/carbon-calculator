@@ -47,14 +47,18 @@
         <header class="calculator__header">
           <h2>Calculadora</h2>
           <form action="" class="form box date">
-            <div class="month date__select">
-              <label for="">Mês</label>
-              <select name="" id="month"></select>
+            <h3>Data</h3>
+            <div class="date__content">
+              <div class="month date__select">
+                <label for="">Mês</label>
+                <select name="" id="month"></select>
+              </div>
+              <div class="year date__select">
+                <label for="">Ano</label>
+                <select name="" id="year"></select>
+              </div>
             </div>
-            <div class="year date__select">
-              <label for="">Ano</label>
-              <select name="" id="year"></select>
-            </div>
+            
           </form>
         </header>
 
@@ -230,7 +234,6 @@
                   <div class="field">
                     <label for="">Tipo de veículo</label>
                     <select name="" id="vehicle" required>
-                      <option value=""></option>
                       <option value="carro">carro</option>
                       <option value="moto">moto</option>
                     </select>
@@ -315,7 +318,7 @@
           <header class="box__header">
             <h3>Adição de evento</h3>
           </header>
-
+          
           <!-- ver quais são os tipos de eventos -->
           <section class="event__type">
             <label for="">Tipo do evento</label>
@@ -339,7 +342,6 @@
               class="text__input"
               id="event__consumption"
               type="text"
-              placeholder=""
             />
           </section>
 
