@@ -6,9 +6,16 @@
   @include mixins.grid(1, 1, .5rem)
 
   @media screen and ( min-width: 600px )
-    @include mixins.grid(1, 2, .5rem)
+    @include mixins.grid(1, 2, 1rem)
   .form
     @include mixins.flex(column, .5rem)
+    .event__airplane
+      .event__airplane__data
+        @include mixins.flex(column, .5rem)
+      .round__trip
+        @include mixins.flex(row, .5rem)
+      .fly__number
+        @include mixins.flex(column, .25rem)
     & > *
       @include mixins.flex(column, .25rem)
   .hide
