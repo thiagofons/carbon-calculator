@@ -197,7 +197,7 @@
                   <input
                     type="text"
                     class="text__input methane__consumption"
-                    placeholder="m&sup3;"
+                    placeholder="kg"
                     name=""
                     id="waste"
                   />
@@ -233,8 +233,17 @@
                   <div class="field">
                     <label for="">Tipo de veículo</label>
                     <select name="" id="vehicle" required>
-                      <option value="carro">carro</option>
-                      <option value="moto">moto</option>
+                      <option value="">Escolha um veículo</option>
+                      <option value="gasolina14">Carro a Gasolina (até 1.4)</option>
+                      <option value="gasolina15a20">Carro a Gasolina (1.5 a 2.0)</option>
+                      <option value="gasolina20">Carro a Gasolina (acima de 2.0)</option>
+                      <option value="alcool14">Carro a Álcool (até 1.4)</option>
+                      <option value="alcool15a20">Carro a Álcool (1.5 a 2.0)</option>
+                      <option value="alcool20">Carro a Álcoll (acima de 2.0)</option>
+                      <option value="gnv">Carro Gás Natural (GNV)</option>
+                      <option value="pickup">Pick-up (diesel)</option>
+                      <option value="taxi">Táxi</option>
+                      <option value="onibus">Ônibus</option>
                     </select>
                   </div>
 
@@ -327,17 +336,26 @@
               required
               onchange="mudarCategoriaDeEvento()"
             >
-              <option value="combustivel">combustível</option>
-              <option value="residuos">resíduos</option>
-              <option value="viagem">viagem de avião</option>
+              <option value="combustivel">Combustível</option>
+              <option value="residuos">Resíduos</option>
+              <option value="viagem">Viagem de avião</option>
             </select>
           </section>
 
           <section class="event__vehicle__type" id="event__vehicle__type">
             <label for="">Tipo de veículo</label>
             <select name="" id="event__vehicle__type__selector" required>
-              <option value="carro">carro</option>
-              <option value="moto">moto</option>
+              <option value="">Escolha um veículo</option>
+              <option value="gasolina14">Carro a Gasolina (até 1.4)</option>
+              <option value="gasolina15a20">Carro a Gasolina (1.5 a 2.0)</option>
+              <option value="gasolina20">Carro a Gasolina (acima de 2.0)</option>
+              <option value="alcool14">Carro a Álcool (até 1.4)</option>
+              <option value="alcool15a20">Carro a Álcool (1.5 a 2.0)</option>
+              <option value="alcool20">Carro a Álcoll (acima de 2.0)</option>
+              <option value="gnv">Carro Gás Natural (GNV)</option>
+              <option value="pickup">Pick-up (diesel)</option>
+              <option value="taxi">Táxi</option>
+              <option value="onibus">Ônibus</option>
             </select>
           </section>
 

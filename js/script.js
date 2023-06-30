@@ -9,8 +9,16 @@ const fatores = {
     gasEncanado: 1,
     gasCozinha: 1,
     combustivel: {
-      carro: 3,
-      moto: 2,
+      gasolina14: 1,
+      gasolina15a20: 1,
+      gasolina20: 1,
+      alcool14: 1,
+      alcool15a20: 1,
+      alcool20: 1,
+      gnv: 1,
+      pickup: 1,
+      taxi: 1,
+      onibus: 1,
     },
   },
   metano: {
@@ -178,7 +186,7 @@ const resetarFormularios = () => {
       e.preventDefault();
     });
   });
-}
+};
 
 window.onload = () => {
   resetarValores();
@@ -264,7 +272,7 @@ botoes.carbono.combustivel.addEventListener("click", () => {
         ? entradas.carbono.combustivel.value
         : 0
     );
-    const valor = emissaoCombustivel * fatores.veiculo[veiculo];
+    const valor = emissaoCombustivel * fatores.carbono.combustivel[veiculo];
 
     saidas.combustivel.mes.textContent = valor.toFixed(precisao);
     saidas.combustivel.ano.textContent = (valor * 12).toFixed(precisao);
@@ -314,7 +322,6 @@ botoes.evento.addEventListener("click", () => {
 
         if (tipoVeiculo) {
           total = consumo * fatores.carbono.combustivel[tipoVeiculo];
-          
         }
         entradas.evento.combustivel.consumo.value = null;
 
@@ -358,7 +365,7 @@ const mudarCategoriaDeEvento = () => {
       interface.evento.tipoVeiculo.classList.add("hide");
       interface.evento.dadosViagem.classList.add("hide");
       interface.evento.consumo.classList.remove("hide");
-      entradas.evento.residuos.consumo.placeholder = "m³";
+      entradas.evento.residuos.consumo.placeholder = "kg";
       break;
 
     case "combustivel":
