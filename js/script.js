@@ -365,7 +365,7 @@ const mudarCategoriaDeEvento = () => {
       interface.evento.tipoVeiculo.classList.add("hide");
       interface.evento.dadosViagem.classList.add("hide");
       interface.evento.consumo.classList.remove("hide");
-      entradas.evento.residuos.consumo.placeholder = "m³";
+      entradas.evento.residuos.consumo.placeholder = "kg";
       break;
 
     case "combustivel":
