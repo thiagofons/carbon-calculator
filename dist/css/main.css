@@ -125,7 +125,7 @@ p, h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 1rem;
   }
 }
 .event .form {
@@ -133,15 +133,28 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 0.5rem;
 }
-.event .form .event__type {
+.event .form .event__airplane .event__airplane__data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.event .form .event__airplane .round__trip {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.event .form .event__airplane .fly__number {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
-.event .form .event__consumption {
+.event .form > * {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+.event .hide {
+  display: none;
 }
 
 .results__data {
@@ -186,6 +199,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  background: radial-gradient(#0081d7 50%, #0170B9 100%);
 }
 
 input[type=text] {
@@ -203,19 +217,28 @@ select:hover {
 
 header .nav {
   padding: 1rem;
-  background: radial-gradient(#0081d7 50%, #0170B9 100%);
+  background: #FFFFFF;
 }
 
 .container {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0;
 }
 @media screen and (min-width: 600px) {
   .container {
     padding: 1rem 3rem;
   }
+}
+.container > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.presentation p {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .calculator {
@@ -223,9 +246,10 @@ header .nav {
 }
 
 .box {
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.25rem;
   box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.25);
+  background-color: #FFFFFF;
 }
 .box__header {
   margin-bottom: 0.5rem;
@@ -235,11 +259,14 @@ header .nav {
   align-items: start;
 }
 
-.date {
+.date h3 {
+  margin-bottom: 0.5rem;
+}
+.date__content {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .date__select {
   display: flex;
@@ -284,11 +311,11 @@ h2, h3 {
 }
 
 h1 {
-  color: #FFFFFF;
+  color: #0170B9;
 }
 
 h2 {
-  color: #3a3a3a;
+  color: #FFFFFF;
 }
 
 h3 {

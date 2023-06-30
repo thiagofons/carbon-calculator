@@ -8,7 +8,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="./dist/css/main.css" />
-    
+
     <!-- main js -->
     <script src="./js/script.js" defer></script>
   </head>
@@ -47,13 +47,16 @@
         <header class="calculator__header">
           <h2>Calculadora</h2>
           <form action="" class="form box date">
-            <div class="month date__select">
-              <label for="">Mês</label>
-              <select name="" id="month"></select>
-            </div>
-            <div class="year date__select">
-              <label for="">Ano</label>
-              <select name="" id="year"></select>
+            <h3>Data</h3>
+            <div class="date__content">
+              <div class="month date__select">
+                <label for="">Mês</label>
+                <select name="" id="month"></select>
+              </div>
+              <div class="year date__select">
+                <label for="">Ano</label>
+                <select name="" id="year"></select>
+              </div>
             </div>
           </form>
         </header>
@@ -230,7 +233,6 @@
                   <div class="field">
                     <label for="">Tipo de veículo</label>
                     <select name="" id="vehicle" required>
-                      <option value=""></option>
                       <option value="carro">carro</option>
                       <option value="moto">moto</option>
                     </select>
@@ -319,22 +321,65 @@
           <!-- ver quais são os tipos de eventos -->
           <section class="event__type">
             <label for="">Tipo do evento</label>
-            <select name="" id="event__type" required>
-              <option value=""></option>
-              <option value="residuos">resíduos</option>
+            <select
+              name=""
+              id="event__type"
+              required
+              onchange="mudarCategoriaDeEvento()"
+            >
               <option value="combustivel">combustível</option>
+              <option value="residuos">resíduos</option>
+              <option value="viagem">viagem de avião</option>
             </select>
+          </section>
+
+          <section class="event__vehicle__type" id="event__vehicle__type">
+            <label for="">Tipo de veículo</label>
+            <select name="" id="event__vehicle__type__selector" required>
+              <option value="carro">carro</option>
+              <option value="moto">moto</option>
+            </select>
+          </section>
+
+          <section class="event__airplane hide" id="event__airplane">
+            <div class="event__airplane__data">
+              <input
+                class="text__input"
+                type="text"
+                placeholder="Origem"
+                name=""
+                id="origin__event"
+              />
+              <input
+                class="text__input"
+                type="text"
+                placeholder="Destino"
+                name=""
+                id="destiny__event"
+              />
+            </div>
+            <div class="round__trip">
+              <input type="checkbox" name="" id="round__trip__event" /><span
+                >ida e volta</span
+              >
+            </div>
+            <div class="fly__number">
+              <label for="">Quantidade de vôos</label>
+              <input
+                type="number"
+                name=""
+                id="fly__number__event"
+                value="0"
+                min="0"
+              />
+            </div>
           </section>
 
           <section class="event__consumption">
             <label for="">Consumo</label>
-            <input
-              class="text__input"
-              id="event__consumption"
-              type="text"
-              placeholder=""
-            />
+            <input class="text__input" id="event__consumption" type="text" />
           </section>
+
           <section>
             <button class="add__button" id="event__btn">
               Adicionar ao cálculo

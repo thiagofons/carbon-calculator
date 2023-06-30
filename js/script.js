@@ -1,22 +1,23 @@
 /* firebase config */
 
 /* fatores de conversão */
-const precision = 2;
+const precisao = 2;
 
 const fatores = {
   carbono: {
     energiaEletrica: 0.454,
     gasEncanado: 1,
     gasCozinha: 1,
-    combustivel: 1,
+    combustivel: {
+      carro: 3,
+      moto: 2,
+    },
   },
   metano: {
     tratamentoEfluentes: 1,
     residuos: 2,
   },
-  veiculo: {
-    carro: 3,
-  },
+
   viagemAerea: 1,
 };
 
@@ -52,7 +53,19 @@ const entradas = {
   },
   evento: {
     tipo: document.querySelector("#event__type"),
-    consumo: document.querySelector("#event__consumption"),
+    combustivel: {
+      tipoVeiculo: document.querySelector("#event__vehicle__type__selector"),
+      consumo: document.querySelector("#event__consumption"),
+    },
+    residuos: {
+      consumo: document.querySelector("#event__consumption"),
+    },
+    viagemAerea: {
+      origem: document.querySelector("#origin__event"),
+      destino: document.querySelector("#destiny__event"),
+      idaeEVolta: document.querySelector("#round__trip__event"),
+      quantidadeVoos: document.querySelector("#fly__number__event"),
+    },
   },
 };
 
@@ -94,6 +107,15 @@ const saidas = {
   carbonoTotal: document.querySelector("#co2__total__number"),
   arvoresPlantadas: document.querySelector("#tree__number"),
   totalASerReduzido: document.querySelector("#reduce__total__number"),
+};
+
+const interface = {
+  calculadora: document.querySelector("#calculator"),
+  evento: {
+    tipoVeiculo: document.querySelector("#event__vehicle__type"),
+    dadosViagem: document.querySelector("#event__airplane"),
+    consumo: document.querySelector(".event__consumption"),
+  },
 };
 
 const calculadora = document.querySelector("#calculator");
@@ -148,24 +170,29 @@ const resetarValores = () => {
   saidas.totalASerReduzido.value = 0;
 };
 
+const resetarFormularios = () => {
+  const forms = document.querySelectorAll(".form");
+
+  forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+  });
+}
+
 window.onload = () => {
   resetarValores();
+  resetarFormularios();
   setarMesesEAnos();
+
+  mudarCategoriaDeEvento();
+  mudarCategoriaDeConsumo();
 };
-
-/* reset de formulários */
-const forms = document.querySelectorAll(".form");
-
-forms.forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
-});
 
 /* atualização de resultados */
 const somarConsumoTotal = (valor) => {
   resultados.consumoTotal += parseFloat(valor);
-  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(precision);
+  saidas.carbonoTotal.textContent = resultados.consumoTotal.toFixed(precisao);
 };
 
 /* processamento dos botoes */
@@ -175,8 +202,8 @@ botoes.carbono.energiaEletrica.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
-  saidas.energiaEletrica.mes.textContent = valor.toFixed(precision);
-  saidas.energiaEletrica.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.energiaEletrica.mes.textContent = valor.toFixed(precisao);
+  saidas.energiaEletrica.ano.textContent = (valor * 12).toFixed(precisao);
 
   entradas.carbono.energiaEletrica.value = null;
 });
@@ -187,8 +214,8 @@ botoes.metano.tratamentoEfluentes.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
-  saidas.efluentes.mes.textContent = valor.toFixed(precision);
-  saidas.efluentes.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.efluentes.mes.textContent = valor.toFixed(precisao);
+  saidas.efluentes.ano.textContent = (valor * 12).toFixed(precisao);
 
   entradas.metano.tratamentoEfluentes.value = null;
 });
@@ -205,8 +232,8 @@ botoes.carbono.gas.addEventListener("click", () => {
     consumoGasEncanado * fatores.carbono.gasEncanado +
     consumoGasCozinha * fatores.carbono.gasCozinha;
 
-  saidas.gas.mes.textContent = valor.toFixed(precision);
-  saidas.gas.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.gas.mes.textContent = valor.toFixed(precisao);
+  saidas.gas.ano.textContent = (valor * 12).toFixed(precisao);
 
   somarConsumoTotal(valor);
 
@@ -222,8 +249,8 @@ botoes.metano.residuos.addEventListener("click", () => {
 
   somarConsumoTotal(valor);
 
-  saidas.residuos.mes.textContent = valor.toFixed(precision);
-  saidas.residuos.ano.textContent = (valor * 12).toFixed(precision);
+  saidas.residuos.mes.textContent = valor.toFixed(precisao);
+  saidas.residuos.ano.textContent = (valor * 12).toFixed(precisao);
 
   entradas.metano.residuos.value = null;
 });
@@ -239,8 +266,8 @@ botoes.carbono.combustivel.addEventListener("click", () => {
     );
     const valor = emissaoCombustivel * fatores.veiculo[veiculo];
 
-    saidas.combustivel.mes.textContent = valor.toFixed(precision);
-    saidas.combustivel.ano.textContent = (valor * 12).toFixed(precision);
+    saidas.combustivel.mes.textContent = valor.toFixed(precisao);
+    saidas.combustivel.ano.textContent = (valor * 12).toFixed(precisao);
 
     somarConsumoTotal(valor);
 
@@ -249,10 +276,12 @@ botoes.carbono.combustivel.addEventListener("click", () => {
 });
 
 botoes.viagemAerea.addEventListener("click", () => {
-  const origem = entradas.viagemAerea.origem.value;
-  const destino = entradas.viagemAerea.destino.value;
-  const idaEVolta = entradas.viagemAerea.idaeEVolta.value;
-  const quantidadeVoos = parseInt(entradas.viagemAerea.quantidadeVoos.value);
+  const dados = {
+    origem: entradas.viagemAerea.origem.value,
+    destino: entradas.viagemAerea.destino.value,
+    idaEVolta: entradas.viagemAerea.idaeEVolta.value,
+    quantidadeVoos: parseInt(entradas.viagemAerea.quantidadeVoos.value),
+  };
 
   /* to-do: criar logica de obter distância entre origem e destino */
 });
@@ -261,34 +290,91 @@ botoes.evento.addEventListener("click", () => {
   const tipo = entradas.evento.tipo.value;
 
   if (tipo != "") {
-    const consumo = parseFloat(
-      entradas.evento.consumo.value ? entradas.evento.consumo.value : 0
-    );
-    let total = 0;
+    let total = 0,
+      consumo;
 
     switch (tipo) {
       case "residuos":
+        consumo = parseFloat(
+          entradas.evento.residuos.consumo.value
+            ? entradas.evento.residuos.consumo.value
+            : 0
+        );
+
         total = consumo * fatores.metano.residuos;
+        entradas.evento.residuos.consumo.value = null;
         break;
       case "combustivel":
-        total = consumo * fatores.carbono.combustivel;
+        consumo = parseFloat(
+          entradas.evento.combustivel.consumo.value
+            ? entradas.evento.combustivel.consumo.value
+            : 0
+        );
+        const tipoVeiculo = entradas.evento.combustivel.tipoVeiculo.value;
+
+        if (tipoVeiculo) {
+          total = consumo * fatores.carbono.combustivel[tipoVeiculo];
+          
+        }
+        entradas.evento.combustivel.consumo.value = null;
+
+        break;
+      case "viagem":
+        const dados = {
+          origem: entradas.viagemAerea.origem,
+          destino: entradas.viagemAerea.destino,
+          idaEVolta: entradas.viagemAerea.idaeEVolta,
+          quantidadeVoos: parseInt(entradas.viagemAerea.quantidadeVoos),
+        };
+
+        entradas.evento.viagemAerea.origem.value = null;
+        entradas.evento.viagemAerea.destino.value = null;
+        entradas.evento.viagemAerea.idaeEVolta.value = null;
+        entradas.evento.viagemAerea.quantidadeVoos.value = 0;
+
         break;
       default:
         break;
     }
 
     somarConsumoTotal(total);
-    entradas.evento.consumo.value = null;
   }
 });
 
-/* mudança de interface (evento vs inventário) */
+/* mudanças de interface */
 const mudarCategoriaDeConsumo = () => {
   const categoria = entradas.categoriaDeConsumo.value;
 
-  if (categoria === "evento") {
-    calculadora.classList.add("hide");
-  } else {
-    calculadora.classList.remove("hide");
+  categoria === "evento"
+    ? interface.calculadora.classList.add("hide")
+    : interface.calculadora.classList.remove("hide");
+};
+
+const mudarCategoriaDeEvento = () => {
+  const categoria = entradas.evento.tipo.value;
+
+  switch (categoria) {
+    case "residuos":
+      interface.evento.tipoVeiculo.classList.add("hide");
+      interface.evento.dadosViagem.classList.add("hide");
+      interface.evento.consumo.classList.remove("hide");
+      entradas.evento.residuos.consumo.placeholder = "m³";
+      break;
+
+    case "combustivel":
+      interface.evento.tipoVeiculo.classList.remove("hide");
+      interface.evento.dadosViagem.classList.add("hide");
+      interface.evento.consumo.classList.remove("hide");
+      entradas.evento.combustivel.consumo.placeholder = "km";
+      break;
+
+    case "viagem":
+      interface.evento.dadosViagem.classList.remove("hide");
+      interface.evento.tipoVeiculo.classList.add("hide");
+      interface.evento.consumo.classList.add("hide");
+
+      break;
+    default:
+      break;
   }
 };
