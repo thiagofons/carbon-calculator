@@ -10,20 +10,33 @@
   border-radius: .25rem
   box-shadow: 0 0 .3rem rgba(0, 0, 0, 25%)
   background-color: variables.$white
+
   &__header
     h3
       color: variables.$dark-grey
 
   &__body
-    @include mixins.grid($rows: 1, $columns: 1, $gap: .5rem)
+    h4
+      color: variables.$blue
+    width: 100%
+    @include mixins.grid($rows:2 , $columns:1 , $gap:.5rem )
+    
 
     @media screen and ( min-width: 600px )
-      grid-template-columns: repeat(2, 1fr)
+      @include mixins.grid($rows:1 , $columns:2 , $gap:.5rem )
+      align-items: flex-start
+
     section.consumption
       @media screen and ( min-width: 600px )
         max-width: 20rem
+
     input[type="text"]
       width: 100%
+      &:focus
+        outline: none
+    input[type="number"]
+      &:focus
+        outline: none
     .text__input
       padding: .5rem .25rem
       border-radius: .25rem
@@ -45,17 +58,23 @@
         border: 1px solid variables.$blue
         color: variables.$blue
   &__results
+    align-self: center
+    
     min-height: 7.5rem
-    width: 100%
+
     @include mixins.flex(row, 1rem)
     flex-wrap: wrap
 
     justify-content: space-evenly
+    justify-self: center
+    @media screen and ( min-width: 600px )
+      align-self: flex-start
 
     .date__result
       @include mixins.flex(column, .25rem)
       justify-content: space-between
       text-align: center
+
       h4
         color: variables.$blue
 

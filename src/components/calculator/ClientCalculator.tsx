@@ -7,6 +7,7 @@ import ElectricEnergy from "./modules/ElectricEnergy";
 import WaterConsumption from "./modules/WaterConsumption";
 import Gas from "./modules/Gas";
 import Trash from "./modules/Trash";
+import Transportation from "./modules/Transportation";
 
 const ClientCalculator = () => {
   const factors = {};
@@ -21,6 +22,7 @@ const ClientCalculator = () => {
         <WaterConsumption />
         <Gas />
         <Trash />
+        <Transportation />
       </section>
     </main>
   );

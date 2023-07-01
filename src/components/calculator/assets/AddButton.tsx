@@ -1,6 +1,6 @@
 /* styles import */
 import "../../../styles/main.sass";
-import "../../../styles/components/calculator/assets/add_button.sass"
+import "../../../styles/assets/add_button.sass"
 
 type AddButtonProps = {
   action: void;
