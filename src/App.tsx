@@ -3,12 +3,19 @@ import './App.css';
 
 import NavBar from './components/layout/NavBar';
 import Home from './pages/Home';
+import Container from './components/layout/Container';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <NavBar />
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+        </Routes>
+      </BrowserRouter>
+    </Container>
   );
 }
 
