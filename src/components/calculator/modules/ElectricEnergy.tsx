@@ -4,20 +4,18 @@ import { useEffect, useState } from "react";
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/electric_energy.sass";
 
+type Consumo = {
+  consumo: number;
+  mes: number;
+  ano: number;
+};
+
 const ElectricEnergy = () => {
-  const [consumo, setConsumo] = useState({
+  const [consumo, setConsumo] = useState<Consumo>({
     consumo: 0,
     mes: 0,
     ano: 0,
   });
-
-  useEffect(() => {
-    setConsumo({
-      ...consumo,
-      mes: consumo.consumo ? consumo.consumo : 0,
-      ano: consumo.consumo ? consumo.consumo * 12 : 0,
-    });
-  }, [consumo]);
 
   return (
     <section className="box electric__energy">
@@ -32,9 +30,13 @@ const ElectricEnergy = () => {
               type="text"
               className="text__input co2__consumption"
               placeholder="KWh"
-              onChange={(e) =>
-                setConsumo({ ...consumo, consumo: parseFloat(e.target.value) })
-              }
+              onChange={(e) => {
+                setConsumo({
+                  consumo: parseFloat(e.target.value ? e.target.value : "0"),
+                  mes: parseFloat(e.target.value ? e.target.value : "0"),
+                  ano: 12 * parseFloat(e.target.value ? e.target.value : "0"),
+                });
+              }}
             />
           </div>
           <button className="add__button">Adicionar ao cálculo</button>
