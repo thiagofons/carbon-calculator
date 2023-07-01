@@ -1,2 +1,25 @@
+@use "../../../assets/_variables"
 .date__selector
-  
+  box-shadow: variables.$box-shadow
+  border-radius: .5rem
+  padding: 1rem
+  header
+    h2
+      color: variables.$dark-grey
+  main
+    display: flex
+    gap: 1rem
+
+    .date__select
+      width: 10rem
+      padding: .5rem
+      border: 1px solid variables.$medium-grey
+      border-radius: .5rem
+      &:hover
+        cursor: pointer
+      &:focus
+        outline: none
+      &, option
+        color: variables.$medium-grey
+      
+

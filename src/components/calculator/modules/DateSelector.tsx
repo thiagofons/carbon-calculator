@@ -31,28 +31,35 @@ const DateSelector = () => {
 
   return (
     <section className="date__selector">
-      <div className="month">
-        <select
-          className="month__selector"
-          value={date.month}
-          onChange={(e) => setDate({ ...date, month: e.target.value })}
-        >
-          {meses.map((mes: string) => (
-            <option value={mes}>{mes}</option>
-          ))}
-        </select>
-      </div>
-      <div className="year">
-        <select
-          className="year__selector"
-          value={date.year}
-          onChange={(e) => setDate({ ...date, year: parseInt(e.target.value) })}
-        >
-          {anos.map((ano: number) => (
-            <option value={ano}>{ano}</option>
-          ))}
-        </select>
-      </div>
+      <header>
+        <h2>Escolha a data</h2>
+      </header>
+      <main>
+        <section className="month">
+          <select
+            className="date__select month__selector"
+            value={date.month}
+            onChange={(e) => setDate({ ...date, month: e.target.value })}
+          >
+            {meses.map((mes: string) => (
+              <option value={mes} key={mes}>{mes}</option>
+            ))}
+          </select>
+        </section>
+        <section className="year">
+          <select
+            className="date__select year__selector"
+            value={date.year}
+            onChange={(e) =>
+              setDate({ ...date, year: parseInt(e.target.value) })
+            }
+          >
+            {anos.map((ano: number) => (
+              <option value={ano} key={ano}>{ano}</option>
+            ))}
+          </select>
+        </section>
+      </main>
     </section>
   );
 };
