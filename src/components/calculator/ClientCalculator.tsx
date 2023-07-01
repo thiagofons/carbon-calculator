@@ -7,6 +7,7 @@ import "../../styles/components/calculator/client_calculator.sass";
 import DateSelector from "./modules/DateSelector";
 import ElectricEnergy from "./modules/ElectricEnergy";
 import WaterConsumption from "./modules/WaterConsumption";
+import Gas from "./modules/Gas";
 
 const ClientCalculator = () => {
   const factors = {
@@ -21,6 +22,7 @@ const ClientCalculator = () => {
       <section className="calculator">
         <ElectricEnergy />
         <WaterConsumption />
+        <Gas />
       </section>
     </main>
   );

@@ -1,10 +1,15 @@
 import AddButton from "../assets/AddButton";
-import { Consumo } from "../../../interfaces/Interfaces";
 
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/water_consumption.sass";
 import { useState } from "react";
+
+type Consumo = {
+  consumo: number;
+  mes: number;
+  ano: number;
+};
 
 const WaterConsumption = () => {
   const [consumo, setConsumo] = useState<Consumo>({
