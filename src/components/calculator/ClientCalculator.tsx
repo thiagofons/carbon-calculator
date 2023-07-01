@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 /* styles import */
 import "../../styles/main.sass";
 import "../../styles/components/calculator/client_calculator.sass";
@@ -8,11 +6,10 @@ import DateSelector from "./modules/DateSelector";
 import ElectricEnergy from "./modules/ElectricEnergy";
 import WaterConsumption from "./modules/WaterConsumption";
 import Gas from "./modules/Gas";
+import Trash from "./modules/Trash";
 
 const ClientCalculator = () => {
-  const factors = {
-
-  }
+  const factors = {};
 
   return (
     <main className="client__calculator">
@@ -23,6 +20,7 @@ const ClientCalculator = () => {
         <ElectricEnergy />
         <WaterConsumption />
         <Gas />
+        <Trash />
       </section>
     </main>
   );

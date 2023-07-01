@@ -1,9 +1,8 @@
-import AddButton from "../assets/AddButton";
+import { useState } from "react";
 
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/water_consumption.sass";
-import { useState } from "react";
 
 type Consumo = {
   consumo: number;
@@ -40,9 +39,7 @@ const WaterConsumption = () => {
               }}
             />
           </div>
-          <button className="add__button">
-            Adicionar ao cálculo
-          </button>
+          <button className="add__button">Adicionar ao cálculo</button>
         </section>
         <section className="box__results">
           <div className="date__result">

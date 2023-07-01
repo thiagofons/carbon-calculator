@@ -2,7 +2,7 @@ import { useState } from "react";
 
 /* styles import */
 import "../../../styles/main.sass";
-import "../../../styles/components/calculator/modules/electric_energy.sass";
+import "../../../styles/components/calculator/modules/trash.sass";
 
 type Consumo = {
   consumo: number;
@@ -10,7 +10,7 @@ type Consumo = {
   ano: number;
 };
 
-const ElectricEnergy = () => {
+const Trash = () => {
   const [consumo, setConsumo] = useState<Consumo>({
     consumo: 0,
     mes: 0,
@@ -18,18 +18,18 @@ const ElectricEnergy = () => {
   });
 
   return (
-    <section className="box electric__energy">
+    <form className="box trash" action="">
       <header className="box__header">
-        <h3>Consumo de energia elétrica</h3>
+        <h3>Geração de resíduos</h3>
       </header>
-      <main className="box__body">
-        <section className="consumption">
-          <div className="consumption__input">
-            <label>Consumo</label>
+      <section className="box__body">
+        <div className="consumption">
+          <div>
+            <label>Resíduos do Mês</label>
             <input
               type="text"
-              className="text__input"
-              placeholder="KWh"
+              className="text__input methane__consumption"
+              placeholder="kg"
               onChange={(e) => {
                 setConsumo({
                   consumo: parseFloat(e.target.value ? e.target.value : "0"),
@@ -39,9 +39,10 @@ const ElectricEnergy = () => {
               }}
             />
           </div>
+
           <button className="add__button">Adicionar ao cálculo</button>
-        </section>
-        <section className="box__results">
+        </div>
+        <div className="box__results">
           <div className="date__result">
             <h4>Mês</h4>
             <span className="consumption__value">{consumo.mes.toFixed(2)}</span>
@@ -52,10 +53,10 @@ const ElectricEnergy = () => {
             <span className="consumption__value">{consumo.ano.toFixed(2)}</span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
-        </section>
-      </main>
-    </section>
+        </div>
+      </section>
+    </form>
   );
 };
 
-export default ElectricEnergy;
+export default Trash;
