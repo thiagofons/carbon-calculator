@@ -1,5 +1,5 @@
 import "../../styles/main.sass"
-import "../../styles/components/navbar.sass"
+import "../../styles/components/layout/navbar.sass"
 
 import logo from "../../img/logo-terrazul.png"
 
