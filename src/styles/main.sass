@@ -4,3 +4,65 @@
 
 *
   font-family: variables.$font
+
+.box
+  padding: 1rem
+  border-radius: .25rem
+  box-shadow: 0 0 .3rem rgba(0, 0, 0, 25%)
+  background-color: variables.$white
+  &__header
+    h3
+      color: variables.$dark-grey
+
+  &__body
+    @include mixins.grid($rows: 1, $columns: 1, $gap: .5rem)
+
+    @media screen and ( min-width: 600px )
+      grid-template-columns: repeat(2, 1fr)
+    section.consumption
+      @media screen and ( min-width: 600px )
+        max-width: 20rem 
+      
+    .text__input
+      padding: .5rem .25rem
+      border-radius: .25rem
+      border: 1px solid variables.$medium-grey
+    .add__button
+      margin-top: .5rem
+      border-radius: .5rem
+      background: variables.$blue-gradient
+      border: 1px solid variables.$blue
+      padding: .5rem
+      color: variables.$white
+      width: 100%
+      transition: .25s
+      
+      &:hover
+        cursor: pointer
+        background: variables.$white
+        border: 1px solid variables.$blue
+        color: variables.$blue
+
+  &__results
+    min-height: 7.5rem
+    width: 100%
+    @include mixins.flex(row, 1rem)
+    justify-content: space-evenly
+
+    .date__result
+      @include mixins.flex(column, .25rem)
+      justify-content: space-between
+      text-align: center
+      h4
+        color: variables.$blue
+
+      .consumption__value, .consumption__unit
+        display: block
+
+      .consumption__value
+        font-size: 2rem
+        font-weight: bold
+        color: variables.$medium-grey
+      .consumption__unit
+        color: variables.$medium-grey
+      

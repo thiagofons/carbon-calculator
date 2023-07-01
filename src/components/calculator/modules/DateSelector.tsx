@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+/* styles import */
+import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/date_selector.sass";
 
 const DateSelector = () => {
@@ -30,9 +33,9 @@ const DateSelector = () => {
   }
 
   return (
-    <section className="date__selector">
+    <section className="box date__selector">
       <header>
-        <h2>Escolha a data</h2>
+        <h3>Escolha a data</h3>
       </header>
       <main>
         <section className="month">

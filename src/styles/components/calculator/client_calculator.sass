@@ -1,0 +1,7 @@
+@use "../../assets/_mixins"
+
+.client__calculator
+  @include mixins.flex($direction: column, $gap: 1rem)
+  .calculator
+    @include mixins.grid($rows: 1, $columns: 2, $gap: 1rem)
+    
