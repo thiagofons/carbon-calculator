@@ -1,9 +1,9 @@
-import "../../styles/components/features/client_calculator.sass"
+import "../../styles/components/calculator/client_calculator.sass"
 
 const ClientCalculator = () => {
   return (
     <main className="client__calculator">
-      
+      a
     </main>
   )
 }
