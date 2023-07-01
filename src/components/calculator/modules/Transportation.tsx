@@ -1,27 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import VehicleSelector from "../assets/VehicleSelector";
+import AirplaneInput from "../assets/AirplaneInput";
 
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/transportation.sass";
 
-type TransportationProps = {
-  tipoVeiculo: string;
-  consumoCombustivel: number;
-  origem: string;
-  destino: string;
-  idaEVolta: boolean;
-  quantidadeVoos: number;
-};
+import { TransportationProps } from "../../../interfaces/Transportation";
+import { ClientContext } from "../contexts/ClientContext";
 
 const Transportation = () => {
+  const { data, setData } = useContext(ClientContext);
   const [consumo, setConsumo] = useState<TransportationProps>({
-    tipoVeiculo: "",
-    consumoCombustivel: 0,
-    origem: "",
-    destino: "",
-    idaEVolta: false,
-    quantidadeVoos: 0,
+    combustivel: {
+      tipoVeiculo: "",
+    },
+    aviao: {
+      origem: "",
+      destino: "",
+      idaEVolta: false,
+      quantidadeVoos: 0,
+    },
   });
 
   return (
@@ -35,8 +34,16 @@ const Transportation = () => {
           <div className="field">
             <label>Tipo de veículo</label>
             <VehicleSelector
-              selected={consumo.tipoVeiculo}
-              setSelected={(e) => setConsumo({ ...consumo, tipoVeiculo: e })}
+              selected={consumo.combustivel.tipoVeiculo}
+              setSelected={(e) =>
+                setConsumo({
+                  ...consumo,
+                  combustivel: {
+                    ...consumo.combustivel,
+                    tipoVeiculo: e,
+                  },
+                })
+              }
             />
           </div>
 
@@ -47,11 +54,16 @@ const Transportation = () => {
               type="text"
               placeholder="km"
               onChange={(e) =>
-                setConsumo({
-                  ...consumo,
-                  consumoCombustivel: parseFloat(
-                    e.target.value ? e.target.value : "0"
-                  ),
+                setData({
+                  ...data,
+                  inventario: {
+                    ...data.inventario,
+                    transporte: {
+                      mes: parseFloat(e.target.value ? e.target.value : "0"),
+                      ano:
+                        parseFloat(e.target.value ? e.target.value : "0") * 12,
+                    },
+                  },
                 })
               }
             />
@@ -61,55 +73,7 @@ const Transportation = () => {
         <section className="consumption">
           <h4>Viagens aéreas</h4>
 
-          <div className="travel__data">
-            <div className="origin__input">
-              <input
-                className="text__input"
-                type="text"
-                placeholder="Origem"
-                onChange={(e) =>
-                  setConsumo({ ...consumo, origem: e.target.value })
-                }
-              />
-            </div>
-            <div className="destiny__input">
-              <input
-                className="text__input"
-                type="text"
-                placeholder="Destino"
-                onChange={(e) =>
-                  setConsumo({ ...consumo, destino: e.target.value })
-                }
-              />
-              <ul className="destiny__input__rec"></ul>
-            </div>
-          </div>
-          <div className="round__trip">
-            <input
-              type="checkbox"
-              onChange={(e) =>
-                setConsumo({
-                  ...consumo,
-                  idaEVolta: e.target.checked ? true : false,
-                })
-              }
-            />
-            <span>ida e volta</span>
-          </div>
-          <div className="field fly__number">
-            <label>Quantidade de vôos</label>
-            <input
-              type="number"
-              value="0"
-              min="0"
-              onChange={(e) =>
-                setConsumo({
-                  ...consumo,
-                  quantidadeVoos: parseInt(e.target.value),
-                })
-              }
-            />
-          </div>
+          <AirplaneInput consumo={consumo} setConsumo={setConsumo} />
 
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
@@ -117,12 +81,16 @@ const Transportation = () => {
         <section className="box__results">
           <div className="date__result">
             <h4>Mês</h4>
-            <span className="consumption__value">0.00</span>
+            <span className="consumption__value">
+              {data.inventario.transporte.mes}
+            </span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
           <div className="date__result">
             <h4>Ano</h4>
-            <span className="consumption__value">0.00</span>
+            <span className="consumption__value">
+              {data.inventario.transporte.ano}
+            </span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
         </section>

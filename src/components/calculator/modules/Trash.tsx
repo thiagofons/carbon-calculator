@@ -1,21 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/trash.sass";
-
-type Consumo = {
-  consumo: number;
-  mes: number;
-  ano: number;
-};
+import { ClientContext } from "../contexts/ClientContext";
 
 const Trash = () => {
-  const [consumo, setConsumo] = useState<Consumo>({
-    consumo: 0,
-    mes: 0,
-    ano: 0,
-  });
+  const { data, setData } = useContext(ClientContext);
 
   return (
     <form className="box trash" action="">
@@ -31,10 +22,16 @@ const Trash = () => {
               className="text__input methane__consumption"
               placeholder="kg"
               onChange={(e) => {
-                setConsumo({
-                  consumo: parseFloat(e.target.value ? e.target.value : "0"),
-                  mes: parseFloat(e.target.value ? e.target.value : "0"),
-                  ano: 12 * parseFloat(e.target.value ? e.target.value : "0"),
+                setData({
+                  ...data,
+                  inventario: {
+                    ...data.inventario,
+                    residuos: {
+                      mes: parseFloat(e.target.value ? e.target.value : "0"),
+                      ano:
+                        parseFloat(e.target.value ? e.target.value : "0") * 12,
+                    },
+                  },
                 });
               }}
             />
@@ -45,12 +42,12 @@ const Trash = () => {
         <div className="box__results">
           <div className="date__result">
             <h4>Mês</h4>
-            <span className="consumption__value">{consumo.mes.toFixed(2)}</span>
+            <span className="consumption__value">{data.inventario.residuos.mes.toFixed(2)}</span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
           <div className="date__result">
             <h4>Ano</h4>
-            <span className="consumption__value">{consumo.ano.toFixed(2)}</span>
+            <span className="consumption__value">{data.inventario.residuos.ano.toFixed(2)}</span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
         </div>

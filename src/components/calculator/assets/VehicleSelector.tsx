@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+/* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/assets/vehicle_selector.sass";
 
@@ -11,7 +10,7 @@ type VehicleSelectorProps = {
 const VehicleSelector = (props: VehicleSelectorProps) => {
   return (
     <select
-      className="vehicle__selector"
+      className="selector vehicle__selector"
       onChange={(e) => props.setSelected(e.target.value)}
     >
       <option value="">Escolha um veículo</option>

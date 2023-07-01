@@ -1,0 +1,11 @@
+@use "../../../assets/_mixins"
+
+.airplane__input
+  .field
+    @include mixins.flex($direction: column, $gap: 0)
+    .origin__input
+      .text__input
+        margin-bottom: .25rem
+    .round__trip
+      input:hover
+        cursor: pointer

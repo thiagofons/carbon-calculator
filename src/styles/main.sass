@@ -18,9 +18,8 @@
   &__body
     h4
       color: variables.$blue
-    width: 100%
+      width: 100%
     @include mixins.grid($rows:2 , $columns:1 , $gap:.5rem )
-    
 
     @media screen and ( min-width: 600px )
       @include mixins.grid($rows:1 , $columns:2 , $gap:.5rem )
@@ -57,13 +56,23 @@
         background: variables.$white
         border: 1px solid variables.$blue
         color: variables.$blue
+
+    .selector
+      padding: .5rem 0
+      border-radius: .25rem
+      &:hover
+        cursor: pointer
+      &:focus
+        outline: none
+        
   &__results
     align-self: center
-    
+
     min-height: 7.5rem
 
     @include mixins.flex(row, 1rem)
     flex-wrap: wrap
+    word-wrap: break-word
 
     justify-content: space-evenly
     justify-self: center

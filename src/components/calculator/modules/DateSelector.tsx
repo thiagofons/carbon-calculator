@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
 
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/date_selector.sass";
+import { ClientContext } from "../contexts/ClientContext";
 
 const DateSelector = () => {
   const today = new Date();
@@ -22,13 +23,10 @@ const DateSelector = () => {
     "Dezembro",
   ];
 
-  const [date, setDate] = useState({
-    month: meses[today.getMonth()],
-    year: today.getFullYear(),
-  });
+  const { data, setData } = useContext(ClientContext);
 
   const anos = [];
-  for (let ano = 2023; ano <= date.year; ano++) {
+  for (let ano = 2023; ano <= data.dataAtual.ano; ano++) {
     anos.push(ano);
   }
 
@@ -41,24 +39,42 @@ const DateSelector = () => {
         <section className="month">
           <select
             className="date__select month__selector"
-            value={date.month}
-            onChange={(e) => setDate({ ...date, month: e.target.value })}
+            value={data.dataAtual.mes}
+            onChange={(e) =>
+              setData({
+                ...data,
+                dataAtual: {
+                  ...data.dataAtual,
+                  mes: e.target.value,
+                },
+              })
+            }
           >
-            {meses.map((mes: string) => (
-              <option value={mes} key={mes}>{mes}</option>
+            {meses.map((mes: string, index: number) => (
+              <option value={index} key={mes}>
+                {mes}
+              </option>
             ))}
           </select>
         </section>
         <section className="year">
           <select
             className="date__select year__selector"
-            value={date.year}
+            value={data.dataAtual.ano}
             onChange={(e) =>
-              setDate({ ...date, year: parseInt(e.target.value) })
+              setData({
+                ...data,
+                dataAtual: {
+                  ...data.dataAtual,
+                  ano: parseInt(e.target.value),
+                },
+              })
             }
           >
             {anos.map((ano: number) => (
-              <option value={ano} key={ano}>{ano}</option>
+              <option value={ano} key={ano}>
+                {ano}
+              </option>
             ))}
           </select>
         </section>

@@ -8,6 +8,7 @@ import WaterConsumption from "./modules/WaterConsumption";
 import Gas from "./modules/Gas";
 import Trash from "./modules/Trash";
 import Transportation from "./modules/Transportation";
+import Event from "./modules/Event";
 
 const ClientCalculator = () => {
   const factors = {};
@@ -23,7 +24,9 @@ const ClientCalculator = () => {
         <Gas />
         <Trash />
         <Transportation />
+        <Event />
       </section>
+      
     </main>
   );
 };
