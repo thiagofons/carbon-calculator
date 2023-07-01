@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
 import AddButton from "../assets/AddButton";
 import { Consumo } from "../../../interfaces/Interfaces";
 
 /* styles import */
 import "../../../styles/main.sass";
-import "../../../styles/components/calculator/modules/electric_energy.sass";
+import "../../../styles/components/calculator/modules/water_consumption.sass";
+import { useState } from "react";
 
-const ElectricEnergy = () => {
+const WaterConsumption = () => {
   const [consumo, setConsumo] = useState<Consumo>({
     consumo: 0,
     mes: 0,
@@ -14,9 +14,9 @@ const ElectricEnergy = () => {
   });
 
   return (
-    <section className="box electric__energy">
+    <section className="box water__consumption">
       <header className="box__header">
-        <h3>Consumo de energia elétrica</h3>
+        <h3>Consumo de água</h3>
       </header>
       <main className="box__body">
         <section className="consumption">
@@ -25,7 +25,7 @@ const ElectricEnergy = () => {
             <input
               type="text"
               className="text__input"
-              placeholder="KWh"
+              placeholder="m&sup3;"
               onChange={(e) => {
                 setConsumo({
                   consumo: parseFloat(e.target.value ? e.target.value : "0"),
@@ -35,7 +35,9 @@ const ElectricEnergy = () => {
               }}
             />
           </div>
-          <button className="add__button">Adicionar ao cálculo</button>
+          <button className="add__button">
+            Adicionar ao cálculo
+          </button>
         </section>
         <section className="box__results">
           <div className="date__result">
@@ -54,4 +56,4 @@ const ElectricEnergy = () => {
   );
 };
 
-export default ElectricEnergy;
+export default WaterConsumption;

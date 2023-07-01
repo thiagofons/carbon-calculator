@@ -34,10 +34,10 @@ const DateSelector = () => {
 
   return (
     <section className="box date__selector">
-      <header>
-        <h3>Escolha a data</h3>
+      <header className="box__header">
+        <h3>Período</h3>
       </header>
-      <main>
+      <main className="box__body">
         <section className="month">
           <select
             className="date__select month__selector"

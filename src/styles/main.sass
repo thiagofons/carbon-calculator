@@ -21,12 +21,14 @@
       grid-template-columns: repeat(2, 1fr)
     section.consumption
       @media screen and ( min-width: 600px )
-        max-width: 20rem 
-      
+        max-width: 20rem
+    input[type="text"]
+      width: 100%
     .text__input
       padding: .5rem .25rem
       border-radius: .25rem
       border: 1px solid variables.$medium-grey
+
     .add__button
       margin-top: .5rem
       border-radius: .5rem
@@ -36,17 +38,18 @@
       color: variables.$white
       width: 100%
       transition: .25s
-      
+
       &:hover
         cursor: pointer
         background: variables.$white
         border: 1px solid variables.$blue
         color: variables.$blue
-
   &__results
     min-height: 7.5rem
     width: 100%
     @include mixins.flex(row, 1rem)
+    flex-wrap: wrap
+
     justify-content: space-evenly
 
     .date__result
@@ -65,4 +68,3 @@
         color: variables.$medium-grey
       .consumption__unit
         color: variables.$medium-grey
-      
