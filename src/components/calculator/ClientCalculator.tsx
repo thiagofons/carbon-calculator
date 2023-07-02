@@ -11,8 +11,6 @@ import Transportation from "./modules/Transportation";
 import Event from "./modules/Event";
 
 const ClientCalculator = () => {
-  const factors = {};
-
   return (
     <main className="client__calculator">
       <section className="date">

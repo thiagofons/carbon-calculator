@@ -27,8 +27,17 @@ const ElectricEnergy = () => {
                   inventario: {
                     ...data.inventario,
                     energiaEletrica: {
-                      mes: parseFloat(e.target.value ? e.target.value : "0"),
-                      ano: parseFloat(e.target.value ? e.target.value : "0") * 12,
+                      mes: parseFloat(
+                        !isNaN(parseFloat(e.target.value))
+                          ? e.target.value
+                          : "0"
+                      ),
+                      ano:
+                        parseFloat(
+                          !isNaN(parseFloat(e.target.value))
+                            ? e.target.value
+                            : "0"
+                        ) * 12,
                     },
                   },
                 });

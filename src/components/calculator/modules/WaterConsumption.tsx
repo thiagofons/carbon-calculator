@@ -27,9 +27,9 @@ const WaterConsumption = () => {
                   inventario: {
                     ...data.inventario,
                     agua: {
-                      mes: parseFloat(e.target.value ? e.target.value : "0"),
+                      mes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
                       ano:
-                        parseFloat(e.target.value ? e.target.value : "0") * 12,
+                        parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0") * 12,
                     },
                   },
                 });

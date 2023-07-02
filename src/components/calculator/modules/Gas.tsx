@@ -46,7 +46,7 @@ const Gas = () => {
                 setConsumo({
                   ...consumo,
                   gasEncanado: parseFloat(
-                    e.target.value ? e.target.value : "0"
+                    !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
                   ),
                 });
               }}
@@ -61,7 +61,7 @@ const Gas = () => {
               onChange={(e) => {
                 setConsumo({
                   ...consumo,
-                  butijoes: parseFloat(e.target.value ? e.target.value : "0"),
+                  butijoes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
                 });
               }}
             />

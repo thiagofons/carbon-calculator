@@ -24,7 +24,7 @@ const Transportation = () => {
   });
 
   return (
-    <form className="box transportation" action="">
+    <section className="box transportation">
       <header className="box__header">
         <h3>Transporte</h3>
       </header>
@@ -59,9 +59,9 @@ const Transportation = () => {
                   inventario: {
                     ...data.inventario,
                     transporte: {
-                      mes: parseFloat(e.target.value ? e.target.value : "0"),
+                      mes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
                       ano:
-                        parseFloat(e.target.value ? e.target.value : "0") * 12,
+                        parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0") * 12,
                     },
                   },
                 })
@@ -82,20 +82,20 @@ const Transportation = () => {
           <div className="date__result">
             <h4>Mês</h4>
             <span className="consumption__value">
-              {data.inventario.transporte.mes}
+              {data.inventario.transporte.mes.toFixed(2)}
             </span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
           <div className="date__result">
             <h4>Ano</h4>
             <span className="consumption__value">
-              {data.inventario.transporte.ano}
+              {data.inventario.transporte.ano.toFixed(2)}
             </span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
         </section>
       </main>
-    </form>
+    </section>
   );
 };
 

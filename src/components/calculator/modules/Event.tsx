@@ -75,7 +75,11 @@ const Event = () => {
                       ...data,
                       evento: {
                         ...data.evento,
-                        residuos: parseFloat(e.target.value),
+                        residuos: parseFloat(
+                          !isNaN(parseFloat(e.target.value))
+                            ? e.target.value
+                            : "0"
+                        ),
                       },
                     });
                   }}
