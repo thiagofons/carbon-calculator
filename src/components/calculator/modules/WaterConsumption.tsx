@@ -1,9 +1,11 @@
 import { useContext } from "react";
 
+import { ClientContext } from "../contexts/ClientContext";
+import PartialResults from "../assets/PartialResults";
+
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/water_consumption.sass";
-import { ClientContext } from "../contexts/ClientContext";
 
 const WaterConsumption = () => {
   const { data, setData } = useContext(ClientContext);
@@ -27,9 +29,17 @@ const WaterConsumption = () => {
                   inventario: {
                     ...data.inventario,
                     agua: {
-                      mes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
+                      mes: parseFloat(
+                        !isNaN(parseFloat(e.target.value))
+                          ? e.target.value
+                          : "0"
+                      ),
                       ano:
-                        parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0") * 12,
+                        parseFloat(
+                          !isNaN(parseFloat(e.target.value))
+                            ? e.target.value
+                            : "0"
+                        ) * 12,
                     },
                   },
                 });
@@ -38,22 +48,11 @@ const WaterConsumption = () => {
           </div>
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
-        <section className="box__results">
-          <div className="date__result">
-            <h4>Mês</h4>
-            <span className="consumption__value">
-              {data.inventario.agua.mes.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-          <div className="date__result">
-            <h4>Ano</h4>
-            <span className="consumption__value">
-              {data.inventario.agua.ano.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-        </section>
+
+        <PartialResults
+          month={data.inventario.agua.mes}
+          year={data.inventario.agua.mes}
+        />
       </main>
     </section>
   );

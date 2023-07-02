@@ -4,6 +4,7 @@ import { useContext } from "react";
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/electric_energy.sass";
 import { ClientContext } from "../contexts/ClientContext";
+import PartialResults from "../assets/PartialResults";
 
 const ElectricEnergy = () => {
   const { data, setData } = useContext(ClientContext);
@@ -46,22 +47,10 @@ const ElectricEnergy = () => {
           </div>
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
-        <section className="box__results">
-          <div className="date__result">
-            <h4>Mês</h4>
-            <span className="consumption__value">
-              {data.inventario.energiaEletrica.mes.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-          <div className="date__result">
-            <h4>Ano</h4>
-            <span className="consumption__value">
-              {data.inventario.energiaEletrica.ano.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-        </section>
+        <PartialResults
+          month={data.inventario.energiaEletrica.mes}
+          year={data.inventario.energiaEletrica.ano}
+        />
       </main>
     </section>
   );

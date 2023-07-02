@@ -63,7 +63,7 @@ const AirplaneInput = (props: AirplaneInputProps) => {
         <label>Quantidade de vôos</label>
         <input
           type="number"
-          value="0"
+          value={props.consumo.aviao.quantidadeVoos}
           min="0"
           onChange={(e) =>
             props.setConsumo({

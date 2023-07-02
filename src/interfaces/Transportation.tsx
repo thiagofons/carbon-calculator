@@ -3,7 +3,7 @@ type Fuel = {
 
 };
 
-type Airplane = {
+export type Airplane = {
   origem: string;
   destino: string;
   idaEVolta: boolean;

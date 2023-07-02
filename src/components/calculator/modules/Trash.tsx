@@ -3,7 +3,9 @@ import { useContext } from "react";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/trash.sass";
+
 import { ClientContext } from "../contexts/ClientContext";
+import PartialResults from "../assets/PartialResults";
 
 const Trash = () => {
   const { data, setData } = useContext(ClientContext);
@@ -14,7 +16,7 @@ const Trash = () => {
         <h3>Geração de resíduos</h3>
       </header>
       <section className="box__body">
-        <div className="consumption">
+        <section className="consumption">
           <div>
             <label>Resíduos do Mês</label>
             <input
@@ -27,9 +29,17 @@ const Trash = () => {
                   inventario: {
                     ...data.inventario,
                     residuos: {
-                      mes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
+                      mes: parseFloat(
+                        !isNaN(parseFloat(e.target.value))
+                          ? e.target.value
+                          : "0"
+                      ),
                       ano:
-                        parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0") * 12,
+                        parseFloat(
+                          !isNaN(parseFloat(e.target.value))
+                            ? e.target.value
+                            : "0"
+                        ) * 12,
                     },
                   },
                 });
@@ -38,19 +48,11 @@ const Trash = () => {
           </div>
 
           <button className="add__button">Adicionar ao cálculo</button>
-        </div>
-        <div className="box__results">
-          <div className="date__result">
-            <h4>Mês</h4>
-            <span className="consumption__value">{data.inventario.residuos.mes.toFixed(2)}</span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-          <div className="date__result">
-            <h4>Ano</h4>
-            <span className="consumption__value">{data.inventario.residuos.ano.toFixed(2)}</span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-        </div>
+        </section>
+        <PartialResults
+          month={data.inventario.residuos.mes}
+          year={data.inventario.residuos.ano}
+        />
       </section>
     </section>
   );

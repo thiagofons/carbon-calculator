@@ -3,6 +3,7 @@ import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/gas.sass";
 import { useContext, useEffect, useState } from "react";
 import { ClientContext } from "../contexts/ClientContext";
+import PartialResults from "../assets/PartialResults";
 
 type Consumo = {
   gasEncanado: number;
@@ -61,29 +62,19 @@ const Gas = () => {
               onChange={(e) => {
                 setConsumo({
                   ...consumo,
-                  butijoes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
+                  butijoes: parseFloat(
+                    !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
+                  ),
                 });
               }}
             />
           </div>
           <button className="add__button">Adicionar ao cálculo</button>
         </div>
-        <div className="box__results">
-          <div className="date__result">
-            <h4>Mês</h4>
-            <span className="consumption__value">
-              {data.inventario.gas.mes.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-          <div className="date__result">
-            <h4>Ano</h4>
-            <span className="consumption__value">
-              {data.inventario.gas.ano.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-        </div>
+        <PartialResults
+          month={data.inventario.gas.mes}
+          year={data.inventario.gas.ano}
+        />
       </section>
     </section>
   );

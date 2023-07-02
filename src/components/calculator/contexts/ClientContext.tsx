@@ -24,9 +24,7 @@ type EmissionData = {
     transporte: Consumption;
   };
   evento: {
-    energiaEletrica: number;
-    agua: number;
-    gas: number;
+    viagem: number;
     residuos: number;
     transporte: number;
   };
@@ -65,9 +63,7 @@ export const ClientContext = createContext<CalculatorEmissionData>({
       },
     },
     evento: {
-      energiaEletrica: 0,
-      agua: 0,
-      gas: 0,
+      viagem: 0,
       residuos: 0,
       transporte: 0,
     },
@@ -124,9 +120,7 @@ export const ClientProvider = (props: ConsumptionProps) => {
       },
     },
     evento: {
-      energiaEletrica: 0,
-      agua: 0,
-      gas: 0,
+      viagem: 0,
       residuos: 0,
       transporte: 0,
     },

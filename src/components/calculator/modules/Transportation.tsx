@@ -8,6 +8,7 @@ import "../../../styles/components/calculator/modules/transportation.sass";
 
 import { TransportationProps } from "../../../interfaces/Transportation";
 import { ClientContext } from "../contexts/ClientContext";
+import PartialResults from "../assets/PartialResults";
 
 const Transportation = () => {
   const { data, setData } = useContext(ClientContext);
@@ -59,9 +60,17 @@ const Transportation = () => {
                   inventario: {
                     ...data.inventario,
                     transporte: {
-                      mes: parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0"),
+                      mes: parseFloat(
+                        !isNaN(parseFloat(e.target.value))
+                          ? e.target.value
+                          : "0"
+                      ),
                       ano:
-                        parseFloat(!isNaN(parseFloat(e.target.value)) ? e.target.value : "0") * 12,
+                        parseFloat(
+                          !isNaN(parseFloat(e.target.value))
+                            ? e.target.value
+                            : "0"
+                        ) * 12,
                     },
                   },
                 })
@@ -77,23 +86,10 @@ const Transportation = () => {
 
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
-
-        <section className="box__results">
-          <div className="date__result">
-            <h4>Mês</h4>
-            <span className="consumption__value">
-              {data.inventario.transporte.mes.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-          <div className="date__result">
-            <h4>Ano</h4>
-            <span className="consumption__value">
-              {data.inventario.transporte.ano.toFixed(2)}
-            </span>
-            <span className="consumption__unit">t CO&#8322;e</span>
-          </div>
-        </section>
+        <PartialResults
+          month={data.inventario.transporte.mes}
+          year={data.inventario.transporte.ano}
+        />
       </main>
     </section>
   );

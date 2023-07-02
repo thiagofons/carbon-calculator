@@ -7,6 +7,7 @@ import "../../../styles/components/calculator/modules/event.sass";
 import { TransportationProps } from "../../../interfaces/Transportation";
 
 import { ClientContext } from "../contexts/ClientContext";
+import AirplaneInput from "../assets/AirplaneInput";
 
 type ConsumptionEvent = {
   transporte: TransportationProps;
