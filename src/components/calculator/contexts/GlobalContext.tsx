@@ -12,21 +12,16 @@ export type GlobalData = {
     gasEncanado: number;
     residuos: number;
     transporte: {
-      carro: {
-        gasolina: {
-          ate1_4: number;
-          de1_5Ate2_0: number;
-          acima2_0: number;
-        };
-        alcool: {
-          ate1_4: number;
-          de1_5Ate2_0: number;
-          acima2_0: number;
-        };
-        gasNatural: number;
-        diesel: number;
-        taxi: number;
-      };
+      carroGasolinaAte1_4: number;
+      carroGasolinaDe1_5Ate2_0: number;
+      carroGasolinaAcima2_0: number;
+      carroAlcoolAte1_4: number;
+      carroAlcoolDe1_5Ate2_0: number;
+      carroAlcoolAcima2_0: number;
+      carroGasNatural: number;
+      carroDiesel: number;
+      carroTaxi: number;
+
       onibus: number;
       aviao: number;
     };
@@ -41,21 +36,15 @@ export const GlobalContext = createContext<GlobalData>({
     gasEncanado: 5,
     residuos: 5,
     transporte: {
-      carro: {
-        gasolina: {
-          ate1_4: 5,
-          de1_5Ate2_0: 5,
-          acima2_0: 5,
-        },
-        alcool: {
-          ate1_4: 5,
-          de1_5Ate2_0: 5,
-          acima2_0: 5,
-        },
-        gasNatural: 5,
-        diesel: 5,
-        taxi: 5,
-      },
+      carroGasolinaAte1_4: 5,
+      carroGasolinaDe1_5Ate2_0: 5,
+      carroGasolinaAcima2_0: 5,
+      carroAlcoolAte1_4: 5,
+      carroAlcoolDe1_5Ate2_0: 5,
+      carroAlcoolAcima2_0: 5,
+      carroGasNatural: 5,
+      carroDiesel: 5,
+      carroTaxi: 5,
       onibus: 5,
       aviao: 5,
     },
@@ -70,21 +59,15 @@ export const GlobalProvider = (props: GlobalProps) => {
     gasEncanado: 5,
     residuos: 5,
     transporte: {
-      carro: {
-        gasolina: {
-          ate1_4: 5,
-          de1_5Ate2_0: 5,
-          acima2_0: 5,
-        },
-        alcool: {
-          ate1_4: 5,
-          de1_5Ate2_0: 5,
-          acima2_0: 5,
-        },
-        gasNatural: 5,
-        diesel: 5,
-        taxi: 5,
-      },
+      carroGasolinaAte1_4: 5,
+      carroGasolinaDe1_5Ate2_0: 5,
+      carroGasolinaAcima2_0: 5,
+      carroAlcoolAte1_4: 5,
+      carroAlcoolDe1_5Ate2_0: 5,
+      carroAlcoolAcima2_0: 5,
+      carroGasNatural: 5,
+      carroDiesel: 5,
+      carroTaxi: 5,
       onibus: 5,
       aviao: 5,
     },

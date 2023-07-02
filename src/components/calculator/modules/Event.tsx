@@ -9,6 +9,7 @@ import { TransportationProps } from "../../../interfaces/Transportation";
 import { ClientContext } from "../contexts/ClientContext";
 import AirplaneInput from "../assets/AirplaneInput";
 import PartialResults from "../assets/PartialResults";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 type ConsumptionEvent = {
   transporte: TransportationProps;
@@ -18,6 +19,7 @@ type ConsumptionEvent = {
 };
 
 const Event = () => {
+  const {fatores} = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
 
   const [evento, setEvento] = useState("");

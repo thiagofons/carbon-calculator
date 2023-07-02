@@ -5,8 +5,10 @@ import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/electric_energy.sass";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 const ElectricEnergy = () => {
+  const {fatores} = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
 
   return (
@@ -32,13 +34,13 @@ const ElectricEnergy = () => {
                         !isNaN(parseFloat(e.target.value))
                           ? e.target.value
                           : "0"
-                      ),
+                      ) * fatores.energiaEletrica,
                       ano:
                         parseFloat(
                           !isNaN(parseFloat(e.target.value))
                             ? e.target.value
                             : "0"
-                        ) * 12,
+                        ) * 12 * fatores.energiaEletrica,
                     },
                   },
                 });

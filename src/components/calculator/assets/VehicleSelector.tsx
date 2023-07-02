@@ -14,14 +14,14 @@ const VehicleSelector = (props: VehicleSelectorProps) => {
       onChange={(e) => props.setSelected(e.target.value)}
     >
       <option value="">Escolha um veículo</option>
-      <option value="gasolina14">Carro a Gasolina (até 1.4)</option>
-      <option value="gasolina15a20">Carro a Gasolina (1.5 a 2.0)</option>
-      <option value="gasolina20">Carro a Gasolina (acima de 2.0)</option>
-      <option value="alcool14">Carro a Álcool (até 1.4)</option>
-      <option value="alcool15a20">Carro a Álcool (1.5 a 2.0)</option>
-      <option value="alcool20">Carro a Álcool (acima de 2.0)</option>
-      <option value="gnv">Carro Gás Natural (GNV)</option>
-      <option value="pickup">Pick-up (diesel)</option>
+      <option value="gasolinaAte1_4">Carro a Gasolina (até 1.4)</option>
+      <option value="gasolinaDe1_5Ate2_0">Carro a Gasolina (1.5 a 2.0)</option>
+      <option value="gasolinaAcima2_0">Carro a Gasolina (acima de 2.0)</option>
+      <option value="alcoolAte1_4">Carro a Álcool (até 1.4)</option>
+      <option value="alcoolDe1_5Ate2_0">Carro a Álcool (1.5 a 2.0)</option>
+      <option value="alcoolAcima2_0">Carro a Álcool (acima de 2.0)</option>
+      <option value="gasNatural">Carro Gás Natural (GNV)</option>
+      <option value="diesel">Pick-up (diesel)</option>
       <option value="taxi">Táxi</option>
       <option value="onibus">Ônibus</option>
     </select>

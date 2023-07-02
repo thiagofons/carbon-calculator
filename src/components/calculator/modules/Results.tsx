@@ -55,22 +55,29 @@ const Results = () => {
       </header>
 
       <main className="results__data box">
-        <section className="total__month">
-          <h3>Emissões totais do mês</h3>
-          <span>{data.total.mes}</span>
-          <span className="consumption__unit">t CO&#8322;e</span>
+        <section className="result total__month">
+          <h3>Emissões do mês</h3>
+          <div className="result__data">
+            <span className="result__data__number">{data.total.mes.toFixed(2)}</span>
+            <span className="consumption__unit">t CO&#8322;e</span>
+          </div>
         </section>
 
-        <section className="total__year">
-          <h3>Emissões totais do ano</h3>
-          <span>0.00</span>
-          <span className="consumption__unit">t CO&#8322;e</span>
+        <section className="result total__year">
+          <h3>Estimativa do ano</h3>
+          <div className="result__data">
+            <span className="result__data__number">{data.total.ano.toFixed(2)}</span>
+            <span className="consumption__unit">t CO&#8322;e</span>
+          </div>
+          
         </section>
 
-        <section className="trees">
-          <h3>Árvores a serem planatas</h3>
-          <span>0</span>
-          <span className="consumption__unit">t CO&#8322;e</span>
+        <section className="result trees">
+          <h3>Compensação</h3>
+          <div className="result__data">
+            <span className="result__data__number">{data.total.arvores.toFixed(0)}</span>
+            <span className="consumption__unit">árvores</span>
+          </div>
         </section>
       </main>
 
