@@ -44,10 +44,10 @@ export const GlobalContext = createContext<GlobalData>({
       carroAlcoolDe1_5Ate2_0: 5,
       carroAlcoolAcima2_0: 5,
       carroGasNatural: 5,
-      carroDiesel: 5,
+      carroDiesel: 10,
       carroTaxi: 5,
       onibus: 5,
-      aviao: 5,
+      aviao: 50,
     },
     conversaoParaArvores: 10,
 

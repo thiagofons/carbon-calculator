@@ -9,8 +9,14 @@ import "../../../styles/components/calculator/modules/transportation.sass";
 import { TransportationProps } from "../../../interfaces/Transportation";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
+import { GlobalContext } from "../contexts/GlobalContext";
+import { log } from "console";
+import AddButton from "../assets/AddButton";
+import VehicleInput from "../assets/VehicleInput";
 
 const Transportation = () => {
+  const { fatores } = useContext(GlobalContext);
+
   const { data, setData } = useContext(ClientContext);
   const [consumo, setConsumo] = useState<TransportationProps>({
     combustivel: {
@@ -24,6 +30,33 @@ const Transportation = () => {
     },
   });
 
+  const seletor = (nome: string) => {
+    switch (nome) {
+      case "carroGasolinaAte1_4":
+        return fatores.transporte.carroGasolinaAte1_4;
+      case "carroGasolinaDe1_5Ate2_0":
+        return fatores.transporte.carroGasolinaDe1_5Ate2_0;
+      case "carroGasolinaAcima2_0":
+        return fatores.transporte.carroGasolinaAcima2_0;
+      case "carroAlcoolAte1_4":
+        return fatores.transporte.carroAlcoolAte1_4;
+      case "carroAlcoolDe1_5Ate2_0":
+        return fatores.transporte.carroAlcoolDe1_5Ate2_0;
+      case "carroAlcoolAcima2_0":
+        return fatores.transporte.carroAlcoolAcima2_0;
+      case "carroGasNatural":
+        return fatores.transporte.carroGasNatural;
+      case "carroDiesel":
+        return fatores.transporte.carroDiesel;
+      case "carroTaxi":
+        return fatores.transporte.carroTaxi;
+      case "onibus":
+        return fatores.transporte.onibus;
+      default:
+        return 0;
+    }
+  };
+
   return (
     <section className="box transportation">
       <header className="box__header">
@@ -31,53 +64,23 @@ const Transportation = () => {
       </header>
       <main className="box__body">
         <section className="consumption">
-          <h4>Combustível</h4>
-          <div className="field">
-            <label>Tipo de veículo</label>
-            <VehicleSelector
-              selected={consumo.combustivel.tipoVeiculo}
-              setSelected={(e) =>
-                setConsumo({
-                  ...consumo,
-                  combustivel: {
-                    ...consumo.combustivel,
-                    tipoVeiculo: e,
+          <VehicleInput
+            consumo={data.inventario.transporte.mes}
+            setConsumo={(valor) =>
+              setData({
+                ...data,
+                inventario: {
+                  ...data.inventario,
+                  transporte: {
+                    mes: valor,
+                    ano: valor * 12,
                   },
-                })
-              }
-            />
-          </div>
+                },
+              })
+            }
+          />
 
-          <div>
-            <label>Consumo</label>
-            <input
-              className="text__input"
-              type="text"
-              placeholder="km"
-              onChange={(e) =>
-                setData({
-                  ...data,
-                  inventario: {
-                    ...data.inventario,
-                    transporte: {
-                      mes: parseFloat(
-                        !isNaN(parseFloat(e.target.value))
-                          ? e.target.value
-                          : "0"
-                      ),
-                      ano:
-                        parseFloat(
-                          !isNaN(parseFloat(e.target.value))
-                            ? e.target.value
-                            : "0"
-                        ) * 12,
-                    },
-                  },
-                })
-              }
-            />
-          </div>
-          <button className="add__button">Adicionar ao cálculo</button>
+          <AddButton value={data.inventario.transporte.mes} />
         </section>
         <section className="consumption">
           <h4>Viagens aéreas</h4>
