@@ -46,8 +46,6 @@ const Results = () => {
 
   const calcularArvores = () => {};
 
-  
-
   return (
     <section className="results">
       <header>

@@ -4,6 +4,7 @@ import "../../../styles/components/calculator/modules/gas.sass";
 import { useContext, useEffect, useState } from "react";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
+import AddButton from "../assets/AddButton";
 
 type Consumo = {
   gasEncanado: number;
@@ -69,7 +70,7 @@ const Gas = () => {
               }}
             />
           </div>
-          <button className="add__button">Adicionar ao cálculo</button>
+          <AddButton value={data.inventario.gas.mes}/>
         </div>
         <PartialResults
           month={data.inventario.gas.mes}

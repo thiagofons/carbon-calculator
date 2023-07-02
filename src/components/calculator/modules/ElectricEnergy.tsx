@@ -6,6 +6,7 @@ import "../../../styles/components/calculator/modules/electric_energy.sass";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
 import { GlobalContext } from "../contexts/GlobalContext";
+import AddButton from "../assets/AddButton";
 
 const ElectricEnergy = () => {
   const {fatores} = useContext(GlobalContext);
@@ -47,7 +48,7 @@ const ElectricEnergy = () => {
               }}
             />
           </div>
-          <button className="add__button">Adicionar ao cálculo</button>
+          <AddButton value={data.inventario.energiaEletrica.mes} />
         </section>
         <PartialResults
           month={data.inventario.energiaEletrica.mes}

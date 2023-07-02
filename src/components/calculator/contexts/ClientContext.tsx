@@ -80,6 +80,7 @@ export const ClientContext = createContext<CalculatorEmissionData>({
   },
 
   setData: () => {},
+
 });
 
 export const ClientProvider = (props: ConsumptionProps) => {
@@ -139,6 +140,7 @@ export const ClientProvider = (props: ConsumptionProps) => {
       ano: 0,
       arvores: 0,
     },
+    
   });
   return (
     <ClientContext.Provider value={{ data, setData }}>

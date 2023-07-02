@@ -25,6 +25,7 @@ export type GlobalData = {
       onibus: number;
       aviao: number;
     };
+    conversaoParaArvores: number;
   };
 };
 
@@ -48,6 +49,8 @@ export const GlobalContext = createContext<GlobalData>({
       onibus: 5,
       aviao: 5,
     },
+    conversaoParaArvores: 10,
+
   },
 });
 
@@ -71,6 +74,7 @@ export const GlobalProvider = (props: GlobalProps) => {
       onibus: 5,
       aviao: 5,
     },
+    conversaoParaArvores: 10,
   };
 
   return (

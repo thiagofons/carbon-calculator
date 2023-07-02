@@ -3,6 +3,7 @@ import "../../../styles/main.sass";
 import "../../../styles/components/calculator/assets/vehicle_selector.sass";
 import { TransportationProps } from "../../../interfaces/Transportation";
 import VehicleSelector from "./VehicleSelector";
+import AddButton from "./AddButton";
 
 type VehicleInputProps = {
   consumo: TransportationProps;
@@ -48,6 +49,7 @@ const VehicleInput = (props: VehicleInputProps) => {
         />
         */}
       </div>
+      
       <button className="add__button">Adicionar ao cálculo</button>
     </section>
   );

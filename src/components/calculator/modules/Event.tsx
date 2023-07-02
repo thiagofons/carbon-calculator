@@ -10,6 +10,7 @@ import { ClientContext } from "../contexts/ClientContext";
 import AirplaneInput from "../assets/AirplaneInput";
 import PartialResults from "../assets/PartialResults";
 import { GlobalContext } from "../contexts/GlobalContext";
+import AddButton from "../assets/AddButton";
 
 type ConsumptionEvent = {
   transporte: TransportationProps;
@@ -116,6 +117,7 @@ const Event = () => {
               )) ||
               (evento === "viagem" && <div className="travel__event"></div>)}
           </section>
+          
         </section>
       </main>
     </section>

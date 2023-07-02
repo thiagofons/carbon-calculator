@@ -6,6 +6,7 @@ import PartialResults from "../assets/PartialResults";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/water_consumption.sass";
+import AddButton from "../assets/AddButton";
 
 const WaterConsumption = () => {
   const { data, setData } = useContext(ClientContext);
@@ -35,23 +36,24 @@ const WaterConsumption = () => {
                           : "0"
                       ),
                       ano:
+                        12 *
                         parseFloat(
                           !isNaN(parseFloat(e.target.value))
                             ? e.target.value
                             : "0"
-                        ) * 12,
+                        ),
                     },
                   },
                 });
               }}
             />
           </div>
-          <button className="add__button">Adicionar ao cálculo</button>
+          <AddButton value={data.inventario.agua.mes} />
         </section>
 
         <PartialResults
           month={data.inventario.agua.mes}
-          year={data.inventario.agua.mes}
+          year={data.inventario.agua.ano}
         />
       </main>
     </section>

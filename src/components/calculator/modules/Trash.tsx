@@ -6,6 +6,7 @@ import "../../../styles/components/calculator/modules/trash.sass";
 
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
+import AddButton from "../assets/AddButton";
 
 const Trash = () => {
   const { data, setData } = useContext(ClientContext);
@@ -46,8 +47,7 @@ const Trash = () => {
               }}
             />
           </div>
-
-          <button className="add__button">Adicionar ao cálculo</button>
+          <AddButton value={data.inventario.residuos.mes} />
         </section>
         <PartialResults
           month={data.inventario.residuos.mes}

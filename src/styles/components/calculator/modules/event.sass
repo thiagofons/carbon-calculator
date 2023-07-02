@@ -1,4 +1,7 @@
 @use "../../../assets/_mixins"
 .event
-  .box__body
-    width: 100%
+  .event__data
+    @include mixins.flex($direction: column, $gap: 1rem)
+    .event__type
+      @include mixins.flex($direction: column, $gap: 0)
+      
