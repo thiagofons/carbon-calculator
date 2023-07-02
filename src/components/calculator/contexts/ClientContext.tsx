@@ -4,13 +4,13 @@ type ConsumptionProps = {
   children: any;
 };
 
-type Consumption = {
+export type Consumption = {
   mes: number;
   ano: number;
 };
 
 type Date = {
-  mes: string;
+  mes: number;
   ano: number;
 };
 
@@ -28,6 +28,11 @@ type EmissionData = {
     residuos: number;
     transporte: number;
   };
+  total: {
+    mes: number;
+    ano: number;
+    arvores: number;
+  };
 };
 export type CalculatorEmissionData = {
   data: EmissionData;
@@ -37,7 +42,7 @@ export type CalculatorEmissionData = {
 export const ClientContext = createContext<CalculatorEmissionData>({
   data: {
     dataAtual: {
-      mes: "",
+      mes: 0,
       ano: 0,
     },
     inventario: {
@@ -67,6 +72,11 @@ export const ClientContext = createContext<CalculatorEmissionData>({
       residuos: 0,
       transporte: 0,
     },
+    total: {
+      mes: 0,
+      ano: 0,
+      arvores: 0,
+    },
   },
 
   setData: () => {},
@@ -94,7 +104,7 @@ export const ClientProvider = (props: ConsumptionProps) => {
 
   const [data, setData] = useState({
     dataAtual: {
-      mes: meses[mesAtual],
+      mes: mesAtual,
       ano: anoAtual,
     },
     inventario: {
@@ -123,6 +133,11 @@ export const ClientProvider = (props: ConsumptionProps) => {
       viagem: 0,
       residuos: 0,
       transporte: 0,
+    },
+    total: {
+      mes: 0,
+      ano: 0,
+      arvores: 0,
     },
   });
   return (

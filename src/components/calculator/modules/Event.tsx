@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import EventSelector from "../assets/EventSelector";
 import VehicleSelector from "../assets/VehicleSelector";
 /* styles import */
@@ -8,6 +8,7 @@ import { TransportationProps } from "../../../interfaces/Transportation";
 
 import { ClientContext } from "../contexts/ClientContext";
 import AirplaneInput from "../assets/AirplaneInput";
+import PartialResults from "../assets/PartialResults";
 
 type ConsumptionEvent = {
   transporte: TransportationProps;
@@ -37,6 +38,8 @@ const Event = () => {
     },
   });
 
+  const calcularTransporte = () => {};
+
   return (
     <section className="box event">
       <header className="box__header">
@@ -51,44 +54,67 @@ const Event = () => {
           </section>
           <section className="event__info">
             {(evento === "combustivel" && (
-              <VehicleSelector
-                selected={consumo.transporte.combustivel.tipoVeiculo}
-                setSelected={(e) =>
-                  setConsumo({
-                    ...consumo,
-                    transporte: {
-                      ...consumo.transporte,
-                      combustivel: {
-                        tipoVeiculo: e,
+              <div className="vehicle__event">
+                <VehicleSelector
+                  selected={consumo.transporte.combustivel.tipoVeiculo}
+                  setSelected={(e) =>
+                    setConsumo({
+                      ...consumo,
+                      transporte: {
+                        ...consumo.transporte,
+                        combustivel: {
+                          tipoVeiculo: e,
+                        },
                       },
-                    },
-                  })
-                }
-              />
-            )) ||
-              (evento === "residuos" && (
+                    })
+                  }
+                />
                 <input
+                  className="text__input"
                   type="text"
-                  className="text__input methane__consumption"
-                  placeholder="kg"
-                  onChange={(e) => {
+                  placeholder="km"
+                  onChange={(e) =>
                     setData({
                       ...data,
                       evento: {
                         ...data.evento,
-                        residuos: parseFloat(
+                        transporte: parseFloat(
                           !isNaN(parseFloat(e.target.value))
                             ? e.target.value
                             : "0"
                         ),
                       },
-                    });
-                  }}
+                    })
+                  }
                 />
-              ))}
+              </div>
+            )) ||
+              (evento === "residuos" && (
+                <div className="trash__event">
+                  <input
+                    type="text"
+                    className="text__input methane__consumption"
+                    placeholder="kg"
+                    value={data.evento.residuos}
+                    onChange={(e) => {
+                      setData({
+                        ...data,
+                        evento: {
+                          ...data.evento,
+                          residuos: parseFloat(
+                            !isNaN(parseFloat(e.target.value))
+                              ? e.target.value
+                              : "0"
+                          ),
+                        },
+                      });
+                    }}
+                  />
+                </div>
+              )) ||
+              (evento === "viagem" && <div className="travel__event"></div>)}
           </section>
         </section>
-        <section className="results"></section>
       </main>
     </section>
   );

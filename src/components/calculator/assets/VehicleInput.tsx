@@ -29,6 +29,7 @@ const VehicleInput = (props: VehicleInputProps) => {
       </div>
 
       <div>
+        {/*
         <label>Consumo</label>
         <input
           className="text__input"
@@ -37,11 +38,15 @@ const VehicleInput = (props: VehicleInputProps) => {
           onChange={(e) =>
             props.setConsumo({
               ...props.consumo, 
-              combustivel = {}
+              combustivel = {
+                ...props.consumo.combustivel,
+
+              }
               
             )
           }
         />
+        */}
       </div>
       <button className="add__button">Adicionar ao cálculo</button>
     </section>

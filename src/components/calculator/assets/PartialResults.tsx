@@ -12,14 +12,14 @@ const PartialResults = (props: PartialResultProps) => {
       <div className="date__result">
         <h4>Mês</h4>
         <span className="consumption__value">
-          {props.month.toFixed(2)}
+          {props.month.toFixed(2).replace(".", ",")}
         </span>
         <span className="consumption__unit">t CO&#8322;e</span>
       </div>
       <div className="date__result">
         <h4>Ano</h4>
         <span className="consumption__value">
-          {props.year.toFixed(2)}
+          {props.year.toFixed(2).replace(".", ",")}
         </span>
         <span className="consumption__unit">t CO&#8322;e</span>
       </div>

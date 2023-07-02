@@ -2,14 +2,33 @@
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/assets/airplane_input.sass";
 
-import { TransportationProps } from "../../../interfaces/Transportation";
-
+import { Airplane } from "../../../interfaces/Transportation";
+import { useEffect, useState } from "react";
+import { Consumption } from "../contexts/ClientContext";
+/*
 type AirplaneInputProps = {
-  consumo: TransportationProps;
-  setConsumo: (c: TransportationProps) => void;
+  data: TransportationProps;
+  setData: (c: TransportationProps) => void;
 };
+*/
+const AirplaneInput = (props: Consumption) => {
+  const [consumo, setConsumo] = useState<Airplane>({
+    origem: "",
+    destino: "",
+    idaEVolta: false,
+    quantidadeVoos: 0,
+  });
 
-const AirplaneInput = (props: AirplaneInputProps) => {
+  const calcularViagem = () => {
+    props.mes = 2;
+    props.ano = 4;
+  }
+
+  useEffect(() => {
+    calcularViagem();
+  }, [consumo])
+
+  
   return (
     <section className="airplane__input">
       <section className="origin__input">
@@ -17,15 +36,7 @@ const AirplaneInput = (props: AirplaneInputProps) => {
           className="text__input"
           type="text"
           placeholder="Origem"
-          onChange={(e) =>
-            props.setConsumo({
-              ...props.consumo,
-              aviao: {
-                ...props.consumo.aviao,
-                origem: e.target.value,
-              },
-            })
-          }
+          onChange={(e) => setConsumo({ ...consumo, origem: e.target.value })}
         />
       </section>
       <section className="destination__input">
@@ -34,12 +45,9 @@ const AirplaneInput = (props: AirplaneInputProps) => {
           type="text"
           placeholder="Destino"
           onChange={(e) =>
-            props.setConsumo({
-              ...props.consumo,
-              aviao: {
-                ...props.consumo.aviao,
-                destino: e.target.value,
-              },
+            setConsumo({
+              ...consumo,
+              destino: e.target.value,
             })
           }
         />
@@ -48,13 +56,7 @@ const AirplaneInput = (props: AirplaneInputProps) => {
         <input
           type="checkbox"
           onChange={(e) =>
-            props.setConsumo({
-              ...props.consumo,
-              aviao: {
-                ...props.consumo.aviao,
-                idaEVolta: Boolean(e.target.value),
-              },
-            })
+            setConsumo({ ...consumo, idaEVolta: !!e.target.value })
           }
         />
         <span>ida e volta</span>
@@ -63,16 +65,10 @@ const AirplaneInput = (props: AirplaneInputProps) => {
         <label>Quantidade de vôos</label>
         <input
           type="number"
-          value={props.consumo.aviao.quantidadeVoos}
+          value={consumo.quantidadeVoos}
           min="0"
           onChange={(e) =>
-            props.setConsumo({
-              ...props.consumo,
-              aviao: {
-                ...props.consumo.aviao,
-                quantidadeVoos: parseInt(e.target.value),
-              },
-            })
+            setConsumo({ ...consumo, quantidadeVoos: parseInt(e.target.value) })
           }
         />
       </section>

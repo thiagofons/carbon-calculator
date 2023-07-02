@@ -6,8 +6,6 @@ import "../../../styles/components/calculator/modules/date_selector.sass";
 import { ClientContext } from "../contexts/ClientContext";
 
 const DateSelector = () => {
-  const today = new Date();
-
   const meses = [
     "Janeiro",
     "Fevereiro",
@@ -45,7 +43,7 @@ const DateSelector = () => {
                 ...data,
                 dataAtual: {
                   ...data.dataAtual,
-                  mes: e.target.value,
+                  mes: parseInt(e.target.value),
                 },
               })
             }

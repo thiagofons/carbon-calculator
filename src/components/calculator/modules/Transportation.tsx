@@ -81,9 +81,9 @@ const Transportation = () => {
         </section>
         <section className="consumption">
           <h4>Viagens aéreas</h4>
-
-          <AirplaneInput consumo={consumo} setConsumo={setConsumo} />
-
+          {/**
+          <AirplaneInput mes={data.evento.viagem} ano={data.evento.viagem} />
+           */}
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
         <PartialResults

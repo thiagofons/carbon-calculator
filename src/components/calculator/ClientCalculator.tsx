@@ -9,6 +9,7 @@ import Gas from "./modules/Gas";
 import Trash from "./modules/Trash";
 import Transportation from "./modules/Transportation";
 import Event from "./modules/Event";
+import Results from "./modules/Results";
 
 const ClientCalculator = () => {
   return (
@@ -23,6 +24,9 @@ const ClientCalculator = () => {
         <Trash />
         <Transportation />
         <Event />
+      </section>
+      <section className="calculator__results">
+        <Results />
       </section>
       
     </main>
