@@ -15,7 +15,6 @@ const EventSelector = (props: EventSelectorProps) => {
       value={props.selected}
     >
 
-      <option value="">Selecione um evento</option>
       <option value="combustivel">Combustível</option>
       <option value="residuos">Resíduos</option>
       <option value="viagem">Viagem de avião</option>

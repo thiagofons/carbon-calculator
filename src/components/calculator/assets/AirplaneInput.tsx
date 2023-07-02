@@ -2,11 +2,17 @@
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/assets/airplane_input.sass";
 
+import { useEffect } from "react";
 import { Airplane } from "../../../interfaces/Transportation";
-import { useEffect, useState } from "react";
-import { Consumption } from "../contexts/ClientContext";
+import { useState, useRef } from "react";
+import { GOOGLE_MAPS_API_KEY } from "../../../App";
 
-const AirplaneInput = (props: Consumption) => {
+type AirplaneInputProps = {
+  consumo: number;
+  setConsumo: (c: number) => void;
+};
+
+const AirplaneInput = (props: AirplaneInputProps) => {
   const [consumo, setConsumo] = useState<Airplane>({
     origem: "",
     destino: "",
@@ -14,16 +20,6 @@ const AirplaneInput = (props: Consumption) => {
     quantidadeVoos: 0,
   });
 
-  const calcularViagem = () => {
-    props.mes = 2;
-    props.ano = 4;
-  }
-
-  useEffect(() => {
-    calcularViagem();
-  }, [consumo])
-
-  
   return (
     <section className="airplane__input">
       <section className="origin__input">
@@ -47,6 +43,7 @@ const AirplaneInput = (props: Consumption) => {
           }
         />
       </section>
+
       <section className="round__trip">
         <input
           type="checkbox"

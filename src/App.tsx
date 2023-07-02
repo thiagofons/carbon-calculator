@@ -6,6 +6,8 @@ import Container from "./components/layout/Container";
 
 import { GlobalProvider } from "./components/calculator/contexts/GlobalContext";
 
+export const GOOGLE_MAPS_API_KEY = "AIzaSyCNvGg-xIr2-PS1ycPKonztZT0zWa2VSH4"
+
 function App() {
   return (
     <Container>

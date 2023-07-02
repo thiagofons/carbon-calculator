@@ -20,7 +20,6 @@ const Trash = () => {
       <section className="box__body">
         <section className="consumption">
           <div>
-            <label>Resíduos do Mês</label>
             <TrashInput
               consumo={data.inventario.residuos.mes}
               setConsumo={(valor) => {

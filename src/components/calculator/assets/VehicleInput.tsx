@@ -45,7 +45,7 @@ const VehicleInput = (props: VehicleInputProps) => {
   };
 
   return (
-    <section className="consumption">
+    <section className="consumption vehicle__input">
       <h4>Combustível</h4>
       <div className="field">
         <label>Tipo de veículo</label>
@@ -57,6 +57,7 @@ const VehicleInput = (props: VehicleInputProps) => {
           className="text__input"
           type="text"
           placeholder="km"
+          disabled={!tipoVeiculo}
           onChange={(e) =>
             props.setConsumo(
               parseFloat(

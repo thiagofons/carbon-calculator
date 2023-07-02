@@ -25,7 +25,7 @@ const Event = () => {
   const { fatores } = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
 
-  const [evento, setEvento] = useState("");
+  const [evento, setEvento] = useState("combustivel");
   const [consumo, setConsumo] = useState<ConsumptionEvent>({
     transporte: {
       combustivel: {
@@ -89,7 +89,9 @@ const Event = () => {
         </section>
         <PartialEvent
           total={
-            data.evento.residuos + data.evento.transporte + data.evento.viagem
+            evento === "residuos" ? data.evento.residuos :
+            evento === "combustivel" ? data.evento.transporte :
+            evento === "viagem" ? data.evento.viagem : 0
           }
         />
       </main>

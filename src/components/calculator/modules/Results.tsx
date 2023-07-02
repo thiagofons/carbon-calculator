@@ -78,15 +78,6 @@ const Results = () => {
           </div>
         </section>
       </main>
-
-      <footer>
-        <section className="results__compensate">
-          <h3>Como você pode compensar seu consumo de CO&#8322;</h3>
-        </section>
-        <section className="results__invite">
-          <h3>Venha para um plantio comunitário!</h3>
-        </section>
-      </footer>
     </section>
   );
 };

@@ -9,6 +9,7 @@ import PartialResults from "../assets/PartialResults";
 
 import AddButton from "../assets/AddButton";
 import VehicleInput from "../assets/VehicleInput";
+import AirplaneInput from "../assets/AirplaneInput";
 
 const Transportation = () => {
   const { data, setData } = useContext(ClientContext);
@@ -40,9 +41,23 @@ const Transportation = () => {
         </section>
         <section className="consumption">
           <h4>Viagens aéreas</h4>
-          {/**
-          <AirplaneInput mes={data.evento.viagem} ano={data.evento.viagem} />
-           */}
+
+          <AirplaneInput
+            consumo={data.inventario.transporte.mes}
+            setConsumo={(valor) =>
+              setData({
+                ...data,
+                inventario: {
+                  ...data.inventario,
+                  transporte: {
+                    mes: valor,
+                    ano: valor * 12,
+                  },
+                },
+              })
+            }
+          />
+
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
         <PartialResults
