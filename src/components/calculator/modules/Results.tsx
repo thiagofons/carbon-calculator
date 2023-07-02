@@ -1,6 +1,6 @@
 /* styles import */
 import "../../../styles/main.sass";
-import "../../../styles/components/calculator/modules/transportation.sass";
+import "../../../styles/components/calculator/modules/results.sass";
 
 const Results = () => {
   return (

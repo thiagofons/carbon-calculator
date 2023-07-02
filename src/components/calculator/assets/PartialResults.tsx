@@ -1,5 +1,5 @@
 /* styles import */
-import "../../../styles/main.sass";
+import "../../../styles/components/calculator/assets/partial_results.sass";
 
 type PartialResultProps = {
   month: number;
@@ -8,7 +8,7 @@ type PartialResultProps = {
 
 const PartialResults = (props: PartialResultProps) => {
   return (
-    <section className="box__results">
+    <section className="partial__results">
       <div className="date__result">
         <h4>Mês</h4>
         <span className="consumption__value">
