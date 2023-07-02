@@ -7,6 +7,7 @@ import "../../../styles/components/calculator/modules/trash.sass";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
 import AddButton from "../assets/AddButton";
+import TrashInput from "../assets/TrashInput";
 
 const Trash = () => {
   const { data, setData } = useContext(ClientContext);
@@ -20,27 +21,16 @@ const Trash = () => {
         <section className="consumption">
           <div>
             <label>Resíduos do Mês</label>
-            <input
-              type="text"
-              className="text__input methane__consumption"
-              placeholder="kg"
-              onChange={(e) => {
+            <TrashInput
+              consumo={data.inventario.residuos.mes}
+              setConsumo={(valor) => {
                 setData({
                   ...data,
                   inventario: {
                     ...data.inventario,
                     residuos: {
-                      mes: parseFloat(
-                        !isNaN(parseFloat(e.target.value))
-                          ? e.target.value
-                          : "0"
-                      ),
-                      ano:
-                        parseFloat(
-                          !isNaN(parseFloat(e.target.value))
-                            ? e.target.value
-                            : "0"
-                        ) * 12,
+                      mes: valor,
+                      ano: valor * 12,
                     },
                   },
                 });

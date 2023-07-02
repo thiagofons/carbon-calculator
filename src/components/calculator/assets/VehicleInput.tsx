@@ -1,9 +1,9 @@
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/assets/vehicle_selector.sass";
-import { TransportationProps } from "../../../interfaces/Transportation";
+
 import VehicleSelector from "./VehicleSelector";
-import AddButton from "./AddButton";
+
 import { GlobalContext } from "../contexts/GlobalContext";
 import { useContext, useState } from "react";
 

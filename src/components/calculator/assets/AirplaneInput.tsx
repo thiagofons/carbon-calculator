@@ -5,12 +5,7 @@ import "../../../styles/components/calculator/assets/airplane_input.sass";
 import { Airplane } from "../../../interfaces/Transportation";
 import { useEffect, useState } from "react";
 import { Consumption } from "../contexts/ClientContext";
-/*
-type AirplaneInputProps = {
-  data: TransportationProps;
-  setData: (c: TransportationProps) => void;
-};
-*/
+
 const AirplaneInput = (props: Consumption) => {
   const [consumo, setConsumo] = useState<Airplane>({
     origem: "",

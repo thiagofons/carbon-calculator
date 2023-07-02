@@ -7,10 +7,12 @@ import "../../../styles/components/calculator/modules/event.sass";
 import { TransportationProps } from "../../../interfaces/Transportation";
 
 import { ClientContext } from "../contexts/ClientContext";
-import AirplaneInput from "../assets/AirplaneInput";
-import PartialResults from "../assets/PartialResults";
+
 import { GlobalContext } from "../contexts/GlobalContext";
+import VehicleInput from "../assets/VehicleInput";
 import AddButton from "../assets/AddButton";
+import TrashInput from "../assets/TrashInput";
+import PartialEvent from "../assets/PartialEvent";
 
 type ConsumptionEvent = {
   transporte: TransportationProps;
@@ -20,7 +22,7 @@ type ConsumptionEvent = {
 };
 
 const Event = () => {
-  const {fatores} = useContext(GlobalContext);
+  const { fatores } = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
 
   const [evento, setEvento] = useState("");
@@ -41,8 +43,6 @@ const Event = () => {
     },
   });
 
-  const calcularTransporte = () => {};
-
   return (
     <section className="box event">
       <header className="box__header">
@@ -57,68 +57,41 @@ const Event = () => {
           </section>
           <section className="event__info">
             {(evento === "combustivel" && (
-              <div className="vehicle__event">
-                <VehicleSelector
-                  selected={consumo.transporte.combustivel.tipoVeiculo}
-                  setSelected={(e) =>
-                    setConsumo({
-                      ...consumo,
-                      transporte: {
-                        ...consumo.transporte,
-                        combustivel: {
-                          tipoVeiculo: e,
-                        },
-                      },
-                    })
-                  }
-                />
-                <input
-                  className="text__input"
-                  type="text"
-                  placeholder="km"
-                  onChange={(e) =>
+              <>
+                <VehicleInput
+                  consumo={data.evento.transporte}
+                  setConsumo={(value) =>
                     setData({
                       ...data,
-                      evento: {
-                        ...data.evento,
-                        transporte: parseFloat(
-                          !isNaN(parseFloat(e.target.value))
-                            ? e.target.value
-                            : "0"
-                        ),
-                      },
+                      evento: { ...data.evento, transporte: value },
                     })
                   }
                 />
-              </div>
+                <AddButton value={data.evento.transporte} />
+              </>
             )) ||
               (evento === "residuos" && (
-                <div className="trash__event">
-                  <input
-                    type="text"
-                    className="text__input methane__consumption"
-                    placeholder="kg"
-                    value={data.evento.residuos}
-                    onChange={(e) => {
+                <>
+                  <TrashInput
+                    consumo={data.evento.residuos}
+                    setConsumo={(value) => {
                       setData({
                         ...data,
-                        evento: {
-                          ...data.evento,
-                          residuos: parseFloat(
-                            !isNaN(parseFloat(e.target.value))
-                              ? e.target.value
-                              : "0"
-                          ),
-                        },
+                        evento: { ...data.evento, residuos: value },
                       });
                     }}
                   />
-                </div>
+                  <AddButton value={data.evento.residuos} />
+                </>
               )) ||
               (evento === "viagem" && <div className="travel__event"></div>)}
           </section>
-          
         </section>
+        <PartialEvent
+          total={
+            data.evento.residuos + data.evento.transporte + data.evento.viagem
+          }
+        />
       </main>
     </section>
   );
