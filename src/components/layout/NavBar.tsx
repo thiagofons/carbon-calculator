@@ -6,12 +6,15 @@ import logo from "../../img/logo-terrazul.png"
 const NavBar = () => {  
   return (
     <nav className="navbar">
-      <div className="logo">
-        <img src={logo} alt="Instituto Terrazul" />
+      <div className="content">
+        <div className="logo">
+          <img src={logo} alt="Instituto Terrazul" />
+        </div>
+        <ul className="links">
+          teste
+        </ul>
       </div>
-      <ul className="links">
-        
-      </ul>
+      
     </nav>
   )
 }

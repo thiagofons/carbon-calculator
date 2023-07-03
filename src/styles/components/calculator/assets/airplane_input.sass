@@ -1,0 +1,19 @@
+@use "../../../assets/_mixins"
+@use "../../../assets/_variables"
+
+.airplane__input
+
+  @include mixins.flex($direction: column, $gap: 0)
+  .origin__input
+    .text__input
+      margin-bottom: .25rem
+  .round__trip
+    @include mixins.flex($direction: row, $gap: .25rem)
+    input:hover
+      cursor: pointer
+  .fly__number
+    @include mixins.flex($direction: column, $gap: 0)
+    input
+      padding: .5rem .25rem
+      border-radius: .25rem
+      border: 1px solid variables.$medium-grey

@@ -1,0 +1,33 @@
+@use "../../../assets/_mixins"
+@use "../../../assets/_variables"
+
+.partial__results
+  align-self: center
+  min-height: 7.5rem
+
+  @include mixins.flex(row, 1rem)
+  flex-wrap: wrap
+  word-wrap: break-word
+
+  justify-content: space-evenly
+  justify-self: center
+  @media screen and ( min-width: 600px )
+    align-self: flex-start
+
+  .date__result
+    @include mixins.flex(column, .25rem)
+    justify-content: space-between
+    text-align: center
+
+    h4
+      color: variables.$blue
+
+    .consumption__value, .consumption__unit
+      display: block
+
+    .consumption__value
+      font-size: 2rem
+      font-weight: bold
+      color: variables.$medium-grey
+    .consumption__unit
+      color: variables.$medium-grey
