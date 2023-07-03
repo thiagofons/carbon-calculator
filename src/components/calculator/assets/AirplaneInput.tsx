@@ -2,10 +2,8 @@
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/assets/airplane_input.sass";
 
-import { useEffect } from "react";
 import { Airplane } from "../../../interfaces/Transportation";
-import { useState, useRef } from "react";
-import { GOOGLE_MAPS_API_KEY } from "../../../App";
+import { useState } from "react";
 
 type AirplaneInputProps = {
   consumo: number;
