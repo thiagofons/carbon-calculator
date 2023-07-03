@@ -39,6 +39,7 @@ const Transportation = () => {
 
           <AddButton value={data.inventario.transporte.mes} />
         </section>
+        
         <section className="consumption">
           <h4>Viagens aéreas</h4>
 

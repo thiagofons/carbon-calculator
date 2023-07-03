@@ -56,27 +56,28 @@ const Results = () => {
         <section className="result total__month">
           <h3>Emissões do mês</h3>
           <div className="result__data">
-            <span className="result__data__number">{data.total.mes.toFixed(2)}</span>
+            <span className="result__data__number">{data.total.mes.toFixed(2).replace(".", ",")}</span>
             <span className="consumption__unit">t CO&#8322;e</span>
+          </div>
+        </section>
+        <section className="result trees">
+          <h3>Compensação do mês</h3>
+          <div className="result__data">
+            <span className="result__data__number">{data.total.arvores.toFixed(0)}</span>
+            <span className="consumption__unit">árvores</span>
           </div>
         </section>
 
         <section className="result total__year">
           <h3>Estimativa do ano</h3>
           <div className="result__data">
-            <span className="result__data__number">{data.total.ano.toFixed(2)}</span>
+            <span className="result__data__number">{data.total.ano.toFixed(2).replace(".", ",")}</span>
             <span className="consumption__unit">t CO&#8322;e</span>
           </div>
           
         </section>
 
-        <section className="result trees">
-          <h3>Compensação</h3>
-          <div className="result__data">
-            <span className="result__data__number">{data.total.arvores.toFixed(0)}</span>
-            <span className="consumption__unit">árvores</span>
-          </div>
-        </section>
+        
       </main>
     </section>
   );
