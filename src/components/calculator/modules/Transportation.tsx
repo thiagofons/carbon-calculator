@@ -39,7 +39,7 @@ const Transportation = () => {
 
           <AddButton value={data.inventario.transporte.mes} />
         </section>
-        
+        {/**
         <section className="consumption">
           <h4>Viagens aéreas</h4>
 
@@ -58,9 +58,11 @@ const Transportation = () => {
               })
             }
           />
+           
 
           <button className="add__button">Adicionar ao cálculo</button>
         </section>
+        */}
         <PartialResults
           month={data.inventario.transporte.mes}
           year={data.inventario.transporte.ano}

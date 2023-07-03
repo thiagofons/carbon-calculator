@@ -14,10 +14,11 @@ const EventSelector = (props: EventSelectorProps) => {
       onChange={(e) => props.setSelected(e.target.value)}
       value={props.selected}
     >
-
       <option value="combustivel">Combustível</option>
       <option value="residuos">Resíduos</option>
-      <option value="viagem">Viagem de avião</option>
+      {/**
+       * <option value="viagem">Viagem de avião</option>
+       * */}
     </select>
   );
 };
