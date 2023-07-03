@@ -1,0 +1,98 @@
+@use "./assets/_resets"
+@use "./assets/_variables"
+@use "./assets/_mixins"
+
+*
+  font-family: variables.$font
+
+.box
+  padding: 1rem
+  border-radius: .25rem
+  box-shadow: 0 0 .3rem rgba(0, 0, 0, 25%)
+  background-color: variables.$white
+
+  &__header
+    h3
+      color: variables.$dark-grey
+
+  &__body
+    h4
+      color: variables.$blue
+      width: 100%
+    @include mixins.grid($rows:2 , $columns:1 , $gap:.5rem )
+
+    @media screen and ( min-width: 600px )
+      @include mixins.grid($rows:1 , $columns:2 , $gap:.5rem )
+      align-items: flex-start
+
+    section.consumption
+      width: 100%
+      
+
+    input[type="text"]
+      width: 100%
+      &:focus
+        outline: none
+    input[type="number"]
+      &:focus
+        outline: none
+    .text__input
+      padding: .5rem .25rem
+      border-radius: .25rem
+      border: 1px solid variables.$medium-grey
+
+    .add__button
+      margin-top: .5rem
+      border-radius: .5rem
+      background: variables.$blue-gradient
+      border: 1px solid variables.$blue
+      padding: .5rem
+      color: variables.$white
+      width: 100%
+      transition: .25s
+
+      &:hover
+        cursor: pointer
+        background: variables.$white
+        border: 1px solid variables.$blue
+        color: variables.$blue
+
+    .selector
+      padding: .5rem 0
+      border-radius: .25rem
+      &:hover
+        cursor: pointer
+      &:focus
+        outline: none
+        
+  &__results
+    align-self: center
+
+    min-height: 7.5rem
+
+    @include mixins.flex(row, 1rem)
+    flex-wrap: wrap
+    word-wrap: break-word
+
+    justify-content: space-evenly
+    justify-self: center
+    @media screen and ( min-width: 600px )
+      align-self: flex-start
+
+    .date__result
+      @include mixins.flex(column, .25rem)
+      justify-content: space-between
+      text-align: center
+
+      h4
+        color: variables.$blue
+
+      .consumption__value, .consumption__unit
+        display: block
+
+      .consumption__value
+        font-size: 2rem
+        font-weight: bold
+        color: variables.$medium-grey
+      .consumption__unit
+        color: variables.$medium-grey

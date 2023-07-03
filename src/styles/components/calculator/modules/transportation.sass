@@ -1,0 +1,23 @@
+@use "../../../assets/_mixins"
+.transportation
+  grid-column: span 2
+
+  .box__body
+
+    width: 100%
+    @media screen and ( min-width: 600px )
+      @include mixins.grid($rows: 1, $columns: 3, $gap: 5rem)
+
+    .consumption
+      width: 100%
+      .field
+        @include mixins.flex($direction: column, $gap: 0)
+      .origin__input
+        .text__input
+          margin-bottom: .25rem
+      .round__trip
+        input:hover
+          cursor: pointer
+  .box__results
+    display: flex
+    justify-content: center

@@ -1,0 +1,15 @@
+@use "../../assets/_variables"
+@use "../../assets/_mixins"
+
+.navbar
+  width: 100%
+  @include mixins.flex($direction: row, $gap: 0)
+  justify-content: center
+  background-color: variables.$white
+  padding: 1rem
+
+  .content
+    min-width: 80%
+    @include mixins.flex($direction: row, $gap: 0)
+    align-items: center
+    justify-content: space-between

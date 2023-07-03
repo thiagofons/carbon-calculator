@@ -1,0 +1,38 @@
+@use "../../../assets/_variables"
+@use "../../../assets/_mixins"
+  
+.results
+  h2
+    color: variables.$blue
+  
+  &__data
+    @include mixins.grid($rows: 3, $columns: 1, $gap: 1rem)
+    align-items: center
+    text-align: center
+
+    @media screen and ( min-width: 600px )
+      @include mixins.grid($rows: 1, $columns: 3, $gap: 1rem)
+      
+    
+    .result
+      h3
+        color: variables.$blue
+        overflow: hidden
+      &__data
+        padding: 1rem 0
+        justify-content: center
+        @include mixins.flex($direction: column, $gap: 0)
+        align-items: center
+        justify-self: center        
+
+        &__number, .consumption__unit
+          color: variables.$medium-grey
+          
+        &__number          
+          font-weight: bold
+          font-size: 3rem
+
+
+    
+    
+   

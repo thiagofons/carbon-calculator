@@ -1,0 +1,20 @@
+@use "../../../assets/_variables"
+
+.calculator__selector
+  h2
+    
+  main
+    display: flex
+    gap: 1rem
+
+    .date__select
+      width: 10rem
+      padding: .5rem
+      border: 1px solid variables.$medium-grey
+      border-radius: .5rem
+      &:hover
+        cursor: pointer
+      &:focus
+        outline: none
+      &, option
+        color: variables.$medium-grey
