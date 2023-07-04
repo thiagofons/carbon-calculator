@@ -10,7 +10,12 @@ const Footer = () => {
           Você pode se aproximar do Instituto Terrazul sendo um voluntário ou
           parceiro. Fale conosco!
         </p>
-        <button className="blue__btn">Contatos</button>
+        
+          <button className="blue__btn">
+            <a href="http://intitutoterrazul.educacao.ws/contatos/">Contato</a>
+          </button>
+        
+        
       </section>
       <section className="contact__info">
         <header>
