@@ -6,7 +6,7 @@ const HomeHeader = () => {
   return (
     <header className="home__header">
       <header>
-        <img className="banner" src={banner} alt="" />
+        <img className="banner" src={banner} alt="Calculadora de CO2: plante para neutralizar. Calcule suas emissões conosco. Valorize o carbono azul." />
       </header>
       <main>
         <p className="text">

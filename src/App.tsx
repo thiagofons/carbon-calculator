@@ -9,6 +9,7 @@ import { GlobalProvider } from "./components/calculator/contexts/GlobalContext";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Footer from "./components/layout/Footer";
 
 
 
@@ -33,6 +34,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </GlobalProvider>
+      <Footer />
     </Container>
   );
 }
