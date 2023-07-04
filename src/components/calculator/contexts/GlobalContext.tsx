@@ -1,10 +1,18 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 type GlobalProps = {
   children: any;
 };
 
+type Date = {
+  mes: number;
+  ano: number;
+};
+
 export type GlobalData = {
+  dataAtual: Date;
+  setDataAtual: (d: Date) => void;
+
   fatores: {
     energiaEletrica: number;
     agua: number;
@@ -25,6 +33,12 @@ export type GlobalData = {
 };
 
 export const GlobalContext = createContext<GlobalData>({
+  dataAtual: {
+    mes: 0,
+    ano: 0,
+  },
+  setDataAtual: () => {},
+
   fatores: {
     energiaEletrica: 5,
     agua: 5,
@@ -45,6 +59,15 @@ export const GlobalContext = createContext<GlobalData>({
 });
 
 export const GlobalProvider = (props: GlobalProps) => {
+  const dateObj = new Date();
+  const mesAtual = dateObj.getMonth();
+  const anoAtual = dateObj.getFullYear();
+
+  const [dataAtual, setDataAtual] = useState({
+    mes: mesAtual,
+    ano: anoAtual,
+  });
+
   const fatores = {
     energiaEletrica: 5,
     agua: 5,
@@ -64,7 +87,7 @@ export const GlobalProvider = (props: GlobalProps) => {
   };
 
   return (
-    <GlobalContext.Provider value={{ fatores }}>
+    <GlobalContext.Provider value={{ dataAtual, setDataAtual, fatores }}>
       {props.children}
     </GlobalContext.Provider>
   );
