@@ -61,7 +61,7 @@ const VehicleInput = (props: VehicleInputProps) => {
           onChange={(e) =>
             props.setConsumo(
               parseFloat(
-                !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
+                !isNaN(parseFloat(e.target.value.replace(".", ","))) ? e.target.value : "0"
               ) * seletor(tipoVeiculo)
             )
           }

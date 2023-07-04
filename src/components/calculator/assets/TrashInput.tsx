@@ -23,7 +23,7 @@ const TrashInput = (props: TrashInputProps) => {
         onChange={(e) =>
           props.setConsumo(
             parseFloat(
-              !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
+              !isNaN(parseFloat(e.target.value.replace(".", ","))) ? e.target.value.replace(".", ",") : "0"
             ) * fatores.residuos
           )
         }
