@@ -12,17 +12,12 @@ export type GlobalData = {
     gasEncanado: number;
     residuos: number;
     transporte: {
-      carroGasolinaAte1_4: number;
-      carroGasolinaDe1_5Ate2_0: number;
-      carroGasolinaAcima2_0: number;
-      carroAlcoolAte1_4: number;
-      carroAlcoolDe1_5Ate2_0: number;
-      carroAlcoolAcima2_0: number;
-      carroGasNatural: number;
-      carroDiesel: number;
-      carroTaxi: number;
-
-      onibus: number;
+      veiculoGasolina: number;
+      veiculoGNV: number;
+      veiculoAlcool: number;
+      veiculoDiesel: number;
+      motoGasolina: number;
+      motoAlcool: number;
       aviao: number;
     };
     conversaoParaArvores: number;
@@ -37,20 +32,15 @@ export const GlobalContext = createContext<GlobalData>({
     gasEncanado: 5,
     residuos: 5,
     transporte: {
-      carroGasolinaAte1_4: 5,
-      carroGasolinaDe1_5Ate2_0: 5,
-      carroGasolinaAcima2_0: 5,
-      carroAlcoolAte1_4: 5,
-      carroAlcoolDe1_5Ate2_0: 5,
-      carroAlcoolAcima2_0: 5,
-      carroGasNatural: 5,
-      carroDiesel: 10,
-      carroTaxi: 5,
-      onibus: 5,
-      aviao: 50,
+      veiculoGasolina: 5,
+      veiculoGNV: 5,
+      veiculoAlcool: 5,
+      veiculoDiesel: 5,
+      motoGasolina: 5,
+      motoAlcool: 5,
+      aviao: 5,
     },
     conversaoParaArvores: 10,
-
   },
 });
 
@@ -62,16 +52,12 @@ export const GlobalProvider = (props: GlobalProps) => {
     gasEncanado: 5,
     residuos: 5,
     transporte: {
-      carroGasolinaAte1_4: 5,
-      carroGasolinaDe1_5Ate2_0: 5,
-      carroGasolinaAcima2_0: 5,
-      carroAlcoolAte1_4: 5,
-      carroAlcoolDe1_5Ate2_0: 5,
-      carroAlcoolAcima2_0: 5,
-      carroGasNatural: 5,
-      carroDiesel: 5,
-      carroTaxi: 5,
-      onibus: 5,
+      veiculoGasolina: 5,
+      veiculoGNV: 5,
+      veiculoAlcool: 5,
+      veiculoDiesel: 5,
+      motoGasolina: 5,
+      motoAlcool: 5,
       aviao: 5,
     },
     conversaoParaArvores: 10,
