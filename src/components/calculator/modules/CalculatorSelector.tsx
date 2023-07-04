@@ -1,6 +1,7 @@
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/calculator_selector.sass";
+import "aos/dist/aos.css";
 
 type CalculatorSelectorProps = {
   categoria: string;
@@ -8,7 +9,7 @@ type CalculatorSelectorProps = {
 };
 const CalculatorSelector = (props: CalculatorSelectorProps) => {
   return (
-    <section className="box calculator__selector">
+    <section className="box calculator__selector" data-aos="fade-up">
       <header className="box__header">
         <h3>Categoria de consumo</h3>
       </header>
@@ -19,7 +20,7 @@ const CalculatorSelector = (props: CalculatorSelectorProps) => {
           value={props.categoria}
         >
           <option value="inventario">Inventário domiciliar</option>
-          <option value="evento">Adição de evento</option>
+          <option value="evento">Evento</option>
         </select>
       </main>
     </section>

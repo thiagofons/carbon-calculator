@@ -3,6 +3,8 @@ import { useContext } from "react";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/date_selector.sass";
+import "aos/dist/aos.css";
+
 import { ClientContext } from "../contexts/ClientContext";
 
 const DateSelector = () => {
@@ -29,7 +31,7 @@ const DateSelector = () => {
   }
 
   return (
-    <section className="box date__selector">
+    <section className="box date__selector" data-aos="fade-up">
       <header className="box__header">
         <h3>Período</h3>
       </header>

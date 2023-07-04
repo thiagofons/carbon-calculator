@@ -1,6 +1,8 @@
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/gas.sass";
+import "aos/dist/aos.css";
+
 import { useContext, useEffect, useState } from "react";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
@@ -32,7 +34,7 @@ const Gas = () => {
   }, [consumo]);
 
   return (
-    <section className="box gas">
+    <section className="box gas" data-aos="fade-up">
       <header className="box__header">
         <h3>Consumo de gás de cozinha</h3>
       </header>

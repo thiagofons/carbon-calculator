@@ -1,4 +1,21 @@
-.home
+@use "../assets/_variables"
   
+.home
   max-width: 80rem
   padding: 1rem
+
+.home__header
+  .banner
+    
+    border-radius: 1rem
+
+  .text
+    margin: 2rem 0
+    text-align: center
+    font-weight: bold
+    color: variables.$very-dark-blue
+    font-size: 1.25rem
+    @media screen and ( min-width: 600px )
+      text-align: left
+    
+    

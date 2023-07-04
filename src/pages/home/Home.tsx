@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <main className="home">
       <HomeHeader />
-
+      
       <ClientProvider>
         <ClientCalculator />
       </ClientProvider>

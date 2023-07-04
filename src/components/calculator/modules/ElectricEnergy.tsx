@@ -3,6 +3,8 @@ import { useContext } from "react";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/electric_energy.sass";
+import "aos/dist/aos.css";
+
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
 import { GlobalContext } from "../contexts/GlobalContext";
@@ -13,7 +15,7 @@ const ElectricEnergy = () => {
   const { data, setData } = useContext(ClientContext);
 
   return (
-    <section className="box electric__energy">
+    <section className="box electric__energy" data-aos="fade-up">
       <header className="box__header">
         <h3>Consumo de energia elétrica</h3>
       </header>
