@@ -1,6 +1,7 @@
 /* styles import */
 import "../../styles/main.sass";
 import "../../styles/components/calculator/client_calculator.sass";
+import "aos/dist/aos.css";
 
 import DateSelector from "./modules/DateSelector";
 import ElectricEnergy from "./modules/ElectricEnergy";

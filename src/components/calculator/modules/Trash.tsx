@@ -3,6 +3,7 @@ import { useContext } from "react";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/trash.sass";
+import "aos/dist/aos.css";
 
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
@@ -13,7 +14,7 @@ const Trash = () => {
   const { data, setData } = useContext(ClientContext);
 
   return (
-    <section className="box trash">
+    <section className="box trash" data-aos="fade-up">
       <header className="box__header">
         <h3>Geração de resíduos</h3>
       </header>

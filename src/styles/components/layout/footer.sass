@@ -1,0 +1,24 @@
+@use "../../assets/_variables"
+@use "../../assets/_mixins"
+  
+.footer
+  width: 100%
+  .invite, .contact__info
+    padding: 2rem
+    
+  .invite
+    text-align: center
+    background-color: variables.$footer-light-grey
+    color: variables.$very-dark-blue
+    p
+      margin: 1rem 0
+
+  .contact__info
+    background-color: variables.$footer-medium-grey
+    color: variables.$white
+
+    .contact
+      @include mixins.flex($direction: column, $gap: .25rem)
+      
+
+  

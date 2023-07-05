@@ -19,29 +19,25 @@ const VehicleInput = (props: VehicleInputProps) => {
 
   const seletor = (nome: string) => {
     switch (nome) {
-      case "carroGasolinaAte1_4":
-        return fatores.transporte.carroGasolinaAte1_4;
-      case "carroGasolinaDe1_5Ate2_0":
-        return fatores.transporte.carroGasolinaDe1_5Ate2_0;
-      case "carroGasolinaAcima2_0":
-        return fatores.transporte.carroGasolinaAcima2_0;
-      case "carroAlcoolAte1_4":
-        return fatores.transporte.carroAlcoolAte1_4;
-      case "carroAlcoolDe1_5Ate2_0":
-        return fatores.transporte.carroAlcoolDe1_5Ate2_0;
-      case "carroAlcoolAcima2_0":
-        return fatores.transporte.carroAlcoolAcima2_0;
-      case "carroGasNatural":
-        return fatores.transporte.carroGasNatural;
-      case "carroDiesel":
-        return fatores.transporte.carroDiesel;
-      case "carroTaxi":
-        return fatores.transporte.carroTaxi;
-      case "onibus":
-        return fatores.transporte.onibus;
+      case "veiculoGasolina":
+        return fatores.transporte.veiculoGasolina;
+      case "veiculoGNV":
+        return fatores.transporte.veiculoGNV;
+      case "veiculoAlcool":
+        return fatores.transporte.veiculoAlcool;
+      case "veiculoDiesel":
+        return fatores.transporte.veiculoDiesel;
+      case "motoGasolina":
+        return fatores.transporte.motoGasolina;
+      case "motoAlcool":
+        return fatores.transporte.motoAlcool;
       default:
         return 0;
     }
+  };
+
+  const consumo = (categoria: string, valor: number) => {
+    return seletor(categoria) * valor;
   };
 
   return (
@@ -60,9 +56,12 @@ const VehicleInput = (props: VehicleInputProps) => {
           disabled={!tipoVeiculo}
           onChange={(e) =>
             props.setConsumo(
-              parseFloat(
-                !isNaN(parseFloat(e.target.value.replace(".", ","))) ? e.target.value : "0"
-              ) * seletor(tipoVeiculo)
+              consumo(
+                tipoVeiculo,
+                parseFloat(
+                  !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
+                )
+              )
             )
           }
         />

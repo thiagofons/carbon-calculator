@@ -3,7 +3,10 @@ import { useContext } from "react";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/date_selector.sass";
+import "aos/dist/aos.css";
+
 import { ClientContext } from "../contexts/ClientContext";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 const DateSelector = () => {
   const meses = [
@@ -21,15 +24,15 @@ const DateSelector = () => {
     "Dezembro",
   ];
 
-  const { data, setData } = useContext(ClientContext);
+  const { dataAtual, setDataAtual } = useContext(GlobalContext);
 
   const anos = [];
-  for (let ano = 2023; ano <= data.dataAtual.ano; ano++) {
+  for (let ano = 2023; ano <= dataAtual.ano; ano++) {
     anos.push(ano);
   }
 
   return (
-    <section className="box date__selector">
+    <section className="box date__selector" data-aos="fade-up">
       <header className="box__header">
         <h3>Período</h3>
       </header>
@@ -37,14 +40,11 @@ const DateSelector = () => {
         <section className="month">
           <select
             className="date__select month__selector"
-            value={data.dataAtual.mes}
+            value={dataAtual.mes}
             onChange={(e) =>
-              setData({
-                ...data,
-                dataAtual: {
-                  ...data.dataAtual,
-                  mes: parseInt(e.target.value),
-                },
+              setDataAtual({
+                ...dataAtual,
+                mes: parseInt(e.target.value),
               })
             }
           >
@@ -58,14 +58,11 @@ const DateSelector = () => {
         <section className="year">
           <select
             className="date__select year__selector"
-            value={data.dataAtual.ano}
+            value={dataAtual.ano}
             onChange={(e) =>
-              setData({
-                ...data,
-                dataAtual: {
-                  ...data.dataAtual,
-                  ano: parseInt(e.target.value),
-                },
+              setDataAtual({
+                ...dataAtual,
+                ano: parseInt(e.target.value),
               })
             }
           >

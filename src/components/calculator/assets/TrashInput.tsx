@@ -11,7 +11,38 @@ type TrashInputProps = {
 };
 
 const TrashInput = (props: TrashInputProps) => {
-  const { fatores } = useContext(GlobalContext);
+  const { fatores, dataAtual } = useContext(GlobalContext);
+
+  const consumption = (valor: number) => {
+    switch (dataAtual.mes) {
+      case 0:
+        return fatores.residuos.jan * valor;
+      case 1:
+        return fatores.residuos.feb * valor;
+      case 2:
+        return fatores.residuos.mar * valor;
+      case 3:
+        return fatores.residuos.apr * valor;
+      case 4:
+        return fatores.residuos.may * valor;
+      case 5:
+        return fatores.residuos.jun * valor;
+      case 6:
+        return fatores.residuos.jul * valor;
+      case 7:
+        return fatores.residuos.aug * valor;
+      case 8:
+        return fatores.residuos.sep * valor;
+      case 9:
+        return fatores.residuos.oct * valor;
+      case 10:
+        return fatores.residuos.nov * valor;
+      case 11:
+        return fatores.residuos.dec * valor;
+      default:
+        return 0;
+    }
+  };
 
   return (
     <div className="trash__input">
@@ -20,13 +51,14 @@ const TrashInput = (props: TrashInputProps) => {
         type="text"
         className="text__input methane__consumption"
         placeholder="kg"
-        onChange={(e) =>
+        onChange={(e) => {
           props.setConsumo(
-            parseFloat(
-              !isNaN(parseFloat(e.target.value.replace(".", ","))) ? e.target.value.replace(".", ",") : "0"
-            ) * fatores.residuos
-          )
-        }
+            consumption(parseFloat(e.target.value ? e.target.value : "0"))
+          );
+          console.log(
+            consumption(parseFloat(e.target.value ? e.target.value : "0"))
+          );
+        }}
       />
     </div>
   );

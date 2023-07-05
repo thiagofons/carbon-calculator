@@ -6,13 +6,15 @@ import PartialResults from "../assets/PartialResults";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/water_consumption.sass";
+import "aos/dist/aos.css";
+
 import AddButton from "../assets/AddButton";
 
 const WaterConsumption = () => {
   const { data, setData } = useContext(ClientContext);
 
   return (
-    <section className="box water__consumption">
+    <section className="box water__consumption" data-aos="fade-up">
       <header className="box__header">
         <h3>Consumo de água</h3>
       </header>
