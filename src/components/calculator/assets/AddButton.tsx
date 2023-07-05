@@ -20,8 +20,8 @@ const AddButton = (props: AddButtonProps) => {
         setData({
           ...data,
           total: {
-            mes: data.total.mes + props.value,
-            ano: data.total.ano + props.value * 12,
+            mes: (data.total.mes + props.value) / 1000,
+            ano: (data.total.ano + props.value * 12) / 1000,
             arvores:
               (data.total.mes + props.value) * fatores.conversaoParaArvores,
           },

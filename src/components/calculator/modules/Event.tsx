@@ -4,6 +4,8 @@ import VehicleSelector from "../assets/VehicleSelector";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/event.sass";
+import "aos/dist/aos.css";
+
 import { TransportationProps } from "../../../interfaces/Transportation";
 
 import { ClientContext } from "../contexts/ClientContext";
@@ -44,9 +46,9 @@ const Event = () => {
   });
 
   return (
-    <section className="box event">
+    <section className="box event" data-aos="fade-up">
       <header className="box__header">
-        <h3>Adição de evento</h3>
+        <h3>Evento</h3>
       </header>
 
       <main className="box__body">
@@ -89,9 +91,9 @@ const Event = () => {
         </section>
         <PartialEvent
           total={
-            evento === "residuos" ? data.evento.residuos :
+            (evento === "residuos" ? data.evento.residuos :
             evento === "combustivel" ? data.evento.transporte :
-            evento === "viagem" ? data.evento.viagem : 0
+            evento === "viagem" ? data.evento.viagem : 0) / 1000
           }
         />
       </main>

@@ -3,6 +3,7 @@ import { useContext } from "react";
 /* styles import */
 import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/transportation.sass";
+import "aos/dist/aos.css";
 
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
@@ -15,7 +16,7 @@ const Transportation = () => {
   const { data, setData } = useContext(ClientContext);
 
   return (
-    <section className="box transportation">
+    <section className="box transportation" data-aos="fade-up">
       <header className="box__header">
         <h3>Transporte</h3>
       </header>
