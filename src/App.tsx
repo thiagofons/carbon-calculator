@@ -12,11 +12,9 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Footer from "./components/layout/Footer";
 import LoginPage from "./pages/admin/login/LoginPage";
-import RegisterPage from "./pages/admin/register/RegisterPage";
 
 import { AuthContext, AuthProvider } from "./contexts/AuthContext";
 import Admin from "./pages/admin/home/Admin";
-import PrivateRoute from "./components/authentication/PrivateRoute";
 
 function App() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -45,12 +43,8 @@ function App() {
                 path="/login"
                 element={<LoginPage authService={new AuthService()} />}
               />
-              <Route
-                path="/register"
-                element={<RegisterPage authService={new AuthService()} />}
-              />
-              
-              <Route path="/admin" element={<Admin />}/>
+
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </GlobalProvider>
           <Footer />

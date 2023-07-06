@@ -45,9 +45,6 @@ const LoginPage = (props: LoginPageProps) => {
     );
   };
 
-  const goToRegisterPage = () => {
-    navigate("/register");
-  };
 
   return (
     <main className="login__page">
@@ -111,9 +108,6 @@ const LoginPage = (props: LoginPageProps) => {
             onClick={login}
           >
             Entrar
-          </button>
-          <button className="button button__grey" disabled={false} onClick={goToRegisterPage}>
-            Registrar
           </button>
         </div>
       </form>
