@@ -8,7 +8,6 @@
   padding: 1rem 10rem
   
   .content
-    
     @include mixins.flex($direction: row, $gap: 0)
     align-items: center
     justify-content: space-between
@@ -17,6 +16,7 @@
     @include mixins.flex($direction: column, $gap: 2rem)
     align-items: center
     display: none
+    
     @media screen and ( min-width: 600px )
       flex-direction: row
       display: flex

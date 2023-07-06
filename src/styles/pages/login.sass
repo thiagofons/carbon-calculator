@@ -34,7 +34,7 @@
         padding: .5rem .5rem
         border-radius: .5rem
         &:focus
-          border: 1px solid variables.$light-grey
+          outline: none
 
     .buttons
       @include mixins.flex(column, .25rem)
@@ -61,20 +61,17 @@
       &__grey
         color: variables.$medium-grey
         background-color: variables.$light-grey
-        &:hover
-          cursor: pointer
-          background-color: variables.$medium-grey
-          color: variables.$white
+        opacity: .75
+
   .link
     text-decoration: none
-    border-bottom: 1px solid variables.$medium-grey
     color: variables.$medium-grey
     padding: 0 .25rem
-
+    transition: .25s
     &:hover
-      color: variables.$white
-      border-bottom: none
-      background-color: variables.$medium-grey
+      opacity: .75
+      cursor: pointer
+      
     
       
 

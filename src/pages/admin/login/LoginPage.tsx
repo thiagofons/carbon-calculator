@@ -1,6 +1,6 @@
 import "../../../styles/pages/login.sass"
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 
 import AuthService from "../../../services/AuthService";
@@ -8,12 +8,15 @@ import ErrorValidation from "../../../components/error-validation/ErrorValidatio
 import ErrorMessage from "../../../components/error-validation/ErrorMessage";
 
 import { isEmailValid } from "../../../helpers/FormHelper";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 type LoginPageProps = {
   authService: AuthService;
 };
 
-const LoginPage = (props: LoginPageProps) => {
+const LoginPage = (props: LoginPageProps) => {  
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  
   const [form, setForm] = useState({
     email: {
       hasChanged: false,
@@ -33,7 +36,8 @@ const LoginPage = (props: LoginPageProps) => {
     props.authService.login(form.email.value, form.password.value).then(
       () => {
         setError(false);
-        navigate("/home");
+        setIsLoggedIn(true);
+        navigate("/admin");
       },
       () => {
         setError(true);
@@ -108,7 +112,7 @@ const LoginPage = (props: LoginPageProps) => {
           >
             Entrar
           </button>
-          <button className="button button__grey" onClick={goToRegisterPage}>
+          <button className="button button__grey" disabled={false} onClick={goToRegisterPage}>
             Registrar
           </button>
         </div>
