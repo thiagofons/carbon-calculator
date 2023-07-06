@@ -91,9 +91,9 @@ const Event = () => {
         </section>
         <PartialEvent
           total={
-            evento === "residuos" ? data.evento.residuos :
+            (evento === "residuos" ? data.evento.residuos :
             evento === "combustivel" ? data.evento.transporte :
-            evento === "viagem" ? data.evento.viagem : 0
+            evento === "viagem" ? data.evento.viagem : 0) / 1000
           }
         />
       </main>

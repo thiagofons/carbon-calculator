@@ -26,7 +26,7 @@ const VehicleInput = (props: VehicleInputProps) => {
       case "veiculoAlcool":
         return fatores.transporte.veiculoAlcool;
       case "veiculoDiesel":
-        return fatores.transporte.veiculoAlcool;
+        return fatores.transporte.veiculoDiesel;
       case "motoGasolina":
         return fatores.transporte.motoGasolina;
       case "motoAlcool":
@@ -34,6 +34,10 @@ const VehicleInput = (props: VehicleInputProps) => {
       default:
         return 0;
     }
+  };
+
+  const consumo = (categoria: string, valor: number) => {
+    return seletor(categoria) * valor;
   };
 
   return (
@@ -52,9 +56,12 @@ const VehicleInput = (props: VehicleInputProps) => {
           disabled={!tipoVeiculo}
           onChange={(e) =>
             props.setConsumo(
-              parseFloat(
-                !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
-              ) * seletor(tipoVeiculo)
+              consumo(
+                tipoVeiculo,
+                parseFloat(
+                  !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
+                )
+              )
             )
           }
         />

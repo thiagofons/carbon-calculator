@@ -26,13 +26,7 @@ function App() {
     <Container>
       <NavBar />
       <GlobalProvider>
-        {" "}
-        {/** provides emission factors for all the elements */}
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </BrowserRouter>
+        <Home />
       </GlobalProvider>
       <Footer />
     </Container>
