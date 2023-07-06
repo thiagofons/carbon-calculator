@@ -1,0 +1,84 @@
+@use "../assets/_variables"
+@use "../assets/_mixins"
+
+.login__page
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: auto
+  padding: 1rem
+
+  .login__form
+    background-color: variables.$white
+    @include mixins.flex($direction: column, $gap: 1rem)
+    
+    gap: 1rem
+    border-radius: .5rem
+    width: 25rem
+    padding: 2rem 1rem
+    box-shadow: 0 .5rem .5rem rgba(0,0,0,25%)
+
+    h2
+      font-size: 1.5rem
+      color: variables.$dark-grey
+
+    .fields 
+      @include mixins.grid(1, 1, 1rem)
+      
+    .field
+      @include mixins.flex(column, 0)
+      label 
+        color: variables.$medium-grey
+      input
+        border: 1px solid variables.$light-grey
+        padding: .5rem .5rem
+        border-radius: .5rem
+        &:focus
+          border: 1px solid variables.$light-grey
+
+    .buttons
+      @include mixins.flex(column, .25rem)
+
+    .button
+      border: none
+      border-radius: .5rem
+      padding: 1rem 0
+
+      &__blue, &__grey
+        transition: .25s
+
+      &__blue
+        color: variables.$white
+        background-color: variables.$blue
+
+        .disabled
+          background-color: variables.$blue
+          
+        &:hover
+          cursor: pointer
+          background-color: variables.$dark-blue
+      
+      &__grey
+        color: variables.$medium-grey
+        background-color: variables.$light-grey
+        &:hover
+          cursor: pointer
+          background-color: variables.$medium-grey
+          color: variables.$white
+  .link
+    text-decoration: none
+    border-bottom: 1px solid variables.$medium-grey
+    color: variables.$medium-grey
+    padding: 0 .25rem
+
+    &:hover
+      color: variables.$white
+      border-bottom: none
+      background-color: variables.$medium-grey
+    
+      
+
+
+
+      
+      
