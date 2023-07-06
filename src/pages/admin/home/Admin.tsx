@@ -1,5 +1,11 @@
 const Admin = () => {
-  return <main>teste</main>;
-}
+  return (
+    <main>
+      <section className="fatores">
+        
+      </section>
+    </main>
+  );
+};
 
 export default Admin;
