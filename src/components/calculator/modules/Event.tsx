@@ -24,26 +24,9 @@ type ConsumptionEvent = {
 };
 
 const Event = () => {
-  const { fatores } = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
 
   const [evento, setEvento] = useState("combustivel");
-  const [consumo, setConsumo] = useState<ConsumptionEvent>({
-    transporte: {
-      combustivel: {
-        tipoVeiculo: "",
-      },
-      aviao: {
-        origem: "",
-        destino: "",
-        idaEVolta: false,
-        quantidadeVoos: 0,
-      },
-    },
-    residuos: {
-      consumo: 0,
-    },
-  });
 
   return (
     <section className="box event" data-aos="fade-up">

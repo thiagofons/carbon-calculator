@@ -3,6 +3,7 @@ import { GlobalContext } from "../../../components/calculator/contexts/GlobalCon
 
 import AdminMonoField from "./assets/emission_factors/AdminMonoField";
 import AdminMultiField from "./assets/emission_factors/AdminMultiField";
+import WaterField from "./assets/emission_factors/WaterField";
 
 const Admin = () => {
   const { fatores, setFatores } = useContext(GlobalContext);
@@ -19,6 +20,7 @@ const Admin = () => {
             value={fatores.energiaEletrica}
           />
           */}
+          <WaterField />
           
 
         </form>

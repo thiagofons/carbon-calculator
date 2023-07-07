@@ -10,7 +10,6 @@ import PartialResults from "../assets/PartialResults";
 
 import AddButton from "../assets/AddButton";
 import VehicleInput from "../assets/VehicleInput";
-import AirplaneInput from "../assets/AirplaneInput";
 
 const Transportation = () => {
   const { data, setData } = useContext(ClientContext);

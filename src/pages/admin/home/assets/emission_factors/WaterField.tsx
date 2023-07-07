@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { doc, getDoc } from "firebase/firestore";
+
+import { db } from "../../../../../FirebaseConfig";
 
 type WaterFieldForm = {
   efluenteLiqDomestico: number;
@@ -22,28 +25,23 @@ type WaterFieldForm = {
 };
 
 const WaterField = () => {
-  const [form, setForm] = useState<WaterFieldForm>({
-    efluenteLiqDomestico: 0.8,
-    compOrganicoDegradavelEntrada: 0.464,
-    compOrganicoRemovido: 0.344,
-    qtdNitrogenio: 0.046,
-    fatorEmissaoNitrogenio: 0.005,
-    tipoTratamento: "Tratamento aeróbio (lodo ativado, lagoa aerada, etc)",
-    fatorEmissaoMetanoDBO: 0.018,
-    fatorEmissaoMetanoDQO: 0.25,
-    fatorEmissaoOxidoNitroso: 0.005,
-    qtdMetanoRecuperada: 0,
-    qtdEfluenteLiqTratadoLancadoAmbiente: 0,
-    compOrganicoDegradavelApos: 0.12,
-    qtdNitrogenioApos: 0.02,
-    fatorEmissaoOxidoNitrosoApos: 0.005,
-    totalEmissaoMetanoTratamentoDisposicao: 0,
-    totalEmissaoOxidoNitrosoTratamentoDisposicao: 0,
-    totalEmissaoCo2eTratamentoDisposicao: 0,
-    totalEmissaoCo2BiogenicoTratamento: 0,
-  });
+  const [form, setForm] = useState({});
 
-  
+  useEffect(() => {
+    const getData = async () => {
+      const docRef = doc(db, "fatores", "agua");
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setForm(docSnap.data());
+        console.log(form);
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    getData();
+  }, []);
+
   return <section className="water__field"></section>;
 };
 

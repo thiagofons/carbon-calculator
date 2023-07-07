@@ -5,7 +5,6 @@ import "../../../styles/main.sass";
 import "../../../styles/components/calculator/modules/date_selector.sass";
 import "aos/dist/aos.css";
 
-import { ClientContext } from "../contexts/ClientContext";
 import { GlobalContext } from "../contexts/GlobalContext";
 
 const DateSelector = () => {

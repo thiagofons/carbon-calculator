@@ -18,22 +18,28 @@ const VehicleInput = (props: VehicleInputProps) => {
   const [tipoVeiculo, setTipoVeiculo] = useState("");
 
   const seletor = (nome: string) => {
-    switch (nome) {
-      case "veiculoGasolina":
-        return fatores.transporte.veiculoGasolina;
-      case "veiculoGNV":
-        return fatores.transporte.veiculoGNV;
-      case "veiculoAlcool":
-        return fatores.transporte.veiculoAlcool;
-      case "veiculoDiesel":
-        return fatores.transporte.veiculoDiesel;
-      case "motoGasolina":
-        return fatores.transporte.motoGasolina;
-      case "motoAlcool":
-        return fatores.transporte.motoAlcool;
-      default:
-        return 0;
+    if(fatores) {
+      switch (nome) {
+        case "veiculoGasolina":
+          return fatores.transporte.veiculoGasolina;
+        case "veiculoGNV":
+          return fatores.transporte.veiculoGNV;
+        case "veiculoAlcool":
+          return fatores.transporte.veiculoAlcool;
+        case "veiculoDiesel":
+          return fatores.transporte.veiculoDiesel;
+        case "motoGasolina":
+          return fatores.transporte.motoGasolina;
+        case "motoAlcool":
+          return fatores.transporte.motoAlcool;
+        default:
+          return 0;
+      }
     }
+    else {
+      return 0;
+    }
+    
   };
 
   const consumo = (categoria: string, valor: number) => {

@@ -27,9 +27,7 @@ function App() {
     });
   }, []);
 
-  setInterval(() => {
-    console.log(isLoggedIn);
-  }, 1000);
+
 
   return (
     <BrowserRouter>
