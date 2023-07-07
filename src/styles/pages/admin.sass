@@ -1,0 +1,40 @@
+@use "../assets/_mixins"
+@use "../assets/_variables"
+  
+.fatores
+  @include mixins.flex($direction: column, $gap: 1rem)
+  
+
+.admin__mono__field, .admin__multi__field
+  @include mixins.flex($direction: column, $gap: 1rem)
+  
+  .admin__field__name
+    font-weight: bold
+    color: variables.$blue
+
+  .admin__field__content
+    .field
+      @include mixins.flex($direction: row, $gap: 0)
+      justify-content: space-between
+      
+      label
+        padding: 0 1rem
+        
+  .admin__field__button
+    border: none
+    border-radius: .5rem
+    box-shadow: variables.$box-shadow
+    color: variables.$white
+    background-color: variables.$blue
+    padding: .5rem 1rem
+    transition: .25s
+    &:hover
+      background-color: variables.$dark-blue
+      cursor: pointer
+      
+
+
+.admin__mono__field
+
+.admin__multi__field
+  

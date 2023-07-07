@@ -9,7 +9,7 @@ type Date = {
   ano: number;
 };
 
-type MonthFactor = {
+export type MonthFactor = {
   jan: number;
   feb: number;
   mar: number;
@@ -61,8 +61,10 @@ export type GlobalData = {
       motoAlcool: number;
       aviao: number;
     };
+
     conversaoParaArvores: number;
   };
+  setFatores: (f: any) => void;
 };
 
 export const GlobalContext = createContext<GlobalData>({
@@ -115,6 +117,7 @@ export const GlobalContext = createContext<GlobalData>({
     },
     conversaoParaArvores: 0,
   },
+  setFatores: () => {},
 });
 
 export const GlobalProvider = (props: GlobalProps) => {
@@ -127,13 +130,13 @@ export const GlobalProvider = (props: GlobalProps) => {
     ano: anoAtual,
   });
 
-  const fatores = {
+  const [fatores, setFatores] = useState({
     energiaEletrica: {
       jan: 0.0732,
       feb: 0.0503,
       mar: 0.0406,
       apr: 0.0216,
-      may: 0.0280,
+      may: 0.028,
       jun: 0.0441,
       jul: 0.0419,
       aug: 0.0457,
@@ -151,7 +154,7 @@ export const GlobalProvider = (props: GlobalProps) => {
       mar: 2.64,
       apr: 2.83,
       may: 3.01,
-      jun: 3.20,
+      jun: 3.2,
       jul: 3.39,
       aug: 3.58,
       sep: 3.77,
@@ -169,10 +172,12 @@ export const GlobalProvider = (props: GlobalProps) => {
       aviao: 9.09 * 0.86 * 0.8 * 2.5249,
     },
     conversaoParaArvores: 0.007,
-  };
+  });
 
   return (
-    <GlobalContext.Provider value={{ dataAtual, setDataAtual, fatores }}>
+    <GlobalContext.Provider
+      value={{ dataAtual, setDataAtual, fatores, setFatores }}
+    >
       {props.children}
     </GlobalContext.Provider>
   );
