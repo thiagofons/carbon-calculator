@@ -5,14 +5,15 @@ import AdminMonoField from "./assets/emission_factors/AdminMonoField";
 import AdminMultiField from "./assets/emission_factors/AdminMultiField";
 import WaterField from "./assets/emission_factors/WaterField";
 
+import "../../../styles/components/admin/admin.sass";
+
 const Admin = () => {
   const { fatores, setFatores } = useContext(GlobalContext);
-
+  console.log(localStorage.getItem("userId"));
+  
   return (
-    <main>
-      <section className="fatores">
-        <form action="" className="fatores__form">
-          {/**
+    <main className="fatores">
+      {/**
           <AdminMultiField
             label="Energia Elétrica"
             setValue={setFatores}
@@ -20,11 +21,7 @@ const Admin = () => {
             value={fatores.energiaEletrica}
           />
           */}
-          <WaterField />
-          
-
-        </form>
-      </section>
+      <WaterField />
     </main>
   );
 };

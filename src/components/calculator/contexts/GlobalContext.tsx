@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../FirebaseConfig";
+import { getObjectFromFirestore } from "../../../helpers/FirebaseHelper";
 
 type GlobalProps = {
   children: any;
@@ -133,22 +132,6 @@ export const GlobalProvider = (props: GlobalProps) => {
     ano: anoAtual,
   });
 
-  const getObjectFromFirestore = async (objectId: string) => {
-    try {
-      const docRef = doc(db, "fatores", objectId);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        return docSnap.data();
-      } else {
-        throw new Error("Documento não encontrado");
-      }
-    } catch (error) {
-      console.error("Erro ao buscar o objeto:", error);
-      throw error;
-    }
-  };
-
   const [fatores, setFatores] = useState<Fatores | null>(null);
 
   useEffect(() => {
@@ -157,6 +140,8 @@ export const GlobalProvider = (props: GlobalProps) => {
         // Chame a função para buscar o objeto
         const fetchedObject = await getObjectFromFirestore("fatoresComuns");
         setFatores(fetchedObject as Fatores);
+        console.log(fatores);
+        
       } catch (error) {
         // Trate o erro, se necessário
         console.log("error");

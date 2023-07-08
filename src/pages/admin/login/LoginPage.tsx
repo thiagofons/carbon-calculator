@@ -1,4 +1,4 @@
-import "../../../styles/pages/login.sass"
+import "../../../styles/pages/login.sass";
 
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
@@ -8,15 +8,12 @@ import ErrorValidation from "../../../components/error-validation/ErrorValidatio
 import ErrorMessage from "../../../components/error-validation/ErrorMessage";
 
 import { isEmailValid } from "../../../helpers/FormHelper";
-import { AuthContext } from "../../../contexts/AuthContext";
 
 type LoginPageProps = {
   authService: AuthService;
 };
 
-const LoginPage = (props: LoginPageProps) => {  
-  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
-  
+const LoginPage = (props: LoginPageProps) => {
   const [form, setForm] = useState({
     email: {
       hasChanged: false,
@@ -34,9 +31,12 @@ const LoginPage = (props: LoginPageProps) => {
 
   const login = () => {
     props.authService.login(form.email.value, form.password.value).then(
-      () => {
+      (e) => {
         setError(false);
-        setIsLoggedIn(true);
+
+        localStorage.setItem("userId", e.user.uid);
+        localStorage.setItem("adm", e.user.email!)
+
         navigate("/admin");
       },
       () => {
@@ -44,7 +44,6 @@ const LoginPage = (props: LoginPageProps) => {
       }
     );
   };
-
 
   return (
     <main className="login__page">

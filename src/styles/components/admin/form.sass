@@ -1,0 +1,48 @@
+@use "../../assets/_variables"
+@use "../../assets/_mixins"
+
+.admin__form
+
+  header
+    color: variables.$blue
+  main
+    padding: 1rem 0
+
+    .emission__input
+      @include mixins.grid($rows: 1, $columns: 2, $gap: 1rem)
+
+      align-items: center
+      margin-bottom: .5rem
+      .input
+        input
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button
+            -webkit-appearance: none
+            margin: 0
+
+          &:focus
+            outline: none
+
+        input[type=number]
+          -moz-appearance: textfield
+
+        .input__unity
+          margin: 0 .5rem
+  footer
+    .add__to__db__btn
+      border: none
+      border-radius: .25rem
+      box-shadow: variables.$box-shadow
+      padding: .5rem 2rem
+      transition: .25s
+      background-color: variables.$blue
+      color: variables.$white
+
+      &:hover
+        cursor: pointer
+        color: variables.$blue
+        background-color: variables.$white
+        
+
+      
+

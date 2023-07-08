@@ -12,13 +12,9 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Footer from "./components/layout/Footer";
 import LoginPage from "./pages/admin/login/LoginPage";
-
-import { AuthContext, AuthProvider } from "./contexts/AuthContext";
 import Admin from "./pages/admin/home/Admin";
 
 function App() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-
   useEffect(() => {
     Aos.init({
       duration: 750,
@@ -27,26 +23,23 @@ function App() {
     });
   }, []);
 
-
-
   return (
     <BrowserRouter>
       <Container>
         <NavBar />
-        <AuthProvider>
-          <GlobalProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                path="/login"
-                element={<LoginPage authService={new AuthService()} />}
-              />
 
-              <Route path="/admin" element={<Admin />} />
-            </Routes>
-          </GlobalProvider>
-          <Footer />
-        </AuthProvider>
+        <GlobalProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/login"
+              element={<LoginPage authService={new AuthService()} />}
+            />
+
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </GlobalProvider>
+        <Footer />
       </Container>
     </BrowserRouter>
   );
