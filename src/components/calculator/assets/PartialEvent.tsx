@@ -12,7 +12,7 @@ const PartialEvent = (props: PartialEventProps) => {
       <div className="date__result">
         <h4>Total</h4>
         <span className="consumption__value">{props.total.toFixed(2).replace(".", ",")}</span>
-        <span className="consumption__unit">t CO&#8322;e</span>
+        <span className="consumption__unit">kg CO&#8322;e</span>
       </div>
     </section>
   );
