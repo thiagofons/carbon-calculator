@@ -145,11 +145,10 @@ export const GlobalProvider = (props: GlobalProps) => {
         // Chame a função para buscar o objeto
         const fetchedObject = await getObjectFromFirestore("fatoresComuns");
         setFatores(fetchedObject as Fatores);
-        console.log(fatores);
         
       } catch (error) {
         // Trate o erro, se necessário
-        console.log("error");
+        console.log(error);
       }
     };
     fetchObject();
