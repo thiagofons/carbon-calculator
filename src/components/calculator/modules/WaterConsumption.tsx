@@ -9,9 +9,11 @@ import "../../../styles/components/calculator/modules/water_consumption.sass";
 import "aos/dist/aos.css";
 
 import AddButton from "../assets/AddButton";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 const WaterConsumption = () => {
   const { data, setData } = useContext(ClientContext);
+  const { fatores } = useContext(GlobalContext);
 
   return (
     <section className="box water__consumption" data-aos="fade-up">
@@ -32,18 +34,20 @@ const WaterConsumption = () => {
                   inventario: {
                     ...data.inventario,
                     agua: {
-                      mes: parseFloat(
-                        !isNaN(parseFloat(e.target.value))
-                          ? e.target.value
-                          : "0"
-                      ),
+                      mes:
+                        parseFloat(
+                          !isNaN(parseFloat(e.target.value))
+                            ? e.target.value
+                            : "0"
+                        ) * fatores.agua,
                       ano:
                         12 *
                         parseFloat(
                           !isNaN(parseFloat(e.target.value))
                             ? e.target.value
                             : "0"
-                        ),
+                        ) *
+                        fatores.agua,
                     },
                   },
                 });
