@@ -59,9 +59,7 @@ const TrashInput = (props: TrashInputProps) => {
           props.setConsumo(
             consumption(parseFloat(e.target.value ? e.target.value : "0"))
           );
-          console.log(
-            consumption(parseFloat(e.target.value ? e.target.value : "0"))
-          );
+          
         }}
       />
     </div>
