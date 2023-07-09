@@ -15,34 +15,40 @@ const ElectricEnergy = () => {
   const { data, setData } = useContext(ClientContext);
 
   const consumption = (valor: number) => {
-    switch (dataAtual.mes) {
-      case 0:
-        return fatores.energiaEletrica.jan * valor;
-      case 1:
-        return fatores.energiaEletrica.feb * valor;
-      case 2:
-        return fatores.energiaEletrica.mar * valor;
-      case 3:
-        return fatores.energiaEletrica.apr * valor;
-      case 4:
-        return fatores.energiaEletrica.may * valor;
-      case 5:
-        return fatores.energiaEletrica.jun * valor;
-      case 6:
-        return fatores.energiaEletrica.jul * valor;
-      case 7:
-        return fatores.energiaEletrica.aug * valor;
-      case 8:
-        return fatores.energiaEletrica.sep * valor;
-      case 9:
-        return fatores.energiaEletrica.oct * valor;
-      case 10:
-        return fatores.energiaEletrica.nov * valor;
-      case 11:
-        return fatores.energiaEletrica.dec * valor;
-      default:
-        return 0;
+    if (fatores) {
+      switch (dataAtual.mes) {
+        case 0:
+          return fatores?.energiaEletrica.jan * valor;
+        case 1:
+          return fatores?.energiaEletrica.feb * valor;
+        case 2:
+          return fatores?.energiaEletrica.mar * valor;
+        case 3:
+          return fatores?.energiaEletrica.apr * valor;
+        case 4:
+          return fatores?.energiaEletrica.may * valor;
+        case 5:
+          return fatores?.energiaEletrica.jun * valor;
+        case 6:
+          return fatores?.energiaEletrica.jul * valor;
+        case 7:
+          return fatores?.energiaEletrica.aug * valor;
+        case 8:
+          return fatores?.energiaEletrica.sep * valor;
+        case 9:
+          return fatores?.energiaEletrica.oct * valor;
+        case 10:
+          return fatores?.energiaEletrica.nov * valor;
+        case 11:
+          return fatores?.energiaEletrica.dec * valor;
+        default:
+          return 0;
+      }
     }
+    else {
+      return 0;
+    }
+
   };
 
   return (
@@ -67,10 +73,9 @@ const ElectricEnergy = () => {
                       mes: !isNaN(parseFloat(e.target.value))
                         ? consumption(parseFloat(e.target.value))
                         : 0,
-                      ano:
-                      !isNaN(parseFloat(e.target.value))
-                      ? consumption(parseFloat(e.target.value)) * 12
-                      : 0,
+                      ano: !isNaN(parseFloat(e.target.value))
+                        ? consumption(parseFloat(e.target.value)) * 12
+                        : 0,
                     },
                   },
                 });

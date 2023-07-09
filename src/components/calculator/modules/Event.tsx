@@ -24,7 +24,6 @@ type ConsumptionEvent = {
 };
 
 const Event = () => {
-  const { fatores } = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
 
   const [evento, setEvento] = useState("combustivel");

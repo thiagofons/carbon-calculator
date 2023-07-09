@@ -17,15 +17,15 @@ const AddButton = (props: AddButtonProps) => {
     <button
       className="add__button"
       onClick={(e) => {
-        setData({
+        setData(fatores ? {
           ...data,
           total: {
             mes: (data.total.mes + props.value) / 1000,
             ano: (data.total.ano + props.value * 12) / 1000,
             arvores:
-              (data.total.mes + props.value) * fatores.conversaoParaArvores,
+              (data.total.mes + props.value) * fatores?.conversaoArvores,
           },
-        });
+        } : data);
       }}
     >
       Adicionar ao cálculo

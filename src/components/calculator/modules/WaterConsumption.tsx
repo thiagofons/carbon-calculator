@@ -29,7 +29,7 @@ const WaterConsumption = () => {
               className="text__input"
               placeholder="m&sup3;"
               onChange={(e) => {
-                setData({
+                setData(fatores ? {
                   ...data,
                   inventario: {
                     ...data.inventario,
@@ -39,7 +39,7 @@ const WaterConsumption = () => {
                           !isNaN(parseFloat(e.target.value))
                             ? e.target.value
                             : "0"
-                        ) * fatores.agua,
+                        ) * fatores?.agua,
                       ano:
                         12 *
                         parseFloat(
@@ -47,10 +47,10 @@ const WaterConsumption = () => {
                             ? e.target.value
                             : "0"
                         ) *
-                        fatores.agua,
+                        fatores?.agua,
                     },
                   },
-                });
+                } : data);
               }}
             />
           </div>

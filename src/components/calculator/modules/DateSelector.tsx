@@ -25,11 +25,49 @@ const DateSelector = () => {
   ];
 
   const { dataAtual, setDataAtual } = useContext(GlobalContext);
+  const { data, setData } = useContext(ClientContext);
 
   const anos = [];
   for (let ano = 2023; ano <= dataAtual.ano; ano++) {
     anos.push(ano);
   }
+
+  const zerarDados = () => {
+    setData({
+      inventario: {
+        energiaEletrica: {
+          mes: 0,
+          ano: 0,
+        },
+        agua: {
+          mes: 0,
+          ano: 0,
+        },
+        transporte: {
+          mes: 0,
+          ano: 0,
+        },
+        gas: {
+          mes: 0,
+          ano: 0,
+        },
+        residuos: {
+          mes: 0,
+          ano: 0,
+        },
+      },
+      evento: {
+        viagem: 0,
+        residuos: 0,
+        transporte: 0,
+      },
+      total: {
+        mes: 0,
+        ano: 0,
+        arvores: 0,
+      },
+    });
+  };
 
   return (
     <section className="box date__selector" data-aos="fade-up">
@@ -41,12 +79,13 @@ const DateSelector = () => {
           <select
             className="date__select month__selector"
             value={dataAtual.mes}
-            onChange={(e) =>
+            onChange={(e) => {
               setDataAtual({
                 ...dataAtual,
                 mes: parseInt(e.target.value),
-              })
-            }
+              });
+              zerarDados();
+            }}
           >
             {meses.map((mes: string, index: number) => (
               <option value={index} key={mes}>

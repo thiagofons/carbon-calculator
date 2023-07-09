@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { ClientContext } from "../contexts/ClientContext";
 import PartialResults from "../assets/PartialResults";
 import AddButton from "../assets/AddButton";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 type Consumo = {
   gasEncanado: number;
@@ -14,6 +15,7 @@ type Consumo = {
 };
 
 const Gas = () => {
+  const {fatores} = useContext(GlobalContext);
   const { data, setData } = useContext(ClientContext);
   const [consumo, setConsumo] = useState<Consumo>({
     gasEncanado: 0,
@@ -47,12 +49,12 @@ const Gas = () => {
               className="text__input"
               placeholder="m&sup3;"
               onChange={(e) => {
-                setConsumo({
+                setConsumo(fatores ? {
                   ...consumo,
                   gasEncanado: parseFloat(
                     !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
-                  ),
-                });
+                  ) * fatores?.gas.encanado,
+                }: consumo);
               }}
             />
           </div>
@@ -63,12 +65,12 @@ const Gas = () => {
               className="text__input"
               placeholder="número de butijões"
               onChange={(e) => {
-                setConsumo({
+                setConsumo(fatores ? {
                   ...consumo,
                   butijoes: parseFloat(
                     !isNaN(parseFloat(e.target.value)) ? e.target.value : "0"
-                  ),
-                });
+                  ) * fatores?.gas.cozinha,
+                } : consumo);
               }}
             />
           </div>
