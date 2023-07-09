@@ -2,14 +2,35 @@
 @use "../../assets/_mixins"
 
 .navbar
-  width: 100%
-  @include mixins.flex($direction: row, $gap: 0)
-  justify-content: center
   background-color: variables.$white
-  padding: 1rem
-
+  
+  width: 100%
+  padding: 1rem 10rem
+  
   .content
-    min-width: 80%
     @include mixins.flex($direction: row, $gap: 0)
     align-items: center
     justify-content: space-between
+    
+  .links
+    @include mixins.flex($direction: column, $gap: 2rem)
+    align-items: center
+    display: none
+    
+    @media screen and ( min-width: 600px )
+      flex-direction: row
+      display: flex
+      
+    padding: 0
+    list-style-type: none
+
+    
+  .nav__link
+    a
+      color: variables.$blue
+      text-decoration: none
+      transition: .5s
+      &:active
+        color: variables.$blue
+      &:hover
+        color: variables.$dark-grey
