@@ -15,39 +15,6 @@ type Result = {
 const Results = () => {
   const { data, setData } = useContext(ClientContext);
 
-  const somarMes = () => {
-    let total = 0;
-    total +=
-      data.inventario.agua.mes +
-      data.inventario.energiaEletrica.mes +
-      data.inventario.gas.mes +
-      data.inventario.residuos.mes +
-      data.inventario.residuos.mes +
-      data.inventario.transporte.mes +
-      data.evento.residuos +
-      data.evento.transporte +
-      data.evento.viagem;
-
-    setData({
-      ...data,
-      total: {
-        ...data.total,
-        mes: total,
-      },
-    });
-  };
-  const somarAno = () => {
-    setData({
-      ...data,
-      total: {
-        ...data.total,
-        ano: data.total.mes * 12,
-      },
-    });
-  };
-
-  const calcularArvores = () => {};
-
   return (
     <section className="results">
       <header>

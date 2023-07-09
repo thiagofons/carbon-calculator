@@ -44,11 +44,9 @@ const ElectricEnergy = () => {
         default:
           return 0;
       }
-    }
-    else {
+    } else {
       return 0;
     }
-
   };
 
   return (

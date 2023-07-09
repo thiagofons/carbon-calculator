@@ -14,12 +14,16 @@ const AddButton = (props: AddButtonProps) => {
   const { data, setData } = useContext(ClientContext);
 
   const calcularNovoValor = () => {
-    const mes = (data.total.mes + props.value) / 1000;
+    console.log(props.value);
+    
+    const mes = data.total.mes + props.value / 1000;
     const arvores = fatores
       ? data.total.arvores + props.value * fatores?.conversaoArvores
       : data.total.arvores;
     const ano = mes * 12;
 
+    console.log(mes, arvores, ano);
+    
     setData({
       ...data,
       total: {
